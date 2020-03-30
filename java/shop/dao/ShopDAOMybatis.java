@@ -6,9 +6,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.servlet.ModelAndView;
 
 import book.bean.BookDTO;
+import book.bean.BookDTO_list;
 import order.bean.CartDTO;
 
 @Repository
@@ -17,7 +17,7 @@ public class ShopDAOMybatis implements ShopDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public List<BookDTO> getBooks(Map<String, Object> map) {
+	public List<BookDTO_list> getBooks(Map<String, Object> map) {
 		return sqlSession.selectList("shopSQL.getBooks", map);
 	}
 	
