@@ -34,3 +34,7 @@ $('#btn-search').click(function() {
 		location.href="/hotSalt/search?cate1=" + cate1 + "&titleOrAuthor=" + keyword;
 	}
 })
+
+$('.wedget__title').next().find('li').click(function() {
+	location.href="/hotSalt/search?cate1=" + $(this).text();
+})

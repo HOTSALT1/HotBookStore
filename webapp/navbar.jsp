@@ -18,21 +18,21 @@
 								<li class="drop with--one--item"><a href="index">카테고리</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="#">국어 / 외국어 / 사전</a></li>
-                                            <li><a href="#">만화 / 라이트노벨</a></li>
-                                            <li><a href="#">건강 / 취미</a></li>		
-                                            <li><a href="#">수험서 / 자격증</a></li>
+											<li><a href="#">국어 외국어 사전</a></li>
+                                            <li><a href="#">만화 라이트노벨</a></li>
+                                            <li><a href="#">건강 취미</a></li>		
+                                            <li><a href="#">수험서 자격증</a></li>
                                             <li><a href="#link">자기계발</a></li>
                                             <li><a href="#link">자연과학</a></li>
                                             <li><a href="#link">에세이</a></li>
                                             <li><a href="#link">종교</a></li>
                                             <li><a href="#link">인문</a></li>
-                                            <li><a href="#link">경제 / 경영</a></li>
-                                            <li><a href="#link">가정 / 살림</a></li>
+                                            <li><a href="#link">경제 경영</a></li>
+                                            <li><a href="#link">가정 살림</a></li>
                                             <li><a href="#link">대학교재</a></li>
                                             <li><a href="#link">어린이</a></li>
-                                            <li><a href="#link">소설 / 시 / 희곡</a></li>
-                                            <li><a href="#link">사회 / 정치</a></li>
+                                            <li><a href="#link">소설 시 희곡</a></li>
+                                            <li><a href="#link">사회 정치</a></li>
                                             <li><a href="#link">청소년</a></li>
 										</ul>
 									</div>
@@ -286,3 +286,8 @@
 				<!-- Mobile Menu -->
 			</div>
 		</header>
+		<script type="text/javascript">
+			$('.item01 li').click(function () {
+				location.href="/hotSalt/search?cate1=" + $(this).text();
+			})
+		</script>
