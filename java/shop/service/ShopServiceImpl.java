@@ -47,6 +47,7 @@ public class ShopServiceImpl implements ShopService {
 		
 		mav.addObject("totalA", list.size()); // 총 검색된 갯수
 		mav.addObject("articles", list.size() > 12 ? 12 : list.size());
+		mav.addObject("keyword", map.get("titleOrAuthor"));
 		
 		return mav;
 	}

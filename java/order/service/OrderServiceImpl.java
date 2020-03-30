@@ -137,6 +137,7 @@ public class OrderServiceImpl implements OrderService {
 				
 				String cookie_name = c.getName();
 				if(cookie_name.split("cart_").length > 1) {
+					System.out.println(c.getName());
 					int book_id = Integer.parseInt(c.getName().split("cart_")[1]); 	
 					int qty = Integer.parseInt(c.getValue()); 	
 					

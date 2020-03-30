@@ -161,8 +161,9 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="col-xs-8 search-div">
-									<input type="text" class="search-bar" placeholder="제목 또는 저자로 검색어 입력">
-									<input type="button" class="search" value="검색">
+									<input type="hidden" id="cate1" value="${cate1 }"/>
+									<input type="text" id="titleOrAuthor" class="search-bar" placeholder="제목 또는 저자로 검색어 입력" value="${keyword }">
+									<input type="button" id="btn-search" class="search" value="검색">
 								</div>
 							</div>
 						</div>
@@ -212,7 +213,7 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
-													<input type="hidden" class="${book.seq}" />
+													<input type="hidden" value="${book.seq}" />
 													<ul class="add_to_links">
 														<li><a class="cart" href="#none"><i
 																	class="bi bi-shopping-bag4"></i></a></li>
