@@ -166,15 +166,10 @@ public class AdminController {
 		return "/admin/admin_index";
 	}
 	
-<<<<<<< .merge_file_a14408
-=======
 	//상품리스트에서 삭제버튼 확인
 	@RequestMapping(value = "/admin_bookDelete")
 	public String admin_bookDelete() {
 		return "/admin/admin_bookDelete";
 	}
-
->>>>>>> .merge_file_a07484
-	
 
 }

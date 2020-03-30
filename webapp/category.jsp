@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="style.css">
-	<!-- Modernizer js -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-	
 
 <div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
 	<div class="shop__sidebar">
@@ -47,7 +38,7 @@
 									<span>가격 :</span><input type="text" id="amount" readonly>
 								</div>
 								<div class="price--filter">
-									<a href="#">적용</a>
+									<a id="price-filter" href="#">적용</a>
 								</div>
 							</div>
 						</div>
@@ -88,9 +79,3 @@
 	</div>
 </div>
 
-	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
