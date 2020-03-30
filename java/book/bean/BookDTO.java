@@ -40,6 +40,7 @@ public class BookDTO {
 	private String img7;
 	private String yesNum;
 	private String logtime;
+	private int stock;
 
 	
 	public BookDTO() {

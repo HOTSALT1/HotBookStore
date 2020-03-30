@@ -40,31 +40,14 @@
 </head>
 
 <body>
-	<!--[if lte IE 9]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
-
 	<!-- Main wrapper -->
+	<input type="hidden" id="pg" value="${pg }">
+	
 	<div class="wrapper" id="wrapper">
-
+	
 		<!-- Header -->
 		<jsp:include page="admin_navbar.jsp"></jsp:include>
 		<!-- //Header -->
-		<!-- Start Search Popup -->
-		<div class="box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Search entire store here...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
-		<!-- End Search Popup -->
 		
 		<!-- Start Bradcaump area -->
 		<div class="ht__bradcaump__area bg-image--4">
@@ -72,11 +55,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="bradcaump__inner text-center">
-							<h2 class="bradcaump-title">관리자 전용 상품리스트 </h2>
+							<h2 class="bradcaump-title">관리자 전용 상품리스트</h2>
 							<nav class="bradcaump-content">
-								<a class="breadcrumb_item" href="../admin_index.jsp">상품</a>
-								<span class="brd-separetor">/</span>
-								<span class="breadcrumb_item active">상품리스트</span>
+								<a class="breadcrumb_item" href="../admin_index.jsp">상품</a> <span
+									class="brd-separetor">/</span> <span
+									class="breadcrumb_item active">상품리스트</span>
 							</nav>
 						</div>
 					</div>
@@ -94,8 +77,9 @@
 						<div class="table-content wnro__table table-responsive">
 							<table>
 								<thead>
-									<tr class="title-top">									
-										<th class="product-remove"><input type="checkbox" name="" id="chkAll" checked /></th>
+									<tr class="title-top">
+										<th class="product-remove"><input type="checkbox" name=""
+											id="chkAll" checked /></th>
 										<th class="product-id">번호</th>
 										<th class="product-thumbnail">이미지</th>
 										<th class="product-name">상품명</th>
@@ -107,65 +91,68 @@
 										<th class="product-remove">삭제</th>
 									</tr>
 								</thead>
-								<tbody>
-										<c:forEach var="book" items="${list }" varStatus="i" begin="0">
-											<tr>
-												<td class="product-remove" style="padding-left: 0px;">
-													<input type="checkbox" name="" id="chk_${i.index }"style="width: 13px;" checked /> 
-												</td>
-												<td class="product-id"><a href="">${book.seq }</a></td>
-												
-												<td class="product-thumbnail"><a href="#">
-												<img src="${book.img1 }" alt="product img" style="height: 100px;"></a></td>
-											
-												<td class="product-name"><a href="#">${book.title }<br />${book.subTitle }</a></td>
-												<!-- 정가  -->
-												<td class="product-price"><span class="amount price_${book.seq }">
-												<fmt:formatNumber pattern="#,###원">${book.price }</fmt:formatNumber></span></td>
-												
-												<!-- 할인가  -->
-												<td class="product-price"><span	class="amount d_price_${book.seq }">
-												<fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></span></td>
-												<!-- 재고  -->
-												<td class="product-stock"><span class="stock_${book.stock }">${book.stock }</span></td>
-												
-												<!-- 등록일/수정일  -->
-												<td class="product-logtime"><span class="logtime_${book.logtime }">${book.logtime }</span></td>
-												
-												
-												<!-- 수정 -->
-												<td class="product-modify"><input type="button" class="modify_${book.seq }">수정</td>
-												
-												<!-- 삭제 -->
-												<td class="product-remove"><a class="remove_${book.seq }" href="#none">X</a></td>
-											</tr>
-										
-											<c:set var="price">${price + book.price * cart_list[i.index].qty}</c:set>
-											<c:set var="d_price">${d_price + book.d_price * cart_list[i.index].qty}</c:set>
-										
-										</c:forEach>
-
-									<c:if test="${list.size() < 1}">
+								<tbody id="admin_booklistTable">
+									<c:forEach var="book" items="${list }" varStatus="i" begin="0">
 										<tr>
-											<td colspan="7">상품리스트에 상품이 없습니다.</td>
-										</tr>
-									</c:if>
+											<td class="product-remove" style="padding-left: 0px;"><input
+												type="checkbox" name="" id="chk_${i.index }"
+												style="width: 13px;" /></td>
+											<td class="product-id"><a href="">${book.seq }</a></td>
 
+											<td class="product-thumbnail"><a href="#"> <img
+													src="${book.img1 }" alt="product img"
+													style="height: 100px;"></a></td>
+
+											<td class="product-name"><a href="#">${book.title }<br />${book.subTitle }</a></td>
+											<!-- 정가  -->
+											<td class="product-price"><span
+												class="amount price_${book.seq }"> <fmt:formatNumber
+														pattern="#,###원">${book.price }</fmt:formatNumber></span></td>
+
+											<!-- 할인가  -->
+											<td class="product-price"><span
+												class="amount d_price_${book.seq }"> 
+												<fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></span></td>
+												
+											<!-- 재고  -->
+											<td class="product-stock"><span
+												class="stock_${book.stock }">${book.stock }</span></td>
+
+											<!-- 등록일/수정일  -->
+											<td class="product-logtime"><span
+												class="logtime_${book.logtime }">${book.logtime }</span></td>
+
+
+											<!-- 수정 -->
+											<td class="product-modify">
+											<input type="button" class="modify_${book.seq }" value="수정"></td>
+
+											<!-- 삭제 -->
+											<td class="product-remove">
+											<input type="button" class="remove_${book.seq }"  value="삭제"></td>
+										</tr>
+										</c:forEach>
 								</tbody>
 							</table>
+						
 						</div>
 						<div class="cartbox__btn">
 							<ul	class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="admin_bookDelete">선택 삭제</a></li>							
+								<li><a href="">선택 삭제</a></li>
 							</ul>
 						</div>
+	
 					</div>
+						<div class="wn__pagination">
+							<div id="adminBookListPagingDiv" style="float: left; width: 650px; text-align: center;"></div>
+						</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Footer Area -->
-	    <div style="border-top:1px solid #e6e6e6; width: 100%; margin-top:90px;"></div>	
+		<div
+			style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
 		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //Footer Area -->
 
@@ -180,6 +167,13 @@
 	<script src="../js/active.js"></script>
 	<script src="../js/cart.js"></script>
 	<script src="../js/member.js"></script>
+	
+	<script>
+	function adminBookListPaging(pg){
+		location.href="admin_booklist?pg="+pg;
+	}
+	</script>
+		
 
 </body>
 

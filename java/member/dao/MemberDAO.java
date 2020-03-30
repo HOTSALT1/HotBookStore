@@ -1,5 +1,6 @@
 package member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,5 +23,9 @@ public interface MemberDAO {
 	public void member_modify(Map<String, String> map);
 
 	public void member_delete(Map<String, String> map);
+
+	public List<MemberDTO> member_list();
+
+
 
 }

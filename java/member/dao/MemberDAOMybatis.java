@@ -1,5 +1,6 @@
 package member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -66,6 +67,11 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void member_delete(Map<String, String> map) {
 		sqlSession.update("memberSQL.memberDelete", map);
 		
+	}
+
+	@Override
+	public List<MemberDTO> member_list() {
+		return sqlSession.selectList("memberSQL.memberList");
 	}
 
 
