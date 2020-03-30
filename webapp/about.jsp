@@ -169,7 +169,7 @@
 			</div>
 			</div>
 			</section>
-						<!-- Start Team Area -->
+		<!-- Start Team Area -->
 		<section class="wn__team__area pt--40 pb--75 bg--white">
 			<div class="container">
 				<div class="row">

@@ -3,9 +3,12 @@ package admin.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import book.bean.BookDTO;
 import book.service.BookAdminService;
+import shop.service.ShopService;
 
 @Controller
 @RequestMapping(value = "admin")
 public class AdminController {
 	@Autowired
 	BookAdminService bookAdminService;
+	@Autowired
+	ShopService shopService;
 	
 	//상품등록페이지 매핑
 	@RequestMapping(value = "/admin_insertForm")
@@ -29,12 +36,11 @@ public class AdminController {
 		return "/admin/admin_insertForm";
 	}
 	
-	//상품등록페이지 매핑
+	//상품등록완료 매핑
 	@RequestMapping(value = "/admin_insert")
 	public String admin_insert() {
 		return "admin_insert";
 	}
-
 	
 	//상품등록 처리 매핑
 	@RequestMapping(value = "/admin_insert", method = RequestMethod.POST)
@@ -160,5 +166,27 @@ public class AdminController {
 		return "/admin/admin_index";
 	}
 	
+	//상품리스트에서 삭제버튼 확인
+	@RequestMapping(value = "/admin_bookDelete")
+	public String admin_bookDelete() {
+		return "/admin/admin_bookDelete";
+	}
+
+	
+	//상품리스트 페이지 매핑	
+	@RequestMapping(value = "/admin_booklist", method=RequestMethod.GET)
+	public String admin_booklist(@RequestParam(required=false, defaultValue="1") String pg,
+			 Model model){
+		model.addAttribute("pg", pg);
+		return "admin_booklist";
+	}
+		
+	//상품리스트 페이지 매핑
+	@RequestMapping(value = "getAdmin_booklist", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView getAdmin_booklist(@RequestParam(required = false) Map<String, Object> map, ModelAndView model) {
+		return shopService.getBooks(model, map);
+	}
+
 
 }

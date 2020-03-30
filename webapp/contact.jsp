@@ -45,7 +45,7 @@
 	<!-- End navbar area -->
 	
 	
-		<!-- Start Bradcaump area -->
+	<!-- Start Bradcaump area -->
 		<div class="ht__bradcaump__area bg-image--6">
 			<div class="container">
 				<div class="row">
@@ -63,13 +63,14 @@
 			</div>
 		</div>
 		<!-- End Bradcaump area -->
+		
 		<!-- Start Contact Area -->
 		<section class="wn_contact_area bg--white pt--80 pb--80">
 			<div class="google__map pb--80">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<div id="googleMap"></div>
+							<div id="map" style="width:1170px;height:500px;"></div>
 						</div>
 					</div>
 				</div>
@@ -79,7 +80,7 @@
 					<div class="col-lg-8 col-12">
 						<div class="contact-form-wrap">
 							<h2 class="contact__title">Get in touch</h2>
-							<p>뜨거운 책방에 제안할 의견 또는 불편사항이 있다면 접수해주세요.보내주신 의견은 모두 서비스 개선을 위해 소중히 활용되고 있습니다.</p>
+							<p>뜨거운 책방에 제안할 의견 또는 불편사항이 있다면 접수해주세요.<br>보내주신 의견은 모두 서비스 개선을 위해 소중히 활용되고 있습니다.</p>
 							<form id="contact-form" action="mail.php" method="post">
 								<div class="single-contact-form space-between">
 									<input type="text" name="lastname" placeholder="성*">
@@ -158,109 +159,19 @@
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
-	<!-- Google Map js -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo"></script>
+	
+
+	
+	<!--  Map js -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d4035841e96f1ae2fa8311573900f322"></script>
 	<script>
-		// When the window has finished loading create our google map below
-		google.maps.event.addDomListener(window, 'load', init);
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.502989, 127.024195),
+			level: 3
+		};
 
-		function init() {
-			var mapOptions = {
-				zoom: 12,
-
-				scrollwheel: false,
-
-				center: new google.maps.LatLng(37.502989, 127.024195), 
-
-				styles: [
-
-					{
-						"featureType": "administrative",
-						"elementType": "labels.text.fill",
-						"stylers": [{
-							"color": "#444444"
-						}]
-					},
-					{
-						"featureType": "landscape",
-						"elementType": "all",
-						"stylers": [{
-							"color": "#f2f2f2"
-						}]
-					},
-					{
-						"featureType": "poi",
-						"elementType": "all",
-						"stylers": [{
-							"visibility": "off"
-						}]
-					},
-					{
-						"featureType": "road",
-						"elementType": "all",
-						"stylers": [{
-								"saturation": -100
-							},
-							{
-								"lightness": 45
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
-						"elementType": "all",
-						"stylers": [{
-							"visibility": "simplified"
-						}]
-					},
-					{
-						"featureType": "road.arterial",
-						"elementType": "labels.icon",
-						"stylers": [{
-							"visibility": "off"
-						}]
-					},
-					{
-						"featureType": "transit",
-						"elementType": "all",
-						"stylers": [{
-							"visibility": "off"
-						}]
-					},
-					{
-						"featureType": "transit.station.bus",
-						"elementType": "labels.icon",
-						"stylers": [{
-							"saturation": "-16"
-						}]
-					},
-					{
-						"featureType": "water",
-						"elementType": "all",
-						"stylers": [{
-								"color": "#04b7ff"
-							},
-							{
-								"visibility": "on"
-							}
-						]
-					}
-				]
-			};
-
-			var mapElement = document.getElementById('googleMap');
-
-			var map = new google.maps.Map(mapElement, mapOptions);
-
-			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(37.502989, 127.024195),
-				map: map,
-				title: 'Dcare!',
-				icon: 'images/icons/map.png',
-				animation: google.maps.Animation.BOUNCE
-
-			});
-		}
+		var map = new kakao.maps.Map(container, options);
 	</script>
 
 	<script src="js/active.js"></script>

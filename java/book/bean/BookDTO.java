@@ -39,6 +39,8 @@ public class BookDTO {
 	private String img6;
 	private String img7;
 	private String yesNum;
+	private String logtime;
+
 	
 	public BookDTO() {
 	}
