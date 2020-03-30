@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.png">
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
@@ -26,7 +26,7 @@
 
 	<!-- Cusom css -->
 	<link rel="stylesheet" href="css/custom.css">
-
+	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
@@ -3351,7 +3351,7 @@
 	<!-- //Main wrapper -->
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+	
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

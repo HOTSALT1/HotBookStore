@@ -193,7 +193,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section__title text-center">
-							<h2 class="title__be--2">Our <span class="color--theme">Order and Delivery</span></h2>
+							<h2 class="title__be--2">Our <span class="color--theme">Order & Delivery</span></h2>
 							<p>책방 주문 관리</p>
 						</div>
 					</div>

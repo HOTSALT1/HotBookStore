@@ -17,65 +17,39 @@
 							<ul class="meninmenu d-flex justify-content-start">
 								<li class="drop with--one--item"><a href="index">카테고리</a>
 									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li><a href="#">국어 / 외국어 / 사전</a></li>
-                                            <li><a href="#">만화 / 라이트노벨</a></li>
-                                            <li><a href="#">건강 / 취미</a></li>		
-                                            <li><a href="#">수험서 / 자격증</a></li>
-                                            <li><a href="#link">자기계발</a></li>
-                                            <li><a href="#link">자연과학</a></li>
-                                            <li><a href="#link">에세이</a></li>
-                                            <li><a href="#link">종교</a></li>
-                                          </ul>
-                                         <ul class="item item02">
-                                         	<li><a href="#link">인문</a></li>
-                                            <li><a href="#link">경제 / 경영</a></li>
-                                            <li><a href="#link">가정 / 살림</a></li>
-                                            <li><a href="#link">대학교재</a></li>
-                                            <li><a href="#link">어린이</a></li>
-                                            <li><a href="#link">소설 / 시 / 희곡</a></li>
-                                            <li><a href="#link">사회 / 정치</a></li>
-                                            <li><a href="#link">청소년</a></li>
+										<ul class="item item02 cate1">
+											<li><a href="javascript:void(0)">국어 외국어 사전</a></li>
+                                            <li><a href="javascript:void(0)">만화/라이트노벨</a></li>
+                                            <li><a href="javascript:void(0)">건강 취미</a></li>
+                                            <li><a href="javascript:void(0)">예술</a></li>			
+                                            <li><a href="javascript:void(0)">수험서 자격증</a></li>
+                                            <li><a href="javascript:void(0)">자기계발</a></li>
+                                            <li><a href="javascript:void(0)">자연과학</a></li>
+                                            <li><a href="javascript:void(0)">에세이</a></li>
+                                            <li><a href="javascript:void(0)">종교</a></li>
+                                         </ul>
+                                         <ul class="item item02 cate1">
+                                            <li><a href="javascript:void(0)">인문</a></li>
+                                            <li><a href="javascript:void(0)">경제 경영</a></li>
+                                            <li><a href="javascript:void(0)">가정 살림</a></li>
+                                            <li><a href="javascript:void(0)">대학교재</a></li>
+                                            <li><a href="javascript:void(0)">어린이</a></li>
+                                            <li><a href="javascript:void(0)">소설/시/희곡</a></li>
+                                            <li><a href="javascript:void(0)">사회 정치</a></li>
+                                            <li><a href="javascript:void(0)">청소년</a></li>
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="#">쇼핑</a>
-									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Shop Layout</li>
-											<li><a href="shop-grid.html">Shop Grid</a></li>
-											<li><a href="shop-list.html">Shop List</a></li>
-											<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-											<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-											<li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
-											<li><a href="single-product.html">Single Product</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Shop Page</li>
-											<li><a href="my-account.html">My Account</a></li>
-											<li><a href="cart.html">Cart Page</a></li>
-											<li><a href="checkout.html">Checkout Page</a></li>
-											<li><a href="wishlist.html">Wishlist Page</a></li>
-											<li><a href="error404.html">404 Page</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Bargain Books</li>
-											<li><a href="shop-grid.html">Bargain Bestsellers</a></li>
-											<li><a href="shop-grid.html">Activity Kits</a></li>
-											<li><a href="shop-grid.html">B&N Classics</a></li>
-											<li><a href="shop-grid.html">Books Under $5</a></li>
-											<li><a href="shop-grid.html">Bargain Books</a></li>
-										</ul>
-									</div>
+								<li class="drop"><a href="#">Shop</a>
+									
 								</li>
-								<!-- 베스트 셀러 -->
-								<li class="drop"><a href="#">베스트 셀러</a></li>
-								<!-- 신간 -->
+								<!-- 리뷰게시판 -->
+								<li class="drop"><a href="shop-grid.html">베스트 셀러</a></li>
+								<!-- 리뷰게시판 -->
 								<li class="drop"><a href="#">신간</a></li>
                                 <!-- 리뷰게시판 -->
                                 <li class="drop"><a href="#">리뷰게시판</a></li>
-                                <!-- 책방소개 -->
+                                <!-- 리뷰게시판 -->
                                 <li class="drop"><a href="#">책방소개</a></li>
 							</ul>
 						</nav>
@@ -176,6 +150,7 @@
 								
 							</li>
 							<li class="h_top"><a href="#">고객센터</a></li>
+							<li class="h_top"><a href="http://localhost:8080/hotSalt/admin/admin_index.jsp">관리자페이지</a></li>
 						</ul>
 					</div>
 				</div>
@@ -240,3 +215,8 @@
 				<!-- Mobile Menu -->
 			</div>
 		</header>
+		<script type="text/javascript">
+			$('.cate1 li').click(function () {
+				location.href="/hotSalt/search?cate1=" + $(this).text();
+			})
+		</script>
