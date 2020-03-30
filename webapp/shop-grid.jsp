@@ -221,12 +221,13 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
+													<input type="hidden" class="${book.seq}" />
 													<ul class="add_to_links">
-														<li><a class="cart" href="cart.html"><i
+														<li><a class="cart" href="#none"><i
 																	class="bi bi-shopping-bag4"></i></a></li>
-														<li><a class="wishlist" href="wishlist.html"><i
+														<li><a class="wishlist addToCart" href="#none"><i
 																	class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a class="compare" href="#"><i
+														<li><a class="compare" href="#none"><i
 																	class="bi bi-heart-beat"></i></a></li>
 														<li><a data-toggle="modal" title="Quick View"
 																class="quickview modal-view detail-link"
