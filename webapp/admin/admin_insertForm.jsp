@@ -129,7 +129,7 @@
 				
 				<div id="cate1" class="div3 idx3" style="border-top: none;">
 					<label>cate1<span>|</span></label>&nbsp; 
-					<select style="width:100px;" name="cate1" id="cate1" > 
+					<select style="width:100px; margin-left: 44px;" name="cate1" id="cate1" > 
 						<option value="" selected>책 카테고리</option>
 						<option value="국어 외국어 사전">국어 외국어 사전</option>
 						<option value="만화/라이트노벨">만화/라이트노벨</option>
@@ -153,7 +153,7 @@
 				
 				<div id="cate2" class="div3 idx3" style="border-top: none;">
 					<label>cate2<span>|</span></label>&nbsp;  
-					<select style="width:100px;" name="cate2" id="cate2" > 
+					<select style="width:100px; margin-left: 44px;" name="cate2" id="cate2" > 
 						<option value="" selected>신간/베스트 분류</option>
 						<option value="new">New</option>
 						<option value="best">Best Seller</option>  
@@ -166,7 +166,8 @@
 					<span id="size"></span>
 				</div>				
 				<div class="div3 border-Tnone idx8" style="border-radius: 0 0 10px 10px;">
-					<label>책 이미지<span>|</span></label> 
+					<label>책 이미지<span>|</span></label>
+					<div class="img1-7">
 					<input type="file" name="img" id="img1" size="50">
 					<input type="file" name="img" id="img2" size="50">
 					<input type="file" name="img" id="img3" size="50">
@@ -174,6 +175,7 @@
 					<input type="file" name="img" id="img5" size="50">
 					<input type="file" name="img" id="img6" size="50">
 					<input type="file" name="img" id="img7" size="50">
+					</div>
 				</div>
 				
 				<div class="signup-btn" style="text-align: center;">
