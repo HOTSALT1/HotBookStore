@@ -82,7 +82,6 @@
 	<select id="getBooksByCart" resultType="book.bean.BookDTO" parameterType="java.util.List">
 		SELECT * FROM book WHERE seq IN(0
 			<foreach collection="list" item="cart" open="," separator="," close=")"> #{cart.book_id} </foreach>
-
 	</select>
 	
 </mapper>

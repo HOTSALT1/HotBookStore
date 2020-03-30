@@ -23,8 +23,8 @@ public class BookAdminServiceImpl implements BookAdminService {
 
 	@Override
 	public List<BookDTO> getAdminBookList(String pg) {
-		int endNum = Integer.parseInt(pg)*3;
-		int startNum = endNum-2;
+		int endNum = Integer.parseInt(pg)*12;
+		int startNum = endNum-11;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
