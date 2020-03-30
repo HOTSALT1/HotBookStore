@@ -20,3 +20,21 @@ $('a.addToCart').click(function() {
 		}
 	})
 })
+
+$('#btn-search').click(function() {
+	let keyword = $('#titleOrAuthor').val();
+	let cate1 = $('#cate1').val();
+	if (cate1 == ''){
+		cate1 = 'all';
+	}
+	
+	if(keyword ==''){
+		alert('검색어를 입력해주세요.')
+	}else{
+		location.href="/hotSalt/search?cate1=" + cate1 + "&titleOrAuthor=" + keyword;
+	}
+})
+
+$('.wedget__title').next().find('li').click(function() {
+	location.href="/hotSalt/search?cate1=" + $(this).text();
+})

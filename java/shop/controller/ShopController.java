@@ -1,10 +1,12 @@
 package shop.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +32,12 @@ public class ShopController {
 	
 	@RequestMapping(value = "shop-grid", method = RequestMethod.GET)
 	public ModelAndView shop_grid(@RequestParam(required = false) Map<String, Object> map, ModelAndView model) {
+		return shopService.getBooks(model, map);
+	}
+	
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public ModelAndView search(@RequestParam Map<String, Object> map, ModelAndView model) {
+		model.setViewName("/shop-grid");
 		return shopService.getBooks(model, map);
 	}
 }

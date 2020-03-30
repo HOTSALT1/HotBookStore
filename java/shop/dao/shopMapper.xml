@@ -9,6 +9,10 @@
 			(SELECT rownum rn, tt.* from 
 			
 				(SELECT book.*, score FROM book LEFT JOIN view_score ON book.seq = view_score.book_id WHERE 1=1 
+					<if test='titleOrAuthor != null'>
+						AND (title LIKE '%' || #{titleOrAuthor} || '%' OR author LIKE '%' || #{titleOrAuthor} || '%')  
+					</if>
+					
 					<if test='title != null'>
 						AND title LIKE '%' || #{title} || '%'  
 					</if>
@@ -21,7 +25,7 @@
 					<if test='p_date != null'>
 						AND to_char(to_date(p_date, 'YYYY"년" MM"월" DD"일"'), 'YYYYMM') = #{p_date} 
 					</if>
-					<if test='cate1 != null'>
+					<if test='cate1 != null and cate1 != "all"'>
 						AND cate1 = #{cate1} 
 					</if>
 					<if test='!max.equals("0")'>
