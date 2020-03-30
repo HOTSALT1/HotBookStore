@@ -33,13 +33,17 @@
 </head>
 
 <body>
-	<!--[if lte IE 9]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
-
+	
+	<!-- Start navbar area -->
+	<nav>
+		<jsp:include page="navbar.jsp"></jsp:include>
+		<div style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
+	</nav>
+	<!-- End navbar area -->
+	
 	
 		<!-- Start Bradcaump area -->
 		<div class="ht__bradcaump__area bg-image--6">
@@ -166,7 +170,7 @@
 
 				scrollwheel: false,
 
-				center: new google.maps.LatLng(37.503004, 127.024208), 
+				center: new google.maps.LatLng(37.502989, 127.024195), 
 
 				styles: [
 
@@ -249,7 +253,7 @@
 			var map = new google.maps.Map(mapElement, mapOptions);
 
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(37.503004, 127.024208),
+				position: new google.maps.LatLng(37.502989, 127.024195),
 				map: map,
 				title: 'Dcare!',
 				icon: 'images/icons/map.png',
