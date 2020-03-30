@@ -22,25 +22,20 @@ public class BookAdminController {
 	@Autowired
 	private BookAdminService bookAdminService;
 	
-	@RequestMapping(value="admin_booklist", method=RequestMethod.GET)
-	public String imageboardList(@RequestParam(required=false, defaultValue="1") String pg,
-								 Model model) {
-		model.addAttribute("pg", pg);
-		return "/admin/admin_booklist";
-	}
 	
-	@RequestMapping(value="getadmin_booklist", method=RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView getImageboardList(@RequestParam(required=false, defaultValue="1") String pg) {
+	
+	@RequestMapping(value="admin_booklist", method=RequestMethod.GET)
+	public ModelAndView admin_booklist(@RequestParam(required=false, defaultValue="1") String pg) {
+		System.out.println(pg);
 		List<BookDTO> list = bookAdminService.getAdminBookList(pg);
-		
+
 		AdminBookListPaging adminBookListPaging = bookAdminService.adminBookListPaging(pg);
 				
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pg", pg);
 		mav.addObject("list", list);
 		mav.addObject("adminBookListPaging", adminBookListPaging);
-		mav.setViewName("jsonView");
+		mav.setViewName("/admin/admin_booklist");
 		return mav;
 	}
 
