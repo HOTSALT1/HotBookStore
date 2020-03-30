@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shopSQL">
+	
+	<!-- book 데이터 리스트를 가져오는 쿼리 -->
+	<select id="getBooks" resultType="book.bean.BookDTO" parameterType="java.util.Map" >
+		
+		SELECT * FROM 
+			(SELECT rownum rn, tt.* from 
+			
+				(SELECT book.*, score FROM book LEFT JOIN view_score ON book.seq = view_score.book_id WHERE 1=1 
+					<if test='title != null'>
+						AND title LIKE '%' || #{title} || '%'  
+					</if>
+					<if test='author != null'>
+						AND author LIKE '%' || #{author} || '%'  
+					</if>
+					<if test='pub != null'>
+						AND pub LIKE '%' || #{pub} || '%'  
+					</if>
+					<if test='p_date != null'>
+						AND to_char(to_date(p_date, 'YYYY"년" MM"월" DD"일"'), 'YYYYMM') = #{p_date} 
+					</if>
+					<if test='cate1 != null'>
+						AND cate1 = #{cate1} 
+					</if>
+					<if test='!max.equals("0")'>
+						<![CDATA[
+							AND (d_price <= #{min} AND d_price <= #{max}) 
+						]]>
+					</if>
+					<if test='orderBy == null'>
+						ORDER BY logtime DESC
+					</if>
+					<if test='orderBy != null'>
+						<if test='orderBy == 1'>ORDER BY logtime DESC </if>
+						<if test='orderBy == 2'>ORDER BY d_price </if>
+						<if test='orderBy == 3'>ORDER BY d_price DESC </if>
+						<if test='orderBy == 4'>ORDER BY nvl(score, 0) DESC </if> <!-- 평점 -->
+						<if test='orderBy == 5'>ORDER BY to_date(p_date, 'YYYY"년" MM"월" DD"일"') DESC </if>
+					</if>
+				)tt) 
+				
+		<![CDATA[
+		WHERE rn >= #{startNum} AND rn <= #{endNum} 
+		]]>
+		
+	</select>
+	
+	<!-- book 데이터 리스트 count를 가져오는 쿼리 -->
+	<select id="getBoardTotalA" resultType="int" parameterType="java.util.Map" >
+		SELECT count(*) FROM book WHERE 1=1 
+			<if test='title != null'>
+				AND title LIKE '%' || #{title} || '%'  
+			</if>
+			<if test='author != null'>
+				AND author LIKE '%' || #{author} || '%'  
+			</if>
+			<if test='pub != null'>
+				AND pub LIKE '%' || #{pub} || '%'  
+			</if>
+			<if test='p_date != null'>
+				AND to_char(to_date(p_date, 'YYYY"년" MM"월" DD"일"'), 'YYYYMM') = #{p_date} 
+			</if>
+			<if test='cate1 != null'>
+				AND cate1 = #{cate1} 
+			</if>
+			<if test='!max.equals("0")'>
+				<![CDATA[
+					AND (d_price <= #{min} AND d_price <= #{max}) 
+				]]>
+			</if>
+	</select>
+	
+	
+	<!-- 1개의 book 데이터를 가져오는 쿼리 -->
+	<select id="getBook" resultType="book.bean.BookDTO" parameterType="int">
+		SELECT * FROM book WHERE seq = #{book_id}
+	</select>
+	
+	<!-- 여러개의 book 데이터를 가져오는 쿼리 -->
+	<select id="getBooksByCart" resultType="book.bean.BookDTO" parameterType="java.util.List">
+		SELECT * FROM book WHERE seq IN(0
+			<foreach collection="list" item="cart" open="," separator="," close=")"> #{cart.book_id} </foreach>
+
+	</select>
+	
+</mapper>

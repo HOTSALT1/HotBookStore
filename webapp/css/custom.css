@@ -1,0 +1,26 @@
+/*********************************************************************************
+
+	Template Name: Boighor Books Library eCommerce Store  
+	Description: Template description
+	Version: 1.0
+	Note: This is custom css. All custom styles (user styles) declare here.
+
+**********************************************************************************/
+
+.header__sidebar__right > .h_top{
+	min-width: 60px;
+	margin:0 5px 0 5px;
+}
+
+#agreement1, #agreement2{
+	height: 300px;
+	overflow: auto;
+	padding-right: 15px;
+}
+#agreement1 table, #agreement2 table{
+	margin: 10px 0px;	
+}
+
+div#payment input{
+	padding: 18px;
+}

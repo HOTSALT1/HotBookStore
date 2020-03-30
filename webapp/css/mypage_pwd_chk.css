@@ -1,0 +1,98 @@
+body{overflow-y: scroll;}
+#modifyForm {
+	text-align: center;
+	margin: 0 auto;
+	width: 950px;
+	height: 380px;
+	margin-top: 100px;
+	border-radius: 7px;
+	border: 1px solid lightgray;
+}
+
+#modify_con {
+	width: 504px;
+	padding: 20px;
+	margin: 0 auto;
+	border: 1px solid lightgray;
+	margin-top: 48px;
+}
+
+#modify_member_id, #modify_member_pwd {
+	margin: 0 0 20px 0;
+}
+
+#member_id, #member_pwd {
+	outline: none;
+	width: 480px;
+	height: 40px;
+	padding-left: 20px;
+	font-size: 15px;
+}
+
+#modify_member_chk {
+	width: 504px;
+	height: 40px;
+}
+
+#btn-submit {
+	width: 504px;
+	height: 40px;
+	font-weight: bold;
+	font-size: 14px;
+	background-color: #f56a6a;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+#buttonDiv {
+	height: 60px;
+	width: 950px;
+	margin: 0 auto;
+	border-bottom: 1px solid lightgray;
+}
+
+#member-modify-btn {
+	width: 140px;
+	/* height: 53px; */
+	text-align: center;
+	margin: 0 auto;
+	background-color: #ffffff;
+	border-radius: 7px;
+	color: #f56a6a;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	margin-top: 7px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#member-out-btn {
+	width: 140px;
+	/* height: 53px; */
+	text-align: center;
+	margin: 0 auto;
+	background-color: #ffffff;
+	border-radius: 7px;
+	color: #a7a4a4;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	margin-top: 7px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#logout {
+	margin-top: -50px;
+	float: right;
+	width: 95px;
+	height: 35px;
+}
+
+#logo {
+	float: left;
+	margin-top: -64px;
+	width: 223px;
+}

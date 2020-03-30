@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberSQL">
+	<select id="isExistId" parameterType="String" resultType="member.bean.MemberDTO">
+		select * from member where id=#{id} 
+	</select>
+	<select id="isExistEmail" parameterType="String" resultType="member.bean.MemberDTO">
+		select * from member where email=#{email}
+	</select>
+	
+	<insert id="signup" parameterType="member.bean.MemberDTO">
+		insert into member(name,birth,gender,id,pwd,email,tel,logtime) 
+					values(#{name }, #{birth }, #{gender }, #{id }, #{pwd }, #{email }, #{tel }, SYSDATE)
+	</insert>
+	
+	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		SELECT * FROM MEMBER WHERE id=#{id} and status!='deleted'
+	</select>
+
+	<update id="memberUpdate" parameterType="member.bean.MemberDTO" >
+		update member set pwd=#{pwd }, zipcode=#{zipcode}, addr1=#{addr1 }, addr2=#{addr2 }, addr3=#{addr3 }	WHERE id=#{id}
+	</update>
+	
+	<update id="memberDelete" parameterType="java.util.Map">
+		begin
+		update member set status='deleted', status_date=sysdate where id=#{id};
+		delete cart where user_id = #{id};
+		end;
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

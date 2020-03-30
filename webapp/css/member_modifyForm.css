@@ -1,0 +1,68 @@
+#modifyForm_table {
+	display: block;
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 660px;
+	border: 1px solid #c5c5c5 !important;
+	border-radius: 7px;
+	border-collapse: collapse;
+	line-height: 2;
+	text-align: left;
+    font-size: 14px;
+	
+}
+
+.format {
+	width: 250px !important;
+}
+
+#modifyForm_table td {
+	padding: 15px 20px 15px 20px !important;
+	border: none;
+	width: 475px;
+}
+
+#modifyForm_table tr {
+	border-bottom: 1px solid #c5c5c5 !important;
+}
+
+#modifyForm_table td>span {
+	float: right;
+	color: #c5c5c5 !important;
+}
+
+#modifyForm_table label {
+	margin: 0 !important;
+}
+
+#modifyForm_table input {
+	width: 220px;
+	height: 25px;
+	border: none;
+}
+
+#modifyForm_table ::placeholder {
+	color: gray;
+}
+
+#modifyBtnDiv {
+	width: 653px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+#modify-btn {
+	width: 140px;
+	height: 40px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: #f56a6a;
+	border-radius: 7px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+}

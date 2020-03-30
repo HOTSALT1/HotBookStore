@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookSQL">
+
+
+	<!-- 1개의 book 데이터를 가져오는 쿼리 -->
+	<select id="getBook" resultType="book.bean.BookDTO"
+		parameterType="int">
+		SELECT * FROM book WHERE seq = #{book_id}
+	</select>
+
+	<insert id="insertBook" parameterType="book.bean.BookDTO">
+		INSERT INTO book(seq,title,subTitle,cate1,cate2
+						,author,pub,price,d_price,p_date
+						,book_index,page,weight,book_size,detail
+						,isbn13,isbn10,info,img1,img2
+						,img3,img4,img5,img6,img7
+						,stock,logtime)
+		values(book_seq.nextval
+		, #{title}
+		, #{subTitle}
+		, #{cate1}
+		, #{cate2}
+		
+		, #{author}
+		, #{pub}
+		, #{price}
+		, #{d_price}
+		, #{p_date}
+		
+		, #{book_index}
+		, #{page}
+		, #{weight}
+		, #{book_size}
+		, #{detail}
+		
+		, #{isbn13}		
+		, #{isbn10}
+		, #{info}
+		, #{img1}
+		, #{img2}
+		
+		, #{img3}
+		, #{img4}
+		, #{img5}
+		, #{img6}
+		, #{img7}
+		
+		, #{stock}
+		, sysdate)
+	</insert>
+
+</mapper>

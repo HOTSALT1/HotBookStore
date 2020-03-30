@@ -1,0 +1,339 @@
+@charset "UTF-8";
+/* 장바구니 */
+body{margin: 0 auto;}
+#table-cart tbody td{
+	border-bottom: solid 1px rgba(210, 215, 217, 0.75);
+}
+#table-cart tbody td input[type="text"]{
+	padding: 3px 4px;
+	width:37px;
+}
+#table-cart thead td{
+	border-top: 2px solid #f56a6a;
+	border-bottom: solid 1px rgba(210, 215, 217, 0.75);
+	background: #F8E6E0;
+	text-align: center;
+	font-size:11pt;
+}
+#table-cart img{
+	margin-right: 5px;
+	height: 80px;
+}
+#table-cart tfoot td{
+	border-top: solid 2px rgba(210, 215, 217, 0.75);
+	border-bottom: solid 2px rgba(210, 215, 217, 0.75);
+	background: #F2F2F2;
+}
+#table-cart a:link:not(.order-bw){
+	text-decoration: none;
+	color: black;
+}
+#table-cart a:hover:not(.order-bw){
+	text-decoration: underline;
+}
+#cart-div-btn{
+	padding: 10px;
+}
+
+/* 정보 수집 및 이용동의 */
+.agreement{
+	margin: 10px auto;
+	width: 82%;
+	max-width: 855px;
+	height: 180px;
+	overflow: auto;
+	border: solid 1px rgba(210, 215, 217, 0.75);
+	padding: 10px;
+}
+.agreementUnit{
+	font-size: 10pt;
+}
+.agreement .span-agreement{
+	display: none;
+}
+.agreement_radio{
+	font-size: 11pt;
+}
+.agreementUnit dt:not(:first-child){
+	color: #f56a6a;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.agreementUnit dd{
+	margin: 0;
+}
+.agreementUnit table{
+	border-collapse: collapse;
+	font-size: 10pt;
+	width: 100%;
+	margin-top: 10px;
+}
+.agreementUnit table td{
+	padding: 2px;
+	border: solid 1px rgba(210, 215, 217, 0.75);
+}
+.agreementUnit td.td-subject{
+	text-align: center;
+	width: 30%;
+	min-width: 100px;
+}
+.agreementUnit ul{
+	padding-left: 7px;
+	margin-top: 0px;
+	list-style: none;
+}
+.agreementUnit li.li-1{
+	padding-left: 10px;
+	margin-top: 5px;
+}
+.agreementUnit li.li-2{
+	text-indent: 0px;
+	margin-left: 10px;
+	margin-top: 3px;
+}
+.agreementUnit li.li-3{
+	text-indent: -20px;
+	margin-left: 10px;
+}
+
+/* 구매 전 최종 상품 확인 */
+#table-order-totalAmount{
+	margin: 0px auto;
+	margin-top: 20px;
+}
+#table-order-totalAmount td{
+	text-align: center;
+	padding: 10px;
+}
+#table-order-totalAmount .td-name{
+	padding-bottom: 0px;
+}
+#table-order-totalAmount tr:nth-child(2){
+	font-size: 20pt;
+}
+#table-order-totalAmount .td-symbol{
+	width:10px;
+	padding: 0;
+	font-size: 20pt;
+	color: #ff80c0;
+}
+#table-order-totalAmount .td-total{
+	width:35%;
+}
+
+
+/* 배송지 주소 */
+.order-addr td{
+	padding: 3px;
+	margin: 2px;
+}
+.order-addr input[type="text"], .order-addr select, .order-addr input[type="password"]{
+	height: 27px;
+	margin: 3px;
+	padding: 3px 5px;
+}
+.order-addr .input-addr{
+	width: 400px;
+}
+.order-addr .span-tab1{
+	width: 80px;
+	display: inline-block;
+	margin-left: 3px;
+}
+
+.order-addr .order-phone{
+	width: 70px;
+}
+.order-addr tbody tr:first-child{
+	border-top: 2px solid #f56a6a;
+	font-size:11pt;
+}
+.order-addr tbody tr{
+	border-bottom: 1px solid #f56a6a;
+}
+.order-addr .td-order_subject{
+	background: #F8E6E0;
+	text-align: center;
+	font-size:11pt;
+	width: 150px;
+}
+.order-addr .bgDisabled{
+	background: #e8e8e8;
+}
+
+/* 결제 정보 입력부 */
+#table-orderPay tbody tr:first-child{
+	border-top: 2px solid #f56a6a;
+	font-size:11pt;
+}
+#table-orderPay tbody tr{
+	border-bottom: 1px solid #f56a6a;
+}
+#table-orderPay .span-tab1{
+	width: 150px;
+	display: inline-block;
+	margin-left: 3px;
+}
+#table-orderPay .td-order_subject{
+	background: #F8E6E0;
+	text-align: center;
+	font-size:11pt;
+	width: 150px;
+}
+#table-orderPay .td-order_final{
+	border-left: 1px solid #f56a6a;
+	padding: 0px 20px;
+	text-align: center;
+}
+
+
+/* 공통사항 */
+.w20px{width:20px;}
+.w30px{width:30px;}
+.w40px{width:40px;}
+.w50px{width:50px;}
+.w60px{width:60px;}
+.w70px{width:70px;}
+.w80px{width:80px;}
+.w90px{width:90px;}
+.w100px{width:100px;}
+.w150px{width:150px;}
+.w200px{width:200px;}
+.w300px{width:300px;}
+.w400px{width:300px;}
+.w500px{width:300px;}
+.w600px{width:300px;}
+
+.h20px{height:20px;}
+.h27px{height:27px;}
+.h30px{height:30px;}
+.h40px{height:40px;}
+
+.txt-left{text-align:left;}
+.txt-right{text-align:right;}
+.txt-center{text-align:center;}
+.v-top{vertical-align:top;}
+.v-middle{vertical-align:middle;}
+
+.order-title{
+	width: 82%;
+	max-width: 855px;
+	margin: 0 auto;
+	margin-top: 35px;
+}
+
+a.order-bw:link{
+	text-decoration: none;
+	color: black;
+}
+a.order-bw:hover{
+	text-decoration: none;
+	color: #f56a6a;
+}
+a.order-bw{
+	border: 1px solid #A4A4A4;
+	border-radius: 3px;
+	background-color: #F2F2F2;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 10pt;
+	padding:0px 4px;
+	margin: 1px;
+	height: 26px;
+	cursor: pointer;
+}
+.order-btn{
+	
+}
+
+.order-mainTable{
+	width: 82%;
+	max-width: 921px;
+	border-collapse: collapse;
+	margin: 10px auto;
+	font-size:11pt;
+}
+.order-mainTable td{
+	padding:3px;
+	margin: 2px;
+	line-height: 26px;
+}
+span.explain{
+	margin-left: 10px;
+	color:#808080;
+	font-size: 9pt;
+}
+.next-button{
+	width: 140px; height: 40px; 
+	text-align: center;
+	margin: 0 auto;
+	background-color: #a7a4a4;
+	margin-top: 25px;
+	border-radius: 7px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	margin-left: 0px !important;
+        }
+.back-button{
+	width: 140px; height: 40px; 
+	text-align: center;
+	margin: 0 auto;
+	background-color: #a7a4a4;
+	margin-top: 25px;
+	border-radius: 7px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	margin-left: 0px !important;
+	}
+#card-writeJoin,#card-writeForm{
+	min-width:1100px;
+	height: 950px;
+	}
+.radioBtn{
+	margin:0 auto;
+	width: 82%;
+	max-width: 850px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	cursor:pointer;
+}
+.radioImgAll{
+	width:20px;
+	height:20px;
+	vertical-align: text-top;
+	cursor: pointer;
+}
+.radioImgCheck1{
+	width:18px;
+	height:18px;
+	vertical-align: middle;
+	margin-top: -3px;
+	cursor: pointer;
+}
+.radioImgCheck2{
+	width:18px;
+	height:18px;
+	vertical-align: middle;
+	margin-top: -3px;
+	cursor: pointer;
+}
+.write-button, .cancel-button{background-color:#a7a4a4;}
+.top-div{width: 922px; height:210px;  margin: 0 auto;}
+.top-div img{width:930px;}
+        
+        
+        
+        
+        
+        
+        
+        
+        

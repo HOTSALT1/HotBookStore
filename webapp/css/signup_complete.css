@@ -1,0 +1,35 @@
+.top-div{ height:210px;  margin: 0 auto; margin-top: 90px; 
+text-align: center; border-top: 1px solid #e6e6e6;}
+.top-div img{width:930px;}  
+.complete-msg{width:922px; height:500px; margin: 0 auto; text-align:center; margin-top:50px; margin-bottom:100px;}
+.complete-table{border: 1px solid #c5c5c5; border-top: 1px solid #565656; margin:0 auto; margin-top:30px; border-spacing: 0;
+width: 550px;}
+.complete-table td {height:50px; }
+.complete-table td:first-child{border-right: 1px solid #c5c5c5; background-color:#efefef;}
+.f-td{border-bottom:1px solid #c5c5c5;}
+.login-button{
+	width: 140px; height: 40px; 
+	text-align: center;
+	margin: 0 auto;
+	background-color: #f56a6a;
+	margin-top: 25px;
+	border-radius: 7px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	padding: 10px;
+	cursor: pointer;}
+.main-button{
+	width: 140px; height: 40px; 
+	text-align: center;
+	margin: 0 auto;
+	background-color: #a7a4a4;
+	margin-top: 25px;
+	border-radius: 7px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	border: none;
+	padding: 10px;
+	cursor: pointer;}
