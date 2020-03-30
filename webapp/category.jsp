@@ -80,8 +80,7 @@
 			<img src="images/others/banner_left.jpg" alt="banner images">
 			<div class="text">
 				<h2>4월 신간</h2>
-				<h6>
-					MD's PICK <br> <strong>최대 20%</strong>할인
+				<h6>MD's PICK <br> <strong>최대 20%</strong>할인
 				</h6>
 			</div>
 		</aside>

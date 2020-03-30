@@ -166,27 +166,5 @@ public class AdminController {
 		return "/admin/admin_index";
 	}
 	
-	//상품리스트에서 삭제버튼 확인
-	@RequestMapping(value = "/admin_bookDelete")
-	public String admin_bookDelete() {
-		return "/admin/admin_bookDelete";
-	}
-
-	
-	//상품리스트 페이지 매핑	
-	@RequestMapping(value = "/admin_booklist", method=RequestMethod.GET)
-	public String admin_booklist(@RequestParam(required=false, defaultValue="1") String pg,
-			 Model model){
-		model.addAttribute("pg", pg);
-		return "admin_booklist";
-	}
-		
-	//상품리스트 페이지 매핑
-	@RequestMapping(value = "getAdmin_booklist", method = RequestMethod.GET)
-	@ResponseBody
-	public ModelAndView getAdmin_booklist(@RequestParam(required = false) Map<String, Object> map, ModelAndView model) {
-		return shopService.getBooks(model, map);
-	}
-
 
 }
