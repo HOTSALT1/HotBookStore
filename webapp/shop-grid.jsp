@@ -160,19 +160,10 @@
 					<div class="col-lg-9 col-12 order-1 order-lg-2">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="col-xs-2">
-									<select name="" id="">
-										<option value="" selected>제목 검색</option>
-										<option value="" >저자 검색</option>
-									</select>
+								<div class="col-xs-8 search-div">
+									<input type="text" class="search-bar" placeholder="제목 또는 저자로 검색어 입력">
+									<input type="button" class="search" value="검색">
 								</div>
-								<div class="col-xs-8">
-									<input type="text" class="form-control" placeholder="검색어 입력">
-								</div>
-								<div class="col-xs-2">
-									<input type="button" class="btn btn-primary" value="검색">
-								</div>
-
 							</div>
 						</div>
 						<div class="row">
