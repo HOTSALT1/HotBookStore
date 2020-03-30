@@ -221,6 +221,7 @@
 								
 							</li>
 							<li class="h_top"><a href="#">고객센터</a></li>
+							<li class="h_top"><a href="http://localhost:8080/hotSalt/admin/admin_index.jsp">관리자페이지</a></li>
 						</ul>
 					</div>
 				</div>

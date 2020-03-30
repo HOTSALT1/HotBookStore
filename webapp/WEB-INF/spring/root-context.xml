@@ -24,5 +24,8 @@
 
 	<context:component-scan base-package="hotSalt.conf" />
 	<context:component-scan base-package="kr.co.bootpay.javaApache" />	
+	
+	
+	
 		
 </beans>
