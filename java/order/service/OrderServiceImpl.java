@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import book.bean.BookDTO;
 import kr.co.bootpay.javaApache.BootpayApi;
 import kr.co.bootpay.javaApache.model.request.Cancel;
-
-import org.json.JSONObject;
 import order.bean.CartDTO;
 import order.bean.ViewCartDTO;
 import order.dao.OrderDAO;
@@ -217,6 +216,54 @@ public class OrderServiceImpl implements OrderService {
 					}
 				}
 			}
+		}
+		
+		List<BookDTO> book_list = orderDAO.getBooksByViewCart(checkout_list);
+		
+		for(int i = 0; i < book_list.size(); i++) {
+			checkout_list.get(i).setPrice(book_list.get(i).getPrice());
+			checkout_list.get(i).setD_price(book_list.get(i).getD_price());
+			checkout_list.get(i).setTitle(book_list.get(i).getTitle());
+			checkout_list.get(i).setCate1(book_list.get(i).getCate1());
+			checkout_list.get(i).setCate2(book_list.get(i).getCate2());
+		}
+		
+//		System.out.println(book_list.get(0));
+		session.setAttribute("books", book_list);
+		session.setAttribute("cart_checkout", checkout_list);
+		
+		// 결제 검증용
+		int order_price = 0; 
+		for(int i = 0; i < checkout_list.size(); i++) {
+			order_price += checkout_list.get(i).getQty() * book_list.get(i).getD_price();
+		}
+		if(order_price < 30000) order_price += 3000;
+		
+		session.setAttribute("order_id", "hotSalt_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
+		session.setAttribute("order_price", order_price);
+		
+	}
+	
+	/* 장바구니 거치지 않고 바로 구매시 */
+	@Override
+	public void checkoutDirect(List<Map<String, String>> list) {
+		List<ViewCartDTO> checkout_list = new ArrayList<ViewCartDTO>();
+		session.setAttribute("tax_ref", list.get(list.size()-1).get("tax_ref"));
+		
+		list.remove(list.size()-1);
+		
+		Map<String, String> map = list.get(0);
+		ViewCartDTO viewCartDTO = new ViewCartDTO();
+		viewCartDTO.setBook_id(Integer.parseInt(map.get("book_id")));
+		viewCartDTO.setQty(Integer.parseInt(map.get("qty")));
+		checkout_list.add(viewCartDTO);
+		
+		// 회원 구매시
+		if(session.getAttribute("memId")!=null) {
+			viewCartDTO.setUser_id((String)session.getAttribute("memId"));
+		}else {
+		// 비회원 구매시
+			viewCartDTO.setUser_id("비회원");
 		}
 		
 		List<BookDTO> book_list = orderDAO.getBooksByViewCart(checkout_list);

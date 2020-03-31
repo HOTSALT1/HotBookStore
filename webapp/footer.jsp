@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <style>
-*{
-    margin: 0 auto;
+footer{
+	margin: 0 auto;
 }
 .footer{
     width: 100%;

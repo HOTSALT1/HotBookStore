@@ -43,6 +43,7 @@ public class ShopServiceImpl implements ShopService {
 	public ModelAndView getBooks(ModelAndView mav, Map<String, Object> map) {
 		int articlesPerPage = 12;
 		
+		nvl(map, "orderBy", "1");
 		nvl(map, "pg", "1");
 		String pg = (String) map.get("pg");
 		
@@ -66,6 +67,7 @@ public class ShopServiceImpl implements ShopService {
 		mav.addObject("orderBy", map.get("orderBy"));
 		mav.addObject("min", map.get("min"));
 		mav.addObject("max", map.get("max"));
+		mav.addObject("pg", map.get("pg"));
 		
 		System.out.println(map);
 		shopPaging.setTotalA(shopDAO.getBoardTotalA(map));

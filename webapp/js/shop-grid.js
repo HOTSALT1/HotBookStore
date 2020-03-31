@@ -66,6 +66,7 @@ function goTo(pg) {
 	if(pg){
 		pg2 = pg;
 	}
+	let orderBy = $('#order_select').val()
 	let cate1 = $('#cate1').val();
 	if(cate1.trim() == '전체'){
 		cate1 = 'all';
@@ -74,7 +75,8 @@ function goTo(pg) {
 		cate1:	cate1,
 		pg: 	pg2,
 		min:	$('#slider-range').slider('values', 0),
-		max:	$('#slider-range').slider('values', 1)
+		max:	$('#slider-range').slider('values', 1),
+		orderBy:orderBy
 	}
 	location.href="/hotSalt/search?" + $.param(data);
 }
@@ -85,4 +87,6 @@ $('#titleOrAuthor').keydown(function(key) {
    }
 });
 
-
+$('#order_select').change(function() {
+	goTo();
+})
