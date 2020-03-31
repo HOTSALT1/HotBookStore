@@ -36,17 +36,11 @@ public class AdminController {
 		return "/admin/admin_insertForm";
 	}
 	
-	//상품등록완료 매핑
-	@RequestMapping(value = "/admin_insert")
-	public String admin_insert() {
-		return "admin_insert";
-	}
 	
 	//상품등록 처리 매핑
 	@RequestMapping(value = "/admin_insert", method = RequestMethod.POST)
 	//@ResponseBody
 	public void admin_insert(@ModelAttribute BookDTO bookDTO, @RequestParam MultipartFile[] img) {	
-		System.out.println("admin_insert controller");
 		// 파일 복사
 		String filePath = "E:\\spring\\workSTS\\hotSalt\\src\\main\\webapp\\storage";
 		String fileName;
@@ -157,7 +151,6 @@ public class AdminController {
 		} 
 		
 		bookAdminService.insertBook(bookDTO);
-		
 	}
 	
 	//admin 홈페이지 페이지 매핑

@@ -39,4 +39,9 @@ public class BookAdminServiceImpl implements BookAdminService {
 		return null;
 	}
 
+	@Override
+	public void bookModify(Map<String, String> map) {
+		bookAdminDAO.bookModify(map);		
+	}
+
 }

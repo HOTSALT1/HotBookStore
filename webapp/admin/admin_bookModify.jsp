@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 window.onload=function(){
-	alert("상품 등록 완료");
-	location.href='/admin/admin_booklist';
+	alert("상품 수정 완료");
+	location.href='admin_single-product?book_id=${seq}';
 }
 </script>
