@@ -10,10 +10,14 @@
 		select * from member where email=#{email}
 	</select>
 	
-	<insert id="signup" parameterType="member.bean.MemberDTO">
+	<insert id="signup" parameterType="java.util.Map">
 		insert into member(name,birth,gender,id,pwd,email,tel,logtime) 
 					values(#{name }, #{birth }, #{gender }, #{id }, #{pwd }, #{email }, #{tel }, SYSDATE)
 	</insert>
+	
+	<update id="e_verify">
+		update member set e_verify='y' where email=#{email}
+	</update>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
 		SELECT * FROM MEMBER WHERE id=#{id} and status!='deleted'

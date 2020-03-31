@@ -85,7 +85,18 @@ input{
 	margin-left: 50px;
 	font-size: 14px;
 }
-        
+#mail1{
+	width: 155px;
+}
+#e_verify{
+    margin-left: 30 px !important;
+    width: 150px;
+}
+#e_verifyBtn{
+	border: 1px solid #b9b9b9 !important;
+    border-radius: 15px;
+    margin-left: 2px !important;
+}
         
         
         
