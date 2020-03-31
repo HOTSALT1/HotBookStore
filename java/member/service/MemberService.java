@@ -30,6 +30,10 @@ public interface MemberService {
 
 	public String e_verify_chk(String e_verify);
 
+	public ModelAndView member_findPwd(Map<String, String> map, ModelAndView mav);
+
+	public String member_modifyPwd(Map<String, String> map, BCryptPasswordEncoder pwdEncoder);
+
 	
 
 

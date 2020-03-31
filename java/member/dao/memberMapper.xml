@@ -6,6 +6,7 @@
 	<select id="isExistId" parameterType="String" resultType="member.bean.MemberDTO">
 		select * from member where id=#{id} 
 	</select>
+	
 	<select id="isExistEmail" parameterType="String" resultType="member.bean.MemberDTO">
 		select * from member where email=#{email}
 	</select>
@@ -36,6 +37,14 @@
 	<select id="memberList" resultType="member.bean.MemberDTO">
 		select id, name, email, tel, birth, logtime from member
 	</select>
+	
+	<select id="memberfindPwd" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		select * from member where id=#{id} and email=#{email}
+	</select>
+	
+	<update id="membermodifyPwd" parameterType="member.bean.MemberDTO">
+		update member set pwd=#{pwd } WHERE id=#{id}
+	</update>
 </mapper>
 
 

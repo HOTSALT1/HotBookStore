@@ -76,8 +76,19 @@ public class MemberDAOMybatis implements MemberDAO {
 
 	@Override
 	public void e_verify(String email) {
-		sqlSession.update("memberSQL.e_verify", email)
-		;
+		sqlSession.update("memberSQL.e_verify", email);
+	}
+
+	@Override
+	public MemberDTO member_findPwd(Map<String, String> map) {
+		return sqlSession.selectOne("memberSQL.memberfindPwd",map);
+		
+	}
+
+	@Override
+	public void member_modifyPwd(Map<String, String> map) {
+		sqlSession.update("memberSQL.membermodifyPwd", map);
+		
 	}
 
 

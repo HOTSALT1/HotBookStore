@@ -50,6 +50,11 @@ public class MemberController {
 		mav.setViewName("/member_modifyForm");
 		return mav;
 	}
+	@RequestMapping(value = "/member_modifyPwd", method = RequestMethod.GET)
+	public ModelAndView member_modifyPwd(ModelAndView mav) {
+		mav.setViewName("/member_modifyPwd");
+		return mav;
+	}
 	
 	//회원가입
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
@@ -65,18 +70,20 @@ public class MemberController {
 	}
 	
 	//회원가입 이메일체크
-		@RequestMapping(value="checkEmail", method=RequestMethod.POST)
-		public @ResponseBody String checkEmail(@RequestParam String email) {
-			return memberService.isExistEmail(email);
-		}
-	
+	@RequestMapping(value="checkEmail", method=RequestMethod.POST)
+	public @ResponseBody String checkEmail(@RequestParam String email) {
+		return memberService.isExistEmail(email);
+	}
+	//회원가입 이메일 인증번호 보내기
 	@RequestMapping(value = "e_verify", method = RequestMethod.POST)
 	@ResponseBody
 	public String e_verify(@RequestParam String email) {
 		memberService.e_verify(email,mailSender);
 		System.out.println(email);
 		return "true";
+		
 	}
+	//회원가입 이메일 인증번호 확인버튼
 	@RequestMapping(value = "e_verify_chk", method = RequestMethod.POST)
 	@ResponseBody
 	public String e_verify_chk(@RequestParam String e_verify) {
@@ -124,11 +131,24 @@ public class MemberController {
 	public @ResponseBody String member_delete(@RequestParam Map<String,String> map) {
 		return memberService.member_delete(map,pwdEncoder);
 	}
-	
+	//관리자 회원목록
 	@RequestMapping(value="/admin/admin_member_list", method=RequestMethod.GET)
 	public ModelAndView member_list(ModelAndView mav) {
 		return memberService.member_list(mav);
 	}
+	
+	//비밀번호찾기
+	@RequestMapping(value="member_findPwd", method=RequestMethod.POST)
+	public @ResponseBody ModelAndView member_findPwd(@RequestParam Map<String,String> map, ModelAndView mav) {
+		System.out.println(map);
+		return memberService.member_findPwd(map,mav);
+	}
+	@RequestMapping(value="member_modifyPwd", method=RequestMethod.POST)
+	public @ResponseBody String member_modifyPwd(@RequestParam Map<String,String> map) {
+		return memberService.member_modifyPwd(map,pwdEncoder);
+	}
+	
+	
 	
 			
 	
