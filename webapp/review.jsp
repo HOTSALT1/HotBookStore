@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>리뷰게시판 | Books Library eCommerce Store</title>
+	<title>리뷰게시판 | Hot Book Store</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -372,28 +372,17 @@
 							</aside>
 							<!-- End Single Widget -->
 							<!-- Start Single Widget -->
-							<aside class="widget category_widget">
-								<h3 class="widget-title">Categories</h3>
-								<ul>
-									<li><a href="#">Fashion</a></li>
-									<li><a href="#">Creative</a></li>
-									<li><a href="#">Electronics</a></li>
-									<li><a href="#">Kids</a></li>
-									<li><a href="#">Flower</a></li>
-									<li><a href="#">Books</a></li>
-									<li><a href="#">Jewelle</a></li>
-								</ul>
-							</aside>
+
 							<!-- End Single Widget -->
 							<!-- Start Single Widget -->
 							<aside class="widget archives_widget">
-								<h3 class="widget-title">Archives</h3>
+								<h3 class="widget-title">아카이브</h3>
 								<ul>
-									<li><a href="#">March 2015</a></li>
-									<li><a href="#">December 2014</a></li>
-									<li><a href="#">November 2014</a></li>
-									<li><a href="#">September 2014</a></li>
-									<li><a href="#">August 2014</a></li>
+									<li><a href="#">Jan 2020</a></li>
+									<li><a href="#">Feb 2020</a></li>
+									<li><a href="#">Mar 2020</a></li>
+									<li><a href="#">Dec 2019</a></li>
+									<li><a href="#">Nov 2019</a></li>
 								</ul>
 							</aside>
 							<!-- End Single Widget -->
@@ -405,63 +394,10 @@
 		<!-- End Book Review Area -->
 
 		<!-- Footer Area -->
-		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.jsp">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.jsp">Trending</a></li>
-										<li><a href="index.jsp">Best Seller</a></li>
-										<li><a href="index.jsp">All Product</a></li>
-										<li><a href="index.jsp">Wishlist</a></li>
-										<li><a href="index.jsp">Book Review</a></li>
-										<li><a href="index.jsp">Contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boighor.</a> All Rights
-										Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<div style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
+		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //Footer Area -->
-
+		
 	</div>
 	<!-- //Main wrapper -->
 

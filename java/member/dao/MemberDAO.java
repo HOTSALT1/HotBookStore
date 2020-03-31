@@ -10,7 +10,7 @@ import member.bean.MemberDTO;
 
 public interface MemberDAO {
 
-	public void signup(MemberDTO memberDTO);
+	public void signup(Map<String, String> map);
 
 	public MemberDTO login(Map<String, String> map);
 
@@ -25,6 +25,8 @@ public interface MemberDAO {
 	public void member_delete(Map<String, String> map);
 
 	public List<MemberDTO> member_list();
+
+	public void e_verify(String email);
 
 
 

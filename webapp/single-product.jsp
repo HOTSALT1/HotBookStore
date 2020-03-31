@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -148,7 +149,7 @@
 							<!-- End 책소개 Tab Content -->
 							
 							<!-- Start 상세이미지 Tab Content -->
-							<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
+							<div class="pro__tab_label tab-pane fade show" id="nav-details" role="tabpanel">
 								<div class="description__attribute">
 									<a><img src="${book.detail}" alt=""></a>
 								</div>
@@ -156,7 +157,7 @@
 							<!-- End 상세이미지 Tab Content -->
 							
 							<!-- Start 목차 Tab Content -->
-							<div class="pro__tab_label tab-pane fade show active" id="nav-book_index" role="tabpanel">
+							<div class="pro__tab_label tab-pane fade show" id="nav-book_index" role="tabpanel">
 								<div class="description__attribute">
 									<p>${book.book_index}</p>
 								</div>

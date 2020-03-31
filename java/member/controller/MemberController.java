@@ -9,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
@@ -55,10 +53,10 @@ public class MemberController {
 	
 	//회원가입
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public ModelAndView signup(@ModelAttribute MemberDTO memberDTO,ModelAndView mav) {
-		
-		return memberService.signup(memberDTO, mav, pwdEncoder);
+	public @ResponseBody ModelAndView signup(@RequestParam Map<String, String> map, ModelAndView mav) {
+		return memberService.signup(map, mav, pwdEncoder);
 	}
+	
 	
 	//회원가입 아이디체크
 	@RequestMapping(value="checkId", method=RequestMethod.POST)
@@ -67,11 +65,24 @@ public class MemberController {
 	}
 	
 	//회원가입 이메일체크
-	@RequestMapping(value="checkEmail", method=RequestMethod.POST)
-	public @ResponseBody String checkEmail(@RequestParam String email) {
-		return memberService.isExistEmail(email);
-	}
+		@RequestMapping(value="checkEmail", method=RequestMethod.POST)
+		public @ResponseBody String checkEmail(@RequestParam String email) {
+			return memberService.isExistEmail(email);
+		}
 	
+	@RequestMapping(value = "e_verify", method = RequestMethod.POST)
+	@ResponseBody
+	public String e_verify(@RequestParam String email) {
+		memberService.e_verify(email,mailSender);
+		System.out.println(email);
+		return "true";
+	}
+	@RequestMapping(value = "e_verify_chk", method = RequestMethod.POST)
+	@ResponseBody
+	public String e_verify_chk(@RequestParam String e_verify) {
+		return memberService.e_verify_chk(e_verify);
+		
+	}
 	//회원가입완료
 	@RequestMapping(value="signup_complete", method=RequestMethod.GET)
 	public ModelAndView signup_complete(@RequestParam String id, @RequestParam String name, ModelAndView mav) {
@@ -118,6 +129,7 @@ public class MemberController {
 	public ModelAndView member_list(ModelAndView mav) {
 		return memberService.member_list(mav);
 	}
+	
 			
 	
 	
