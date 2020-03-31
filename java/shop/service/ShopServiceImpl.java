@@ -60,7 +60,7 @@ public class ShopServiceImpl implements ShopService {
 		
 		mav.addObject("book_list", list);
 		
-		mav.addObject("totalA", list.size()); // 총 검색된 갯수
+		mav.addObject("totalA", shopDAO.getBoardTotalA(map)); // 총 검색된 갯수
 		mav.addObject("articles", list.size() > articlesPerPage ? articlesPerPage : list.size());
 		mav.addObject("cate1", map.get("cate1"));
 		mav.addObject("keyword", map.get("titleOrAuthor"));

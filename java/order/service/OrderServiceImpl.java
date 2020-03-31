@@ -197,9 +197,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void addCheckout(List<Map<String, String>> list) {
 		List<ViewCartDTO> checkout_list = new ArrayList<ViewCartDTO>();
-		session.setAttribute("tax_ref", list.get(list.size()-1).get("tax_ref"));
 		
-		list.remove(list.size()-1);
 		// 회원 구매시
 		if(session.getAttribute("memId")!=null) {
 			for(Map<String, String> map : list) {
@@ -248,9 +246,6 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void checkoutDirect(List<Map<String, String>> list) {
 		List<ViewCartDTO> checkout_list = new ArrayList<ViewCartDTO>();
-		session.setAttribute("tax_ref", list.get(list.size()-1).get("tax_ref"));
-		
-		list.remove(list.size()-1);
 		
 		Map<String, String> map = list.get(0);
 		ViewCartDTO viewCartDTO = new ViewCartDTO();
@@ -289,7 +284,6 @@ public class OrderServiceImpl implements OrderService {
 		
 		session.setAttribute("order_id", "hotSalt_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		session.setAttribute("order_price", order_price);
-		
 	}
 	
 	@Override
@@ -319,7 +313,11 @@ public class OrderServiceImpl implements OrderService {
 			order_listMap.put("method_name", result_data.get("method_name"));
 			order_listMap.put("status", result_data.get("status_ko"));
 			order_listMap.put("receipt_id", result_data.get("receipt_id"));
-			order_listMap.put("tax_ref", session.getAttribute("tax_ref"));
+			if(session.getAttribute("tax_num") != null) {
+				order_listMap.put("tax_ref", session.getAttribute("tax_num"));
+			}else {
+				order_listMap.put("tax_ref", "");
+			}
 			//order_listMap.put("payment_data", result_data.getString("payment_data"));
 			order_listMap.put("payment_data", "테스트중");
 			

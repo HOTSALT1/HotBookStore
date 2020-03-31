@@ -149,9 +149,9 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
-													<input type="hidden" value="${book.seq}" />
+													<input class="seq" type="hidden" value="${book.seq}" />
 													<ul class="add_to_links">
-														<li><a class="cart" href="#none"><i
+														<li><a id="buy2_${book.seq}" class="cart" href="#none"><i
 																	class="bi bi-shopping-bag4"></i></a></li>
 														<li><a class="wishlist addToCart" href="#none"><i
 																	class="bi bi-shopping-cart-full"></i></a></li>
@@ -203,7 +203,7 @@
 											</a>
 										</div>
 										<div class="content">
-											<h2><a href="single-product.html">${book.title}</a></h2>
+											<h2><a href="single-product?book_id=${book.seq}">${book.title}</a></h2>
 											<ul class="rating d-flex">
 												<c:forEach var="s" step="1" begin="1" end="5">
 													<c:if test="${(book.score / s) >= 1}">
@@ -321,7 +321,7 @@
 										</div>
 									</div> -->
 									<div class="addtocart-btn">
-										<a href="#">장바구니에 추가</a>
+										<a id="modal-buy" class="modal-buy_" href="javascript:void(0)">주문하기</a>
 									</div>
 								</div>
 							</div>

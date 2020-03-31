@@ -43,6 +43,13 @@ public class OrderController {
 		return "ongoing checkout";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/tax-ref")
+	public String tax_ref(@RequestParam String tax_num) {
+		session.setAttribute("tax_num", tax_num);
+		return "true";
+	}
+	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public ModelAndView cart(ModelAndView model) {
 		orderService.loadCart(model);
