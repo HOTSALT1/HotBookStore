@@ -717,7 +717,6 @@ $(function() {
 
   // Set up an event listener for the contact form.
   $(form).submit(function(e) {
-    // Stop the browser from submitting the form.
     e.preventDefault();
 
     // Serialize the form data.
@@ -742,14 +741,14 @@ $(function() {
     })
     .fail(function(data) {
       // Make sure that the formMessages div has the 'error' class.
-      $(formMessages).removeClass('success');
-      $(formMessages).addClass('error');
+      $(formMessages).removeClass('메일 보내기 성공');
+      $(formMessages).addClass('에러');
 
       // Set the message text.
       if (data.responseText !== '') {
         $(formMessages).text(data.responseText);
       } else {
-        $(formMessages).text('Oops! An error occured and your message could not be sent.');
+        $(formMessages).text('이메일 보내기 실패!');
       }
     });
   });

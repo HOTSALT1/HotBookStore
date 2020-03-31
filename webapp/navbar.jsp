@@ -18,6 +18,7 @@
 								<li class="drop with--one--item"><a href="index">카테고리</a>
 									<div class="megamenu mega02">
 										<ul class="item item02 cate1">
+											<li><a href="javascript:void(0)">전체</a></li>
 											<li><a href="javascript:void(0)">국어 외국어 사전</a></li>
                                             <li><a href="javascript:void(0)">만화/라이트노벨</a></li>
                                             <li><a href="javascript:void(0)">건강 취미</a></li>
