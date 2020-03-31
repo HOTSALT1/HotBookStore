@@ -1,4 +1,5 @@
-﻿<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html class="no-js" lang="zxx">
 
 <head>
@@ -9,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.png">
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
@@ -28,12 +29,20 @@
 
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	
+	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+	
 </head>
 
 <body>
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
+	
+	<!-- navbar  -->
+	<jsp:include page="navbar.jsp"></jsp:include>
+	<div style="border-top:1px solid #e6e6e6; width: 100%; margin-top:90px;"></div>
+	
 		
 		<!-- Start Bradcaump area -->
 		<div class="ht__bradcaump__area bg-image--6">
@@ -41,11 +50,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="bradcaump__inner text-center">
-							<h2 class="bradcaump-title">Portfolio</h2>
+							<h2 class="bradcaump-title">책방 커뮤니티</h2>
 							<nav class="bradcaump-content">
-								<a class="breadcrumb_item" href="index.html">Home</a>
+								<a class="breadcrumb_item" href="index">Home</a>
 								<span class="brd-separetor">/</span>
-								<span class="breadcrumb_item active">Portfolio</span>
+								<span class="breadcrumb_item active">뜨거운 책방</span>
 							</nav>
 						</div>
 					</div>
@@ -59,12 +68,14 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="gallery__menu">
-							<button data-filter="*" class="is-checked">Filter - All</button>
-							<button data-filter=".cat--1">Company News</button>
-							<button data-filter=".cat--2">Computers</button>
-							<button data-filter=".cat--3">General News</button>
-							<button data-filter=".cat--4">Hipster Content</button>
-							<button data-filter=".cat--5">Just Food</button>
+							<button data-filter="*" class="is-checked">전체 글 보기</button>
+							<button data-filter=".cat--1">공지사항 </button>
+							<button data-filter=".cat--2">리뷰게시판</button>
+							<button data-filter=".cat--3">책속의 메아리</button>
+							<button data-filter=".cat--4">북칼럼</button>
+							<button data-filter=".cat--5">책 뉴스</button>
+							<button data-filter=".cat--6">행사 안내</button>
+							<button data-filter=".cat--7">서비스 홍보</button>
 						</div>
 					</div>
 				</div>
@@ -337,70 +348,18 @@
 			</div>
 		</section>
 		<!-- End Portfolio Area -->
+		
 		<!-- Footer Area -->
-		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.html">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.html">Trending</a></li>
-										<li><a href="index.html">Best Seller</a></li>
-										<li><a href="index.html">All Product</a></li>
-										<li><a href="index.html">Wishlist</a></li>
-										<li><a href="index.html">Blog</a></li>
-										<li><a href="index.html">Contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boighor.</a> All Rights
-										Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<div style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
+		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //Footer Area -->
+		
 
 	</div>
 	<!-- //Main wrapper -->
 
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

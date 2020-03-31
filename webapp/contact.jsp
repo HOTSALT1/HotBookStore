@@ -81,7 +81,7 @@
 						<div class="contact-form-wrap">
 							<h2 class="contact__title">Get in touch</h2>
 							<p>뜨거운 책방에 제안할 의견 또는 불편사항이 있다면 접수해주세요.<br>보내주신 의견은 모두 서비스 개선을 위해 소중히 활용되고 있습니다.</p>
-							<form id="contact-form" action="mail.php" method="post">
+							<form id="contact-form" action="" method="post">
 								<div class="single-contact-form space-between">
 									<input type="text" name="lastname" placeholder="성*">
 									<input type="text" name="firstname" placeholder="이름*">
@@ -96,13 +96,13 @@
 									<textarea name="message" placeholder="메세지를 입력해주세요.."></textarea>
 								</div>
 								<div class="contact-btn">
-									<button type="submit">이메일 보내기</button>
+									<button id="sendEmail">이메일 보내기</button>
 								</div>
 							</form>
 						</div>
-						<div class="form-output">
+						<!-- <div class="form-output">
 							<p class="form-messege">
-						</div>
+						</div> -->
 					</div>
 					<div class="col-lg-4 col-12 md-mt-40 sm-mt-40">
 						<div class="wn__address">
@@ -133,6 +133,23 @@
 										<p>hothotbookstore@gmail.com</p>
 									</div>
 								</div>
+								
+								<div class="single__address">
+									<i class="icon-envelope icons"></i>
+									<div class="content">
+										<span>카카오 채널추가 :</span>
+										<p id="kakao-add-channel-button"></p>
+									</div>
+								</div>
+								
+								<div class="single__address">
+									<i class="icon-envelope icons"></i>
+									<div class="content">
+										<span>카카오 채팅하기 :</span>
+										<p id="kakao-talk-channel-chat-button"></p>
+									</div>
+								</div>
+											
 
 								<div class="single__address">
 									<i class="icon-globe icons"></i>
@@ -141,6 +158,8 @@
 										<p>www.hotBookStore.com</p>
 									</div>
 								</div>
+								
+								
 
 							</div>
 						</div>
@@ -159,10 +178,11 @@
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
+	<script src="js/active.js"></script>
 	
 
 	
-	<!--  Map js -->
+	<!--  카카오맵 js -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d4035841e96f1ae2fa8311573900f322"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -173,9 +193,30 @@
 
 		var map = new kakao.maps.Map(container, options);
 	</script>
-
-	<script src="js/active.js"></script>
+	
+	<!-- 카카오 채팅 js -->
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	
+	<script type='text/javascript'>
+	    Kakao.init('d4035841e96f1ae2fa8311573900f322');
+	
+	    Kakao.Channel.createAddChannelButton({
+	      container: '#kakao-add-channel-button',
+	      channelPublicId: '_xlLWxnxb' 
+	    });
+	    
+	    Kakao.Channel.createChatButton({
+	    	  container: '#kakao-talk-channel-chat-button',
+	    	  channelPublicId: '_xlLWxnxb' 
+	    	});
+	</script>
+	
+	<script type="text/javascript">
+	$('#sendEmail').click(function(){
+		alert('이메일 보내기 완료! 소중한 의견 감사합니다');
+	});
+	
+	</script>
 
 </body>
-
 </html>

@@ -62,5 +62,7 @@
 		base-package="main.controller" />
 	<context:component-scan
 		base-package="admin.controller" />
+	<context:component-scan
+		base-package="review.controller" />
 
 </beans:beans>

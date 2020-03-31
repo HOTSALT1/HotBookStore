@@ -49,7 +49,7 @@
 		, #{stock}
 		, sysdate)
 	</insert>
-	
+
 	<!-- 책 총 개수 -->
 	<select id="getBookListTotalA" resultType="int">
 		select count(*) from book
@@ -66,8 +66,9 @@
 		]]>
 	</select>
 
-	
-	
-	
+	<select id="getScore" resultType="int" parameterType="String">
+		select score from view_score where book_id = #{book_id}
+	</select>
+
 
 </mapper>
