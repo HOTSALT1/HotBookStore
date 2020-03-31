@@ -120,6 +120,14 @@ $('#btn-confirm').click(function() {
 		pg = 'payapp';
 	}
 	
+	if($('#tax').is(":checked")){
+		$.ajax({
+			type:"post",
+			url:"/hotSalt/tax-ref",
+			data:{'tax_num':$('#tax_num').val()},
+			async: false
+		})
+	}
 	paymentTest(pg, method);
 	
 });

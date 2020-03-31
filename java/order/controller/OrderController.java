@@ -1,5 +1,6 @@
 package order.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +43,13 @@ public class OrderController {
 		return "ongoing checkout";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/tax-ref")
+	public String tax_ref(@RequestParam String tax_num) {
+		session.setAttribute("tax_num", tax_num);
+		return "true";
+	}
+	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public ModelAndView cart(ModelAndView model) {
 		orderService.loadCart(model);
@@ -66,6 +74,16 @@ public class OrderController {
 	@RequestMapping(value = "/verify/{receipt_id}", method = RequestMethod.GET)
 	public ModelAndView verify(ModelAndView model, @PathVariable String receipt_id) {
 		return orderService.verify(model, receipt_id);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+	public String buy(@RequestBody List<Map<String, String>> list) {
+		System.out.println("buy" + list);
+		
+		orderService.addToCart(list.get(0));
+		orderService.addCheckout(list);
+		return "ongoing checkout";
 	}
 	
 }

@@ -44,7 +44,8 @@
 		<div class="div1">
 			<span class="headTop">상품 정보</span>
 			<h6 class="title__be--2"><span class="color--theme">상품 기본정보</span></h6>
-			<div><a href="${book.img1 }"><img src="${book.img1}" alt="" width="300" height="450" style="text-align: center;"></a></div>
+			<div><a href="${book.img1 }"><img src="${book.img1}" alt="" width="300" height="450"></a></div>
+			<br>
 			<div id="con">
 				<div class="divName idx1">
 					<label>도서명<span>|</span></label> 

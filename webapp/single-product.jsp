@@ -106,6 +106,7 @@
 										</div>
 										<div class="product-addto-links clearfix">
 											<a class="wishlist" href="#"></a> <a class="compare" href="#"></a>
+											<a class="wishlist" href="#"></a> <a class="wishlist" href="#"></a>
 										</div>
 									</div>
 									<div class="product_meta">

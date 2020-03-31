@@ -22,17 +22,11 @@ $('a.addToCart').click(function() {
 })
 
 $('#btn-search').click(function() {
-	let keyword = $('#titleOrAuthor').val();
-//	let cate1 = $('#cate1').val();
-//	if (cate1 == '' || cate1 == '전체'){
-//		cate1 = 'all';
-//	}
 	let cate1 = 'all'
-	
-	if(keyword ==''){
+	if($('#titleOrAuthor').val().trim() ==''){
 		alert('검색어를 입력해주세요.')
 	}else{
-		location.href="/hotSalt/search?cate1=" + cate1 + "&titleOrAuthor=" + keyword;
+		location.href="/hotSalt/search?cate1=" + cate1 + '&titleOrAuthor=' + $('#titleOrAuthor').val().trim();
 	}
 })
 
@@ -48,13 +42,15 @@ $('#price-filter').click(function() {
 	goTo();
 })
 
-$('i.bi.bi-search').click(function() {
-	var $p = $(this).parent().parent().parent().parent().parent().parent().parent();
+// quickview 버튼 클릭시
+$('i.bi.bi-search').parent().click(function() {
+	var $p = $(this).parent().parent().parent().parent().parent().parent();
 	$('#modal-img').attr('src',($p.find('.first__img img').attr('src')));
 	$('#modal-title').text($p.find('.product__content a').text());
 	$('#modal-d_price').text($p.find('.product__content .prize li:eq(0)').text());
 	$('#modal-price').text($p.find('.product__content .prize li:eq(1)').text());
 	$('#modal-info').text()
+	$('#modal-buy').attr('class', 'modal-buy_' + $p.find('input[type=hidden].seq').val())
 })
 
 $('ul.wn__pagination li:not(.active) a').click(function() {
@@ -66,6 +62,7 @@ function goTo(pg) {
 	if(pg){
 		pg2 = pg;
 	}
+	let orderBy = $('#order_select').val()
 	let cate1 = $('#cate1').val();
 	if(cate1.trim() == '전체'){
 		cate1 = 'all';
@@ -74,7 +71,11 @@ function goTo(pg) {
 		cate1:	cate1,
 		pg: 	pg2,
 		min:	$('#slider-range').slider('values', 0),
-		max:	$('#slider-range').slider('values', 1)
+		max:	$('#slider-range').slider('values', 1),
+		orderBy:orderBy
+	}
+	if($('#titleOrAuthor').val().trim()!=''){
+		data.titleOrAuthor = $('#titleOrAuthor').val().trim();
 	}
 	location.href="/hotSalt/search?" + $.param(data);
 }
@@ -85,4 +86,6 @@ $('#titleOrAuthor').keydown(function(key) {
    }
 });
 
-
+$('#order_select').change(function() {
+	goTo();
+})
