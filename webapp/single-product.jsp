@@ -1,6 +1,4 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -34,6 +32,8 @@
 
 <!-- Cusom css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css">
+
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
 <!-- Modernizer js -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
@@ -102,7 +102,7 @@
 											<button class="tocart" type="submit" title="Add to Cart">카트에 넣기</button>
 										</div>
 										<div class="product-addto-links clearfix">
-											<a class="wishlist" href="#"></a> <a class="compare" href="#"></a>
+											<a class="wishlist" href="#"></a> <a class="wishlist" href="#"></a>
 										</div>
 									</div>
 									<div class="product_meta">
@@ -1146,7 +1146,6 @@
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
 	
-	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<!-- <script type="text/javascript" src="js/single-product.js"></script> -->
 	<script type="text/javascript" src="js/member.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>

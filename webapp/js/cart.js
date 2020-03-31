@@ -176,7 +176,7 @@ $('input[id^=chk_]').change(function() {
 	recalc();
 })
 
-// 주문하기
+// 장바구니 페이지에서 주문하기 버튼 클릭시
 $('a#checkout').click(function() {
 	// Json 배열 선언
 	var items = new Array();
@@ -191,17 +191,41 @@ $('a#checkout').click(function() {
 			items.push(item);
 		};
 	})
-	var item = new Object();
-	item.tax_ref = $('#tax_num').val();
-	items.push(item);
 	
-	// post요청
+	// 데이터를 넘기며 주문페이지로 이동
+	goCheckout(items);
+})
+
+// 바로주문 버튼 클릭시
+$('a[id^=buy1_], a[id^=buy2_], .modal-buy').click(function() {
+	if(!confirm("해당 상품을 바로 구매하시겠습니까? (확인을 클릭하시면 구매 페이지로 이동합니다.")){
+		return false;
+	}
+	
+	// Json 배열 선언
+	var items = new Array();
+	
+	// 선택된 항목을 담기
+	var item = new Object();
+	//item.cart_id = $(this).next().val();
+	item.book_id = $(this).attr('id').split("_")[1];
+	item.qty = 1;
+	
+	items.push(item);
+			
+	// 데이터를 넘기며 주문페이지로 이동
+	goCheckout(items);
+})
+
+function goCheckout(items) {
+	// post요청(동기화)
 	$.ajax({
 		type: 'post',
 		url: '/hotSalt/checkout',
 		contentType : "application/json; charset=utf-8",
 		data : JSON.stringify(items),
 		dataType:'text',
+		async: false,
 		success: function(data) {
 			if(data!='error'){
 				location.href="/hotSalt/checkout"
@@ -210,8 +234,7 @@ $('a#checkout').click(function() {
 			}
 		}
 	})
-})
-
+}
 
 // ---------- setComma ---------- 
 // 숫자에 천단위 구분기호(,) 표시
