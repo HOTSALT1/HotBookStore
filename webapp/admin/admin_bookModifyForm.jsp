@@ -44,6 +44,7 @@
 		<div class="div1">
 			<span class="headTop">상품 정보</span>
 			<h6 class="title__be--2"><span class="color--theme">상품 기본정보</span></h6>
+			<div><a href="${book.img1 }"><img src="${book.img1}" alt="" width="300" height="450" style="text-align: center;"></a></div>
 			<div id="con">
 				<div class="divName idx1">
 					<label>도서명<span>|</span></label> 
@@ -164,7 +165,8 @@
 													
 				<div class="div3 border-Tnone idx7">
 					<label>상세이미지<span>|</span></label> 
-					<input type="file" name="img" id="detail" size="50">	
+					<div><a href="${book.detail }"><img src="${book.detail}" alt=""></a></div>
+					<input type="file" name="img" id="detail" size="50">
 					<span id="size"></span>
 				</div>				
 				<div class="div3 border-Tnone idx8" style="border-radius: 0 0 10px 10px;">

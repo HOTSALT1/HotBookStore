@@ -35,6 +35,9 @@
 <!-- Cusom css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css">
 
+
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+
 <!-- Modernizer js -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
@@ -1140,7 +1143,6 @@
 
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

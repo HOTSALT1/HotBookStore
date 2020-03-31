@@ -6,14 +6,14 @@
 	<!-- 1개의 book 데이터를 가져오는 쿼리 -->
 	<select id="getBook" resultType="book.bean.BookDTO"
 		parameterType="int">
-<!-- 		SELECT seq,title,subTitle,cate1,cate2
+ 		SELECT seq,title,subTitle,cate1,cate2
 						,author,pub,price,d_price,p_date
 						,book_index,page,weight,book_size,detail
-						,isbn13,isbn10,info,img1,nvl(img2,img1)
+						,isbn13,isbn10,info,img1,nvl(img2,img1) img2
 						,img3,img4,img5,img6,img7
 						,stock,logtime FROM book WHERE seq = #{book_id}
- -->	
- 	select * from book where seq = #{book_id}
+	
+ 	<!-- select * from book where seq = #{book_id}-->
  </select>
 
 	<insert id="insertBook" parameterType="book.bean.BookDTO">
