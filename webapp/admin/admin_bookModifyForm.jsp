@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic|Yeon+Sung&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/admin_insert.css" />
 
-<title>관리자 상품등록 | Hot Book Store</title>
+<title>관리자 상품수정 | Hot Book Store</title>
 </head>
 <body>
 	<jsp:include page="admin_navbar.jsp" />

@@ -20,14 +20,12 @@ public class BookController {
 	public ModelAndView singleProductView(@RequestParam String book_id) {	
 		
 		BookDTO bookDTO= bookService.getBook(book_id);
-		System.out.println(book_id+","+bookDTO.getTitle());
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("book", bookDTO);
 		
 		//책 평점 가져오기
 		mav.addObject("score", bookService.getScore(book_id));
-		System.out.println(bookService.getScore(book_id));
 		
 		mav.setViewName("/single-product");
 		return mav;		

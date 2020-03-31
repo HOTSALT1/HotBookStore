@@ -15,12 +15,17 @@ import org.springframework.web.servlet.ModelAndView;
 import book.bean.AdminBookListPaging;
 import book.bean.BookDTO;
 import book.service.BookAdminService;
+import book.service.BookService;
 
 @Controller
 @RequestMapping(value = "admin")
 public class BookAdminController {
 	@Autowired
 	private BookAdminService bookAdminService;
+	
+	@Autowired
+	private BookService bookService;
+
 
 	@RequestMapping(value = "admin_booklist", method = RequestMethod.GET)
 	public ModelAndView admin_booklist(@RequestParam(required = false, defaultValue = "1") String pg) {
@@ -35,7 +40,11 @@ public class BookAdminController {
 	}
 	
 	@RequestMapping(value = "admin_bookModifyForm", method = RequestMethod.GET)
-	public ModelAndView admin_bookModifyForm(ModelAndView mav) {
+	public ModelAndView admin_bookModifyForm(@RequestParam String book_id) {
+		BookDTO bookDTO= bookService.getBook(book_id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("book", bookDTO);
 		mav.setViewName("/admin/admin_bookModifyForm");
 		return mav;
 	}

@@ -41,6 +41,7 @@ public class BookDTO {
 	private String yesNum;
 	private String logtime;
 	private int stock;
+	private int point;
 
 	
 	public BookDTO() {
