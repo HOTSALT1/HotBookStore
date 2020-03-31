@@ -49,5 +49,9 @@
 		, #{stock}
 		, sysdate)
 	</insert>
+	
+	<select id="getScore" resultType="int" parameterType="String">
+		select score from view_score where book_id = #{book_id}
+	</select>
 
 </mapper>

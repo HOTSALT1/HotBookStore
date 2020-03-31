@@ -18,4 +18,13 @@ public class BookDAOMybatis implements BookDAO {
 		return sqlSession.selectOne("bookSQL.getBook", Integer.parseInt(book_id));
 	}
 
+	//책 평점 가져오기
+	@Override
+	public int getScore(String book_id) {
+		Integer score =  sqlSession.selectOne("bookSQL.getScore", book_id);
+		if(score != null)
+			return score;
+		else return 0;
+	}
+
 }

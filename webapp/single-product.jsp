@@ -73,12 +73,12 @@
 									<p>${book.author } |  ${book.pub }  |  ${book.p_date }  </p>										
 									
 									<div class="product-reviews-summary d-flex">
-										<ul class="rating-summary d-flex">
+										<ul id="star" class="rating-summary d-flex">
 											<li><i class="zmdi zmdi-star-outline"></i></li>
 											<li><i class="zmdi zmdi-star-outline"></i></li>
 											<li><i class="zmdi zmdi-star-outline"></i></li>
-											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
+											<li class="on"><i class="zmdi zmdi-star-outline"></i></li>
+											<li class="on"><i class="zmdi zmdi-star-outline"></i></li>
 										</ul>
 									</div>
 									<div class="price-box">
@@ -148,7 +148,7 @@
 							<!-- End 책소개 Tab Content -->
 							
 							<!-- Start 상세이미지 Tab Content -->
-							<div class="pro__tab_label tab-pane fade" id="nav-details" role="tabpanel">
+							<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
 								<div class="description__attribute">
 									<a><img src="${book.detail}" alt=""></a>
 								</div>
@@ -156,7 +156,7 @@
 							<!-- End 상세이미지 Tab Content -->
 							
 							<!-- Start 목차 Tab Content -->
-							<div class="pro__tab_label tab-pane fade" id="nav-book_index" role="tabpanel">
+							<div class="pro__tab_label tab-pane fade show active" id="nav-book_index" role="tabpanel">
 								<div class="description__attribute">
 									<p>${book.book_index}</p>
 								</div>
@@ -164,6 +164,9 @@
 							<!-- End 목차 Tab Content -->
 						
 							<!-- Start 리뷰작성 Tab Content -->
+							<form id="review_WriteForm" name="review_WriteForm">
+							<input type="hidden" id="review_book_id" value="${book.seq }">
+							<input type="hidden" id="review_member_id" value="${memId }">
 							<div class="pro__tab_label tab-pane fade" id="nav-review"
 								role="tabpanel">
 								<div class="review__attribute">
@@ -172,7 +175,7 @@
 									<div class="review__ratings__type d-flex">
 										<div class="review-ratings">
 											<div class="rating-summary d-flex">
-												<span>Quality</span>
+												<span>Quality</span><input type="hidden" id="score" value="${score }">
 												<ul class="rating d-flex">
 													<li><i class="zmdi zmdi-star"></i></li>
 													<li><i class="zmdi zmdi-star"></i></li>
@@ -215,7 +218,7 @@
 									<h3>${book.title }</h3>
 									<div class="review-field-ratings">
 										<div class="product-review-table">
-											<div class="review-field-rating d-flex">
+											<!-- <div class="review-field-rating d-flex">
 												<span>Quality</span>
 												<ul class="rating d-flex">
 													<li class="off"><i class="zmdi zmdi-star"></i></li>
@@ -234,38 +237,48 @@
 													<li class="off"><i class="zmdi zmdi-star"></i></li>
 													<li class="off"><i class="zmdi zmdi-star"></i></li>
 												</ul>
-											</div>
+											</div> -->
 											<div class="review-field-rating d-flex">
-												<span>Value</span>
-												<ul class="rating d-flex">
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
-													<li class="off"><i class="zmdi zmdi-star"></i></li>
+												<span>평점</span><input type="hidden" id="writeScore" value="0">
+												<ul id="writeStar" class="rating d-flex">
+													<li id="1" class="on "><i class="zmdi zmdi-star"></i></li>
+													<li id="2" class="on"><i class="zmdi zmdi-star"></i></li>
+													<li id="3" class="on "><i class="zmdi zmdi-star"></i></li>
+													<li id="4" class="off "><i class="zmdi zmdi-star"></i></li>
+													<li id="5" class="off "><i class="zmdi zmdi-star"></i></li>
 												</ul>
 											</div>
 										</div>
 									</div>
 									<div class="review_form_field">
 										<div class="input__box">
-											<span>Nickname</span> <input id="nickname_field" type="text"
-												name="nickname">
+											<span>작성자 아이디</span> <input id="nickname_field" type="text"
+												name="nickname" value="${memId}">
 										</div>
 										<div class="input__box">
-											<span>Summary</span> <input id="summery_field" type="text"
-												name="summery">
+											<span>review title</span>
+											<div id="review_title_div"></div>
+											<input id="title_field" type="text"
+												name="title_field">
 										</div>
 										<div class="input__box">
-											<span>Review</span>
-											<textarea name="review"></textarea>
+											<span>review quote</span>
+											<div id="review_quote_div"></div>
+											<textarea name="quote_field" id="quote_field"></textarea>
+										</div>
+										<div class="input__box">
+											<span>review content</span>
+											<div id="review_content_div"></div>
+											<textarea name="content_field" id="content_field"></textarea>
 										</div>
 										<div class="review-form-actions">
-											<button>Submit Review</button>
+											<input id="review_writeBtn" type="button" title="submit review" value="Submit Review">
+											<!-- <button id="review_writeBtn" type="submit" title="submit review">Submit Review</button> -->
 										</div>
 									</div>
 								</div>
 							</div>
+							</form>
 							<!-- End 리뷰작성 Tab Content -->
 						</div>
 					</div>
@@ -936,7 +949,8 @@
 							<img src="images/others/banner_left.jpg" alt="banner images">
 							<div class="text">
 								<h2>MD 추천</h2>
-								<h6>4월 <br> <strong>기대</strong>신간
+								<h6>
+									4월 <br> <strong>기대</strong>신간
 								</h6>
 							</div>
 						</aside>
@@ -961,7 +975,66 @@
 		</div>
 	</div>
 	<!-- End Search Popup -->
-	<jsp:include page="footer.jsp"></jsp:include>
+	<!-- Footer Area -->
+	<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+		<div class="footer-static-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="footer__widget footer__menu">
+							<div class="ft__logo">
+								<a href="index.html"> <img src="images/logo/3.png"
+									alt="logo">
+								</a>
+								<p>“We all just took the bookstore at its word, </p>
+								<p>because if you couldn't trust a bookstore, what could you trust?”</p>
+							</div>
+							<div class="footer__content">
+								<ul
+									class="social__net social__net--2 d-flex justify-content-center">
+									<li><a href="#"><i class="bi bi-facebook"></i></a></li>
+									<li><a href="#"><i class="bi bi-google"></i></a></li>
+									<li><a href="#"><i class="bi bi-twitter"></i></a></li>
+									<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+									<li><a href="#"><i class="bi bi-youtube"></i></a></li>
+								</ul>
+								<ul class="mainmenu d-flex justify-content-center">
+									<li><a href="index.html">신간</a></li>
+									<li><a href="index.html">베스트</a></li>
+									<li><a href="index.html">스테디</a></li>
+									<li><a href="index.html">리뷰 게시판</a></li>
+									<li><a href="index.html">장바구니</a></li>
+									<li><a href="index.html">고객센터</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright__wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="copyright">
+							<div class="copy__right__inner text-left">
+								<p>
+									Copyright <i class="fa fa-copyright"></i> <a href="#">HotBookStore.</a>
+									All Rights Reserved
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<div class="payment text-right">
+							<img src="images/icons/payment.png" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- //Footer Area -->
 	<!-- QUICKVIEW PRODUCT -->
 	<div id="quickview-wrapper">
 		<!-- Modal -->
@@ -1073,9 +1146,11 @@
 	<script src="js/active.js"></script>
 	
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript" src="js/single-product.js"></script>
+	<!-- <script type="text/javascript" src="js/single-product.js"></script> -->
 	<script type="text/javascript" src="js/member.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
+	<script type="text/javascript" src="js/review.js"></script>
+	<script type="text/javascript" src="js/score.js"></script>
 
 </body>
 </html>

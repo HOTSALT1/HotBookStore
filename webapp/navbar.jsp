@@ -119,7 +119,7 @@
 									</div>
                                 </li>
                                 <!-- 리뷰게시판 -->
-                                <li class="drop"><a href="#">리뷰게시판</a></li>
+                                <li class="drop"><a href="review">리뷰게시판</a></li>
                                 <!-- 리뷰게시판 -->
                                 <li class="drop"><a href="#">책방소개</a></li>
 							</ul>

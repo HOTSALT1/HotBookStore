@@ -20,7 +20,11 @@
 	
 	<context:component-scan base-package="member.bean" />
 	<context:component-scan base-package="member.service" />
-	<context:component-scan base-package="member.dao" />	
+	<context:component-scan base-package="member.dao" />
+	
+	<context:component-scan base-package="review.bean" />
+	<context:component-scan base-package="review.service" />
+	<context:component-scan base-package="review.dao" />	
 
 	<context:component-scan base-package="hotSalt.conf" />
 	<context:component-scan base-package="kr.co.bootpay.javaApache" />	
