@@ -200,7 +200,7 @@
 								<img src="images/about/team/2.jpg" alt="Team images">
 							</div>
 							<div class="content">
-								<h4>김원중</h4>
+								<h4>이원중</h4>
 								<p>Co-Founder</p>
 								<ul class="team__social__net">
 									<li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
@@ -259,10 +259,8 @@
 		<!-- End Team Area -->
 		
 		<!-- Footer Area -->
-		<footer>
 			<div style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
 			<jsp:include page="footer.jsp"></jsp:include>
-		</footer>
 		<!-- //Footer Area -->
 
 	</div>

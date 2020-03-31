@@ -18,7 +18,7 @@
 								<li class="drop with--one--item"><a href="index">카테고리</a>
 									<div class="megamenu mega02">
 										<ul class="item item02 cate1">
-											<li><a href="javascript:void(0)">전체</a></li>
+											<li><a href="shop-grid">전체</a></li>
 											<li><a href="javascript:void(0)">국어 외국어 사전</a></li>
                                             <li><a href="javascript:void(0)">만화/라이트노벨</a></li>
                                             <li><a href="javascript:void(0)">건강 취미</a></li>
@@ -44,13 +44,34 @@
 								<li class="drop"><a href="#">Shop</a>
 									
 								</li>
-								<!-- 리뷰게시판 -->
+								<!-- 베스트 셀러 -->
 								<li class="drop"><a href="shop-grid">베스트 셀러</a></li>
-								<!-- 리뷰게시판 -->
+								<!-- 신간 -->
 								<li class="drop"><a href="shop-grid">신간</a></li>
-                                <!-- 리뷰게시판 -->
-                                <li class="drop"><a href="community-index.jsp">독서토론</a></li>
-                                <!-- 리뷰게시판 -->
+                                <!-- 독서토론 -->
+                                	<li class="drop"><a href="#">책방 커뮤니티</a>
+									<div class="megamenu dropdown">
+										<ul class="item item01">
+											<li><a href="about.html">책방 커뮤니티</a></li>
+											<li class="label2"><a href="portfolio.html">커뮤니티</a>
+												<ul>
+													<li><a href="portfolio.html">공지사항</a></li>
+													<li><a href="portfolio-three-column.html">리뷰게시판</a></li>												
+													<li><a href="portfolio-details.html">Portfolio Details</a></li>
+												</ul>
+											</li>
+											<li><a href="my-account.html">My Account</a></li>
+											<li><a href="cart.html">Cart Page</a></li>
+											<li><a href="checkout.html">Checkout Page</a></li>
+											<li><a href="wishlist.html">Wishlist Page</a></li>
+											<li><a href="error404.html">404 Page</a></li>
+											<li><a href="faq.html">Faq Page</a></li>
+											<li><a href="team.html">Team Page</a></li>
+										</ul>
+									</div>
+								</li>
+
+                                <!-- 책방소개 -->
                                 <li class="drop with--one--item"><a href="#">책방소개</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
@@ -61,10 +82,6 @@
 									</div>
 
                                 </li>
-                                <!-- 리뷰게시판 -->
-                                <li class="drop"><a href="review">리뷰게시판</a></li>
-                                <!-- 리뷰게시판 -->
-                                <li class="drop"><a href="#">책방소개</a></li>
 
 							</ul>
 						</nav>
