@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +28,10 @@ public class MemberController {
 	
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
+	
+	@Inject
+	private JavaMailSender mailSender;
+
 	
 	@Autowired
 	HttpSession session;
@@ -50,6 +55,7 @@ public class MemberController {
 	//회원가입
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute MemberDTO memberDTO,ModelAndView mav) {
+		
 		return memberService.signup(memberDTO, mav, pwdEncoder);
 	}
 	
@@ -107,6 +113,8 @@ public class MemberController {
 		System.out.println(map);
 		return memberService.member_delete(map,pwdEncoder);
 	}	
+	
+	
 	
 }
 

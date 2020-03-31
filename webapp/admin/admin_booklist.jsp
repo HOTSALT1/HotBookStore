@@ -140,14 +140,17 @@
 							<ul	class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
 								<li><a href="">선택 삭제</a></li>
 							</ul>
-						</div>
-	
+						</div>	
 					</div>
-						<div class="wn__pagination">
-							<div id="adminBookListPagingDiv" style="float: left; width: 650px; text-align: center;"></div>
-						</div>
 				</div>
 			</div>
+						<ul class="wn__pagination">
+									<li class="active"><a href="#">1</a></li>
+									<li><a href="admin_booklist?pg="+pg>2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+						</ul>
 		</div>
 
 		<!-- Footer Area -->
