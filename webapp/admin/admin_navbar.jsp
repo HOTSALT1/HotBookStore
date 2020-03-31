@@ -34,6 +34,7 @@
 											<li><a href="">비밀번호 찾기 설정</a></li>
 											<li><a href="">비밀번호 변경안내 설정</a></li>											
 										</ul>
+										<!-- 
 										<ul class="item item03">
 											<li class="title">상품 정책</li>
 											<li><a href="">상품 기본 설정</a></li>
@@ -58,13 +59,14 @@
 											<li><a href="">카카오 페이 설정</a></li>	
 										
 										</ul>
+										 -->
 									</div>
 								</li>
 								<li class="drop"><a href="">상품</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">상품관리</li>
-											<li><a href="admin_book-list">상품리스트 </a></li>
+											<li><a href="admin_booklist">상품리스트 </a></li>
 											<li><a href="admin_insertForm">상품 등록 </a></li>
 											<li><a href="">상품 혜택 관리 </a></li>
 											<li><a href="">상품 아이콘 관리</a></li>
@@ -79,11 +81,6 @@
 											<li><a href="">상품 이동/복사/삭제 관리</a></li>
 											<li><a href="">상품 배송비 관리</a></li>
 											<li><a href="">상품 이미지 일괄 처리</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">상품 진열 관리</li>
-											<li><a href="shop-grid.html">메인페이지 상품진열 </a></li>
-											<li><a href="shop-grid.html">카테고리페이지 상품진열</a></li>
 										</ul>
 										<ul class="item item03">
 											<li class="title">상품 분류 관리</li>
@@ -148,11 +145,13 @@
 									</div>
                                 </li>
                                 
+                                
 							</ul>
 						</nav>
 					</div>
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+							<li class="h_top"><a href="../index0.jsp">(고객전용)<br>홈페이지로 이동</a></li>
 							<c:if test="${sessionScope.memId== null }">
 								<li style="min-width: 50px;"class="h_top"><a href="loginForm.jsp">로그인</a></li>
 								<li class="h_top"><a href="signup_agreement.jsp">회원가입</a></li>
@@ -165,9 +164,7 @@
 							</c:if>
 							
 							
-								
-							<li class="h_top"><a href="#">고객센터</a></li>
-						</ul>
+											</ul>
 					</div>
 				</div>
 				<!-- Start Mobile Menu -->

@@ -5,11 +5,11 @@ import java.util.Map;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import book.bean.BookDTO;
+import book.bean.BookDTO_list;
 
 public interface ShopService {
 
-	public List<BookDTO> getBookList(String pg);
+	public List<BookDTO_list> getBookList(String pg);
 	
 	public ModelAndView getBooks(ModelAndView mav, Map<String, Object> map);
 

@@ -24,3 +24,25 @@
 div#payment input{
 	padding: 18px;
 }
+.search-div{border: 2px solid #f56a6a;}
+
+.search-bar{
+	height: 36px;
+    padding: 6px 12px 6px 12px;
+	display: inline-block;
+    outline: none;
+    border: none;
+    width: 85%;
+}
+.search-bar::placeholder{color: gray;}
+/* .search-bar input:focus { outline: none ;} */
+.search{    
+	float: right;
+    border-radius: 0;
+    width: 65px;	
+    background: #f56a6a;
+    border-color: #f56a6a;
+    color: #fff;
+    height: 36px;
+    border: none;
+    line-height: 1.5;}

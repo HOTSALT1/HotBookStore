@@ -29,6 +29,8 @@
 	<!-- Cusom css -->
 	<link rel="stylesheet" href="css/custom.css">
 
+	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
@@ -82,97 +84,15 @@
 		<div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
-						<div class="shop__sidebar">
-							<aside class="wedget__categories poroduct--cat">
-								<h3 class="wedget__title">분야보기</h3>
-								<ul>
-								<li><a href="#">국어 외국어 사전 <span>(3)</span></a></li>
-								<li><a href="#">만화/라이트노벨 <span>(4)</span></a></li>
-								<li><a href="#">건강 취미 <span>(6)</span></a></li>
-								<li><a href="#">예술 <span>(7)</span></a></li>
-								<li><a href="#">수험서 자격증 <span>(8)</span></a></li>
-								<li><a href="#">자기계발 <span>(9)</span></a></li>
-								<li><a href="#">자연과학 <span>(13)</span></a></li>
-								<li><a href="#">에세이 <span>(20)</span></a></li>
-								<li><a href="#">종교 <span>(22)</span></a></li>
-								<li><a href="#">인문 <span>(13)</span></a></li>
-								<li><a href="#">경제 경영 <span>(17)</span></a></li>
-								<li><a href="#">가정 살림 <span>(20)</span></a></li>
-								<li><a href="#">대학교재 <span>(34)</span></a></li>
-								<li><a href="#">어린이 <span>(60)</span></a></li>
-								<li><a href="#">소설/시/희곡 <span>(3)</span></a></li>
-								<li><a href="#">사회 정치 <span>(3)</span></a></li>
-								<li><a href="#">청소년 <span>(3)</span></a></li>
-							</ul>
-							</aside>
-							<aside class="wedget__categories pro--range">
-								<h3 class="wedget__title">가격대별 검색</h3>
-								<div class="content-shopby">
-									<div class="price_filter s-filter clear">
-										<form action="#" method="GET">
-											<div id="slider-range"></div>
-											<div class="slider__range--output">
-												<div class="price__output--wrap">
-													<div class="price--output">
-														<span>가격 :</span><input type="text" id="amount" readonly="">
-													</div>
-													<div class="price--filter">
-														<a href="#">적용</a>
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</aside>
-							<aside class="wedget__categories poroduct--tag">
-								<h3 class="wedget__title">책 태그</h3>
-								<ul>
-									<li><a href="#">국어 외국어 사전</a></li>
-									<li><a href="#">만화/라이트노벨</a></li>
-									<li><a href="#">건강 취미</a></li>
-									<li><a href="#">예술</a></li>
-									<li><a href="#">수험서 자격증</a></li>
-									<li><a href="#">자기계발</a></li>
-									<li><a href="#">자연과학</a></li>
-									<li><a href="#">에세이</a></li>
-									<li><a href="#">종교</a></li>
-									<li><a href="#">인문</a></li>
-									<li><a href="#">경제 경영</a></li>
-									<li><a href="#">가정 살림</a></li>
-									<li><a href="#">대학교재</a></li>
-									<li><a href="#">어린이</a></li>
-									<li><a href="#">소설/시/희곡</a></li>
-									<li><a href="#">사회 정치</a></li>
-									<li><a href="#">청소년</a></li>
-								</ul>
-							</aside>
-							<aside class="wedget__categories sidebar--banner">
-								<img src="images/others/banner_left.jpg" alt="banner images">
-								<div class="text">
-									<h2>new products</h2>
-									<h6>save up to <br> <strong>40%</strong>off</h6>
-								</div>
-							</aside>
-						</div>
-					</div>
+					<jsp:include page="category.jsp"></jsp:include>
 					<div class="col-lg-9 col-12 order-1 order-lg-2">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="col-xs-2">
-									<select name="" id="">
-										<option value="" selected>제목 검색</option>
-										<option value="" >저자 검색</option>
-									</select>
+								<div class="col-xs-8 search-div">
+									<input type="hidden" id="cate1" value="${cate1 }"/>
+									<input type="text" id="titleOrAuthor" class="search-bar" placeholder="제목 또는 저자로 검색어 입력" value="${keyword }">
+									<input type="button" id="btn-search" class="search" value="검색">
 								</div>
-								<div class="col-xs-8">
-									<input type="text" class="form-control" placeholder="검색어 입력">
-								</div>
-								<div class="col-xs-2">
-									<input type="button" class="btn btn-primary" value="검색">
-								</div>
-
 							</div>
 						</div>
 						<div class="row">
@@ -186,7 +106,7 @@
 									</div>
 									<p>검색 결과: 총 ${totalA }개 중 <c:if test="${articles > 1}">1–${articles}</c:if><c:if test="${articles <= 1}">${articles }</c:if>개</p>
 									<div class="orderby__wrapper">
-										<span>정렬 기준</span>
+										<span>정렬 기준</span><input type="hidden" id="orderBy" value="${orderBy }" />
 										<select id="order_select" class="shot__byselect">
 											<option value="1">상품 등록일</option>
 											<option value="2">가격 오름차순</option>
@@ -206,9 +126,17 @@
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
 											<a class="first__img" href="single-product?book_id=${book.seq}" ><img
-													src="${book.img1 }" alt="product image"></a>
-											<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
+													src="${book.img1 }" alt="product image" style="min-height: 393px;"></a>
+											<c:if test="${book.img2 != null }">
+												<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
 													src="${book.img2 }" alt="product image"></a>
+											</c:if>
+											<c:if test="${book.img2 == null }">
+												<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img style="visibility:hidden;" 
+													src="${book.img1 }" alt="product image"></a>
+											</c:if>
+											<%-- <a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
+													src="${book.img2 }" alt="product image"></a> --%>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALLER</span>
 											</div>
@@ -221,12 +149,13 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
+													<input type="hidden" value="${book.seq}" />
 													<ul class="add_to_links">
-														<li><a class="cart" href="cart.html"><i
+														<li><a class="cart" href="#none"><i
 																	class="bi bi-shopping-bag4"></i></a></li>
-														<li><a class="wishlist" href="wishlist.html"><i
+														<li><a class="wishlist addToCart" href="#none"><i
 																	class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a class="compare" href="#"><i
+														<li><a class="compare" href="#none"><i
 																	class="bi bi-heart-beat"></i></a></li>
 														<li><a data-toggle="modal" title="Quick View"
 																class="quickview modal-view detail-link"
@@ -237,11 +166,14 @@
 											</div>
 											<div class="product__hover--content">
 												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
+													<c:forEach var="s" step="1" begin="1" end="5">
+													<c:if test="${(book.score / s) >= 1}">
+														<li class="on"><i class="fa fa-star"></i></li>
+													</c:if>
+													<c:if test="${(book.score / s) < 1}">
+														<li class=""><i class="fa fa-star-o"></i></li>
+													</c:if>
+												</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -259,34 +191,37 @@
 							</div>
 							<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
 								<div class="list__view__wrapper">
+									<c:set var="margin"></c:set>
+									<c:forEach var="book" items="${book_list }" varStatus="i">
 									<!-- Start Single Product -->
-									<div class="list__view">
+									<c:if test="${i.index > 0}"><c:set var="margin">mt--40</c:set></c:if>
+									<div class="list__view ${margin }">
 										<div class="thumb">
 											<a class="first__img" href="single-product?book_id=${book.seq}"><img
-													src="images/product/1.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/2.jpg" alt="product images"></a>
+													src="${book.img1 }" alt="${book.title }"></a>
+											<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
+													src="${book.img2 }" alt="product images"></a>
 										</div>
 										<div class="content">
-											<h2><a href="single-product.html">Ali Smith</a></h2>
+											<h2><a href="single-product.html">${book.title}</a></h2>
 											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>	
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
+												<c:forEach var="s" step="1" begin="1" end="5">
+													<c:if test="${(book.score / s) >= 1}">
+														<li class="on"><i class="fa fa-star"></i></li>
+													</c:if>
+													<c:if test="${(book.score / s) < 1}">
+														<li class=""><i class="fa fa-star-o"></i></li>
+													</c:if>
+												</c:forEach>
 											</ul>
 											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
+												<li><fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></li>
+												<li class="old__prize"><fmt:formatNumber pattern="#,###원">${book.price }</fmt:formatNumber></li>
 											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
+											<input type="hidden" id="info_${book.seq }" value="${book.info }"/>
+											<p class="info"></p>
 											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
+												<li class="cart"><a href="cart.html">장바구니에 담기</a></li>
 												<li class="wishlist"><a href="cart.html"></a></li>
 												<li class="compare"><a href="cart.html"></a></li>
 											</ul>
@@ -294,145 +229,7 @@
 										</div>
 									</div>
 									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/2.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/4.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Blood In Water</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/3.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/6.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Madeness Overated</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/4.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/6.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Watching You</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/5.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/9.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Court Wings Run</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Product -->
+									</c:forEach>
 								</div>
 							</div>
 						</div>
@@ -513,12 +310,12 @@
 								<!-- Start product images -->
 								<div class="product-images">
 									<div class="main-image images">
-										<img alt="big images" src="images/product/big-img/1.jpg">
+										<img id="modal-img" alt="" src="images/product/big-img/1.jpg">
 									</div>
 								</div>
 								<!-- end product images -->
 								<div class="product-info">
-									<h1>Simple Fabric Bags</h1>
+									<h1 id="modal-title">Simple Fabric Bags</h1>
 									<div class="rating__and__review">
 										<ul class="rating">
 											<li><span class="ti-star"></span></li>
@@ -533,15 +330,15 @@
 									</div>
 									<div class="price-box-3">
 										<div class="s-price-box">
-											<span class="new-price">$17.20</span>
-											<span class="old-price">$45.00</span>
+											<span id="modal-d_price" class="new-price">$17.20</span>
+											<span id="modal-price" class="old-price">$45.00</span>
 										</div>
 									</div>
-									<div class="quick-desc">
+									<div id="modal-info" class="quick-desc">
 										Designed for simplicity and made from high quality materials. Its sleek geometry
 										and material combinations creates a modern look.
 									</div>
-									<div class="select__color">
+									<!-- <div class="select__color">
 										<h2>Select color</h2>
 										<ul class="color__list">
 											<li class="red"><a title="Red" href="#">Red</a></li>
@@ -559,8 +356,8 @@
 											<li class="xl__size"><a title="XL" href="#">XL</a></li>
 											<li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
 										</ul>
-									</div>
-									<div class="social-sharing">
+									</div> -->
+									<!-- <div class="social-sharing">
 										<div class="widget widget_socialsharing_widget">
 											<h3 class="widget-title-modal">Share this product</h3>
 											<ul class="social__net social__net--2 d-flex justify-content-start">
@@ -574,9 +371,9 @@
 															class="zmdi zmdi-tumblr"></i></a></li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 									<div class="addtocart-btn">
-										<a href="#">Add to cart</a>
+										<a href="#">장바구니에 추가</a>
 									</div>
 								</div>
 							</div>
@@ -590,12 +387,26 @@
 	<!-- //Main wrapper -->
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
 	<script src="js/shop-grid.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#order_select').val($('#orderBy').val())
+			$('p.info').each(function () {
+				$(this).text(removeTag($(this).prev().val()).substr(0,200) + '...');
+			})
+			
+			$('#slider-range').slider("value", [1000, 2000]);
+		})
+		
+		function removeTag(str){
+			return str.replace(/(<([^>]+)>)/ig,"");
+		}
+	
+	</script>
 
 </body>
 

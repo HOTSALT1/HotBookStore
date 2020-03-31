@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import book.bean.BookDTO;
+import book.bean.BookDTO_list;
 import shop.service.ShopService;
 
 @Controller
@@ -22,7 +22,7 @@ public class ShopController {
 	@RequestMapping(value = "getBooks", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView getBooks(@RequestParam String pg, ModelAndView model) {
-		List<BookDTO> list = shopService.getBookList(pg);
+		List<BookDTO_list> list = shopService.getBookList(pg);
 		model.addObject("book_list", list);
 		model.setViewName("jsonView");
 		return model;
@@ -30,6 +30,12 @@ public class ShopController {
 	
 	@RequestMapping(value = "shop-grid", method = RequestMethod.GET)
 	public ModelAndView shop_grid(@RequestParam(required = false) Map<String, Object> map, ModelAndView model) {
+		return shopService.getBooks(model, map);
+	}
+	
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public ModelAndView search(@RequestParam Map<String, Object> map, ModelAndView model) {
+		model.setViewName("/shop-grid");
 		return shopService.getBooks(model, map);
 	}
 }

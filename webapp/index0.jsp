@@ -10,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.png">
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
@@ -26,7 +26,7 @@
 
 	<!-- Cusom css -->
 	<link rel="stylesheet" href="css/custom.css">
-
+	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
@@ -59,22 +59,20 @@
 		<!-- Start Slider area -->
 		<div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
 			<!-- Start Single Slide -->
-			<div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
+			<!-- <div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="slider__content">
 								<div class="contentbox">
-									<h2>Buy <span>your </span></h2>
-									<h2>favourite <span>Book </span></h2>
-									<h2>from <span>Here </span></h2>
+									
 									<a class="shopbtn" href="#">shop now</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- End Single Slide -->
 			<!-- Start Single Slide -->
 			<div class="slide animation__style10 bg-image--7 fullscreen align__center--left">
@@ -3351,7 +3349,7 @@
 	<!-- //Main wrapper -->
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+	
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

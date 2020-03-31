@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import book.bean.BookDTO;
+import book.bean.BookDTO_list;
 import shop.dao.ShopDAO;
 
 @Service
@@ -17,7 +17,7 @@ public class ShopServiceImpl implements ShopService {
 	ShopDAO shopDAO;
 
 	@Override
-	public List<BookDTO> getBookList(String pg) {
+	public List<BookDTO_list> getBookList(String pg) {
 		int articlesPerPage = 12;
 		int endNum = Integer.parseInt(pg) * articlesPerPage;
 		int startNum = endNum - articlesPerPage + 1;
@@ -42,11 +42,14 @@ public class ShopServiceImpl implements ShopService {
 		nvl(map, "min", "0");
 		nvl(map, "max", "0");
 		
-		List<BookDTO> list = shopDAO.getBooks(map);
+		List<BookDTO_list> list = shopDAO.getBooks(map);
 		mav.addObject("book_list", list);
 		
 		mav.addObject("totalA", list.size()); // 총 검색된 갯수
 		mav.addObject("articles", list.size() > 12 ? 12 : list.size());
+		mav.addObject("cate1", map.get("cate1"));
+		mav.addObject("keyword", map.get("titleOrAuthor"));
+		mav.addObject("orderBy", map.get("orderBy"));
 		
 		return mav;
 	}

@@ -36,7 +36,7 @@ label>span{
 input{
 	border: none !important; 
 	font-size: 15px !important;
-	margin-left: 50px !important;
+	margin-left: 50px;
 }
 .div3>span{color: gray;}
 .write-button,.cancel-button{
@@ -102,6 +102,7 @@ input{
 	margin-left: 50px;
 	font-size: 14px;
 }
+.img1-7{margin-left: 191px;}
         
         
         

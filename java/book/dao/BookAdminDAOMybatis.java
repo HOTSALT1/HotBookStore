@@ -1,5 +1,8 @@
 package book.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +19,16 @@ public class BookAdminDAOMybatis implements BookAdminDAO {
 	@Override
 	public void insertBook(BookDTO bookDTO) {
 		sqlSession.insert("bookSQL.insertBook", bookDTO);
+	}
+
+	@Override
+	public List<BookDTO> getAdminBookList(Map<String, Integer> map) {
+		return sqlSession.selectList("bookSQL.getAdminBookList", map);
+	}
+
+	@Override
+	public int getBookListTotalA() {
+		return sqlSession.selectOne("bookSQL.getBookListTotalA");
 	}
 
 }

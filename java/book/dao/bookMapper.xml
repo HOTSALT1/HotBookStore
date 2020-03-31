@@ -49,9 +49,26 @@
 		, #{stock}
 		, sysdate)
 	</insert>
+
+	<!-- 책 총 개수 -->
+	<select id="getBookListTotalA" resultType="int">
+		select count(*) from book
+	</select>
 	
+	<!-- book 데이터 리스트를 가져오는 쿼리 -->
+	<select id="getAdminBookList" resultType="book.bean.BookDTO" parameterType="java.util.Map" >
+		<![CDATA[
+		SELECT * FROM 
+			(SELECT rownum rn, tt.* from 
+				(SELECT * FROM book ORDER BY logtime DESC)
+			 tt) 
+		WHERE rn >= #{startNum} AND rn <= #{endNum}
+		]]>
+	</select>
+
 	<select id="getScore" resultType="int" parameterType="String">
 		select score from view_score where book_id = #{book_id}
 	</select>
+
 
 </mapper>
