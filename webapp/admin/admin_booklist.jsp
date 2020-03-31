@@ -42,6 +42,8 @@
 <body>
 	<!-- Main wrapper -->
 	<input type="hidden" id="pg" value="${pg }">
+	<input type="hidden" name="book_id" id="book_id" value="${seq }">
+	
 	
 	<div class="wrapper" id="wrapper">
 	
@@ -79,10 +81,10 @@
 								<thead>
 									<tr class="title-top">
 										<th class="product-remove"><input type="checkbox" name=""
-											id="chkAll" checked /></th>
+											id="chkAll"/></th>
 										<th class="product-id">번호</th>
 										<th class="product-thumbnail">이미지</th>
-										<th class="product-name">상품명</th>
+										<th class="product-name">상품명</th>									
 										<th class="product-price">정가</th>
 										<th class="product-price">할인가</th>
 										<th class="product-stock">재고</th>
@@ -103,7 +105,7 @@
 													src="${book.img1 }" alt="product img"
 													style="height: 100px;"></a></td>
 
-											<td class="product-name"><a href="#">${book.title }<br />${book.subTitle }</a></td>
+											<td class="product-name"><a href="admin_bookModifyForm?book_id=${book.seq}">${book.title }<br />${book.subTitle }</a></td>
 											<!-- 정가  -->
 											<td class="product-price"><span
 												class="amount price_${book.seq }"> <fmt:formatNumber
@@ -125,11 +127,11 @@
 
 											<!-- 수정 -->
 											<td class="product-modify">
-											<input type="button" class="modify_${book.seq }" value="수정"></td>
+											<input type="button" class="modify_${book.seq }" value="수정" onclick="location.href='admin_bookModifyForm?book_id=${book.seq}'"></td>
 
 											<!-- 삭제 -->
 											<td class="product-remove">
-											<input type="button" class="remove_${book.seq }"  value="삭제"></td>
+											<input type="button" class="remove_${book.seq }"  value="삭제" onclick="bookDeleteForm()"></td>
 										</tr>
 										</c:forEach>
 								</tbody>
@@ -144,13 +146,7 @@
 					</div>
 				</div>
 			</div>
-						<ul class="wn__pagination">
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="admin_booklist?pg="+pg>2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-						</ul>
+						<ul class="wn__pagination">${paging }</ul>
 		</div>
 
 		<!-- Footer Area -->
@@ -158,7 +154,8 @@
 			style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
 		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //Footer Area -->
-
+		
+	
 	</div>
 	<!-- //Main wrapper -->
 
@@ -175,6 +172,10 @@
 	function adminBookListPaging(pg){
 		location.href="admin_booklist?pg="+pg;
 	}
+	</script>
+	
+	<script>
+	
 	</script>
 		
 

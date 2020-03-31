@@ -27,5 +27,7 @@ public interface OrderService {
 	public void addCheckout(List<Map<String, String>> list);
 
 	public ModelAndView verify(ModelAndView model, String receipt_id);
+	
+	public void checkoutDirect(List<Map<String, String>> list);
 
 }

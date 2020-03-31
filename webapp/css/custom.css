@@ -51,3 +51,11 @@ div#payment input{
   background: rgba(0, 0, 0, 0) url("../images/icons/cart.png") no-repeat scroll 10px center;
   width: 24px;
 }
+
+.list__view .content .cart__action li.cart2 a {
+   background: white url("../images/icons/cart2.png") no-repeat scroll -6% 0; }
+.list__view .content .cart__action li.cart2 a:hover {
+  background-position: 108% 0;
+  border: 2px solid #ce7852;
+  background-color: #ce7852;
+}
