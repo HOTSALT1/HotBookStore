@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="css/custom.css">
 
 <!-- Modernizer js -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Jua|Nanum+Gothic|Yeon+Sung&display=swap" rel="stylesheet">
@@ -135,13 +136,15 @@
 					<input type="text"  id="mail1" class="chk" maxlength="20">
 					<span style="font-size: 14px; margin: 0 -8px 0 3px;">@</span>
 					
-					<input type="text" id="mail2" list="selectEmail" class="chk" placeholder="선택하세요">
+					<input type="text" id="mail2" list="selectEmail" class="chk" placeholder="선택하세요" style="margin-left: 10px !important; width: 120px;">
 					<datalist id="selectEmail">
 						<option value="naver.com">naver.com</option> 
 						<option value="hanmail.net">hanmail.net</option> 
 						<option value="nate.com">nate.com</option> 
 						<option value="gmail.com">gmail.com</option>
-					</datalist>
+					</datalist>|
+					<input type="text" id="e_verify" placeholder="인증번호 입력">
+					<input type="button" id="e_verifyBtn" value="인증번호 받기">
 					<span id="check-mail"></span>
 				</div>
 				<div class="div3 border-Tnone idx8"
@@ -161,7 +164,7 @@
 	<jsp:include page="footer.jsp"></jsp:include>
 	
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

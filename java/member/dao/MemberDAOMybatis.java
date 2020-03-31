@@ -19,8 +19,8 @@ public class MemberDAOMybatis implements MemberDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public void signup(MemberDTO memberDTO) {
-		sqlSession.insert("memberSQL.signup", memberDTO);
+	public void signup(Map<String,String>map) {
+		sqlSession.insert("memberSQL.signup", map);
 	}
 
 	@Override
@@ -73,6 +73,14 @@ public class MemberDAOMybatis implements MemberDAO {
 	public List<MemberDTO> member_list() {
 		return sqlSession.selectList("memberSQL.memberList");
 	}
+
+	@Override
+	public void e_verify(String email) {
+		sqlSession.update("memberSQL.e_verify", email)
+		;
+	}
+
+
 
 
 

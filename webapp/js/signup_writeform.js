@@ -230,7 +230,7 @@ $('#write-button').click(function(){
 								
 				$('.idx1,.idx2,.idx3,.idx4,.idx5,.idx6,.idx7').css("border","1px solid #c5c5c5");
 				$('#card-signup_writeForm').hide();
-				$('#carsd-signup_writeForm').css('display','block');
+				$('#card-signup_writeForm').css('display','block');
 				location.href = '/hotSalt/signup_complete?id='+data.id+'&name='+data.name;
 			}
 		})
@@ -238,6 +238,44 @@ $('#write-button').click(function(){
 	}else if(chk==false){
 		alert('회원정보를 모두 입력해주세요')
 	}
+})
+
+$('#e_verifyBtn').click(function verify(){
+	$.ajax({
+		type : 'post',
+		url : '/hotSalt/e_verify',
+		data : 'email='+$('#mail1').val()+"@"+$('#mail2').val(),
+		dataType : 'text',
+		success : function(data){
+			if(data=='true'){
+				alert('인증번호를 발송했습니다  30분이내 인증번호를 입력해주세요.');
+			}else{
+				alert('실패');
+			}
+		}
+	})
+})
+
+$('#e_verify').keyup(function(){
+	$.ajax({
+		type :'post',
+		url : '/hotSalt/e_verify_chk',
+		data : 'e_verify='+$('#e_verify').val(),
+		dataType : 'text',
+		success : function(data){
+			if(data=='true'){
+				$('#check-mail').text('이메일 인증 성공');
+				$('#mail1').attr("readonly",true)
+				$('#mail2').attr("readonly",true)
+				$('#e_verify').attr("readonly",true)
+				$('#e_verifyBtn').attr("disabled",true)
+				
+			}else{
+				$('#check-mail').text('이메일 인증 실패 번호를 다시 확인해 주세요.');
+			}
+			
+		}
+	})
 })
 	   
 	/* 유효성 검사 

@@ -33,6 +33,16 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<!-- json -->
+	<beans:bean id="jsonView" 
+	      class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<beans:property name="contentType" value="text/html;charset=UTF-8" />
+	</beans:bean>
+	<beans:bean id="beanNameViewResolver"
+	      class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0" />	      
+	</beans:bean>
 
 	<!-- 파일업로드 -->
 	<beans:bean id="multipartResolver"

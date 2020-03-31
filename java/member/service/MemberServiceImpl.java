@@ -1,13 +1,19 @@
 package member.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
@@ -20,18 +26,43 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private HttpSession session;
 
+
 	@Override
-	public ModelAndView signup(MemberDTO memberDTO, ModelAndView mav,BCryptPasswordEncoder pwdEncoder ) {
-		String inputPass = memberDTO.getPwd();
-		String pwd = pwdEncoder.encode(inputPass);
-		memberDTO.setPwd(pwd);
-		memberDAO.signup(memberDTO);
+	public ModelAndView signup(Map<String, String> map, ModelAndView mav,BCryptPasswordEncoder pwdEncoder) {
 		
-		mav.addObject("name", memberDTO.getName());
-		mav.addObject("id", memberDTO.getId());
+		String inputPass = map.get("pwd");
+		String pwd = pwdEncoder.encode(inputPass);
+		map.put("pwd",pwd);
+		memberDAO.signup(map);
+		
+		mav.addObject("name", map.get("name"));
+		mav.addObject("id", map.get("id"));
 		mav.setViewName("jsonView");
 		return mav;
 	}
+
+	@Override
+	public void e_verify(String email, JavaMailSender mailSender) {
+		MailHandler sendMail;
+		String key = key();
+		try {
+			sendMail = new MailHandler(mailSender);
+			sendMail.setSubject("[이메일 인증]");
+			sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
+					.append("HotBookStore(뜨거운책방)에 가입을 환영합니다.<br>다음 코드를 인증코드 입력란에 입력해주세요.<br>" + key ).toString());
+			sendMail.setFrom("hothotbookstore@gmail.com", "뜨거운책방");
+			sendMail.setTo(email);
+			sendMail.send();
+			session.setAttribute("key", key);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 
 	@Override
 	public String login(Map<String, String>map,BCryptPasswordEncoder pwdEncoder) {
@@ -143,6 +174,15 @@ public class MemberServiceImpl implements MemberService {
 		
 		return (memberDTO !=null && pwdMath==true);
 	}
+	//난수
+	public String key() {
+		StringBuffer buffer = new StringBuffer();
+		for(int i=0; i<=6; i++) {
+			int n =(int)(Math.random()*10);
+			buffer.append(n);
+		}
+		return buffer.toString();
+	}
 
 	@Override
 	public ModelAndView member_list(ModelAndView mav) {
@@ -152,12 +192,15 @@ public class MemberServiceImpl implements MemberService {
 		return mav;
 	}
 
-	
+	@Override
+	public String e_verify_chk(String e_verify) {
+		
+		if(session.getAttribute("key").equals(e_verify)) {
+			return "true";	
+		}
+		return "fail";
 
-
-	
-	
-
+	}
 }
 
 
