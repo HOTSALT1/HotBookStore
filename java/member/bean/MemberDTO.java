@@ -20,6 +20,7 @@ public class MemberDTO {
 	private String addr1;
 	private String addr2;
 	private String addr3;
+	private String logtime;
 	private int point;
 
 	@Override

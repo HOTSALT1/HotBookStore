@@ -3,12 +3,13 @@
 <mapper namespace="shopSQL">
 	
 	<!-- book 데이터 리스트를 가져오는 쿼리 -->
-	<select id="getBooks" resultType="book.bean.BookDTO" parameterType="java.util.Map" >
+	<select id="getBooks" resultType="book.bean.BookDTO_list" parameterType="java.util.Map" >
 		
 		SELECT * FROM 
 			(SELECT rownum rn, tt.* from 
 			
-				(SELECT book.*, score FROM book LEFT JOIN view_score ON book.seq = view_score.book_id WHERE 1=1 
+				(SELECT seq, title, subTitle, cate1, cate2, author, pub, price, d_price, p_date, book_size, info, nvl(img1, 'images/product/4.jpg'), img2  
+					, nvl(score, 0) FROM book LEFT JOIN view_score ON book.seq = view_score.book_id WHERE 1=1 
 					<if test='titleOrAuthor != null'>
 						AND (title LIKE '%' || #{titleOrAuthor} || '%' OR author LIKE '%' || #{titleOrAuthor} || '%')  
 					</if>
@@ -30,7 +31,7 @@
 					</if>
 					<if test='!max.equals("0")'>
 						<![CDATA[
-							AND (d_price <= #{min} AND d_price <= #{max}) 
+							AND (d_price >= #{min} AND d_price <= #{max}) 
 						]]>
 					</if>
 					<if test='orderBy == null'>

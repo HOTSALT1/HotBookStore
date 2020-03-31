@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -107,12 +108,17 @@ public class MemberController {
 		return memberService.member_modify(map,pwdEncoder);
 	}
 	
-	//회원정보 수정
+	//회원정보 삭제
 	@RequestMapping(value="member_delete", method=RequestMethod.POST)
 	public @ResponseBody String member_delete(@RequestParam Map<String,String> map) {
-		System.out.println(map);
 		return memberService.member_delete(map,pwdEncoder);
-	}	
+	}
+	
+	@RequestMapping(value="/admin/admin_member_list", method=RequestMethod.GET)
+	public ModelAndView member_list(ModelAndView mav) {
+		return memberService.member_list(mav);
+	}
+			
 	
 	
 	

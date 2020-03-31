@@ -1,8 +1,10 @@
 package member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
@@ -22,7 +24,12 @@ public interface MemberService {
 	//public String member_modify(MemberDTO memberDTO, BCryptPasswordEncoder pwdEncoder);
 	
 	public String member_modify(Map<String, String>map, BCryptPasswordEncoder pwdEncoder);
+	
 	public String member_delete(Map<String, String> map, BCryptPasswordEncoder pwdEncoder);
+
+	public ModelAndView member_list(ModelAndView mav);
+
+
 
 
 }

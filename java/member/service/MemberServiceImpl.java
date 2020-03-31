@@ -1,8 +1,8 @@
 package member.service;
 
+import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,7 +108,7 @@ public class MemberServiceImpl implements MemberService {
 //		
 //		return "succes";
 //	}
-	
+	//회원수정
 	@Override
 	public String member_modify(Map<String, String> map, BCryptPasswordEncoder pwdEncoder) {
 		String inputPass = map.get("pwd");
@@ -120,7 +120,7 @@ public class MemberServiceImpl implements MemberService {
 		return "succes";
 
 	}
-
+	//회원삭제
 	@Override
 	public String member_delete(Map<String, String> map, BCryptPasswordEncoder pwdEncoder) {
 		System.out.println(map);
@@ -133,7 +133,7 @@ public class MemberServiceImpl implements MemberService {
 			return "fail";
 	}
 	
-	
+	//비밀번호 매치
 	public boolean isPwdMatch(Map<String, String>map, BCryptPasswordEncoder pwdEncoder) {
 		String inputPass = map.get("pwd");
 		String pwd = pwdEncoder.encode(inputPass);
@@ -143,6 +143,17 @@ public class MemberServiceImpl implements MemberService {
 		
 		return (memberDTO !=null && pwdMath==true);
 	}
+
+	@Override
+	public ModelAndView member_list(ModelAndView mav) {
+		List<MemberDTO> list = memberDAO.member_list();
+		mav.addObject("list", list);
+		mav.setViewName("/admin/admin_member_list");
+		return mav;
+	}
+
+	
+
 
 	
 	
