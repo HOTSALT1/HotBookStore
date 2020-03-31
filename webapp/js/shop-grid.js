@@ -45,11 +45,7 @@ $('.wedget__title').next().find('li').click(function() {
 })
 
 $('#price-filter').click(function() {
-	let cate1 = $('#cate1').val();
-	if(cate1.trim() == '전체'){
-		cate1 = 'all';
-	}
-	location.href="/hotSalt/search?cate1=" + cate1 + "&min=" + $('#slider-range').slider('values', 0) + "&max=" + $('#slider-range').slider('values', 1);
+	goTo();
 })
 
 $('i.bi.bi-search').click(function() {
@@ -60,5 +56,33 @@ $('i.bi.bi-search').click(function() {
 	$('#modal-price').text($p.find('.product__content .prize li:eq(1)').text());
 	$('#modal-info').text()
 })
+
+$('ul.wn__pagination li:not(.active) a').click(function() {
+	goTo($(this).text());
+});
+
+function goTo(pg) {
+	let pg2 = 1;
+	if(pg){
+		pg2 = pg;
+	}
+	let cate1 = $('#cate1').val();
+	if(cate1.trim() == '전체'){
+		cate1 = 'all';
+	}
+	var data = {
+		cate1:	cate1,
+		pg: 	pg2,
+		min:	$('#slider-range').slider('values', 0),
+		max:	$('#slider-range').slider('values', 1)
+	}
+	location.href="/hotSalt/search?" + $.param(data);
+}
+
+$('#titleOrAuthor').keydown(function(key) {
+	if (key.keyCode == 13) {
+        $('#btn-search').trigger('click');
+   }
+});
 
 

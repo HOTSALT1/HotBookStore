@@ -33,7 +33,7 @@ public class ShopDAOMybatis implements ShopDAO {
 	
 	@Override
 	public int getBoardTotalA(Map<String, Object> map) {
-		return sqlSession.selectOne("boardSQL.getBoardTotalA", map);
+		return sqlSession.selectOne("shopSQL.getBoardTotalA", map);
 	}
 	
 }
