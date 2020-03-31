@@ -165,7 +165,6 @@
 													
 				<div class="div3 border-Tnone idx7">
 					<label>상세이미지<span>|</span></label> 
-					<div><a href="${book.detail }"><img src="${book.detail}" alt=""></a></div>
 					<input type="file" name="img" id="detail" size="50">
 					<span id="size"></span>
 				</div>				

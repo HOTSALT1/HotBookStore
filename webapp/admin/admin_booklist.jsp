@@ -127,7 +127,7 @@
 
 											<!-- 수정 -->
 											<td class="product-modify">
-											<input type="button" class="modify_${book.seq }" value="수정" onclick="bookModifyForm()"></td>
+											<input type="button" class="modify_${book.seq }" value="수정" onclick="location.href='admin_bookModifyForm?book_id=${book.seq}'"></td>
 
 											<!-- 삭제 -->
 											<td class="product-remove">
