@@ -401,6 +401,13 @@ public class OrderServiceImpl implements OrderService {
             e.printStackTrace();
         }
     }
+
+	@Override
+	public ModelAndView admin_order_list(ModelAndView mav) {
+		mav.setViewName("admin_order-list");
+		mav.addObject("order_list",orderDAO.admin_order_list());
+		return mav;
+	}
 	
 }
 

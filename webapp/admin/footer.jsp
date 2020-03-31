@@ -4,7 +4,7 @@
 <html>
 <head>
 <style>
-*{
+footer{
     margin: 0 auto;
 }
 .footer{
@@ -20,10 +20,10 @@
     margin: 20px 10px 0 10px;
     font-size: 12px;
 }.footer-menu>a{color:gray;}
-a { text-decoration:none } 
-a:link { color: black; text-decoration: none;}
-a:visited { color: black; text-decoration: none;}
-a:hover {text-decoration: none;}
+footer a { text-decoration:none } 
+footer a:link { color: black; text-decoration: none;}
+footer a:visited { color: black; text-decoration: none;}
+footer a:hover {text-decoration: none;}
 
 .footer-sns{
     display: inline-block; 

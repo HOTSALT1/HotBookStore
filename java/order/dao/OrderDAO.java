@@ -5,6 +5,7 @@ import java.util.Map;
 
 import book.bean.BookDTO;
 import order.bean.CartDTO;
+import order.bean.OrderDTO;
 import order.bean.ViewCartDTO;
 
 public interface OrderDAO {
@@ -32,5 +33,7 @@ public interface OrderDAO {
 	public void addOrderList(Map<String, Object> order_listMap);
 
 	public List<BookDTO> getBooksByViewCart(List<ViewCartDTO> checkout_list);
+
+	public List<OrderDTO> admin_order_list();
 
 }

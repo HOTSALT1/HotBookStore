@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import book.bean.BookDTO_list;
+import order.service.OrderService;
 import shop.service.ShopService;
 
 @Controller
 public class ShopController {
 	@Autowired
 	private ShopService shopService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping(value = "getBooks", method = RequestMethod.GET)
 	@ResponseBody
@@ -35,6 +39,7 @@ public class ShopController {
 	
 	@RequestMapping(value = "search", method = RequestMethod.GET)
 	public ModelAndView search(@RequestParam Map<String, Object> map, ModelAndView model) {
+		orderService.loadCart(model);
 		model.setViewName("/shop-grid");
 		return shopService.getBooks(model, map);
 	}

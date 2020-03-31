@@ -30,4 +30,6 @@ public interface OrderService {
 	
 	public void checkoutDirect(List<Map<String, String>> list);
 
+	public ModelAndView admin_order_list(ModelAndView model);
+
 }

@@ -15,10 +15,9 @@
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="index">카테고리</a>
+								<li class="drop with--one--item"><a href="shop-grid">카테고리</a>
 									<div class="megamenu mega02">
 										<ul class="item item02 cate1">
-											<li><a href="shop-grid">전체</a></li>
 											<li><a href="javascript:void(0)">국어 외국어 사전</a></li>
                                             <li><a href="javascript:void(0)">만화/라이트노벨</a></li>
                                             <li><a href="javascript:void(0)">건강 취미</a></li>
