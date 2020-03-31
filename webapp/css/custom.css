@@ -46,3 +46,8 @@ div#payment input{
     height: 36px;
     border: none;
     line-height: 1.5;}
+    
+.product__info__main .product-addto-links a.shopcart {
+  background: rgba(0, 0, 0, 0) url("../images/icons/cart.png") no-repeat scroll 10px center;
+  width: 24px;
+}

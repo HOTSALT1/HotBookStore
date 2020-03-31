@@ -55,6 +55,11 @@
 	<!-- book 데이터 리스트 count를 가져오는 쿼리 -->
 	<select id="getBoardTotalA" resultType="int" parameterType="java.util.Map" >
 		SELECT count(*) FROM book WHERE 1=1 
+		
+			<if test='titleOrAuthor != null'>
+				AND (title LIKE '%' || #{titleOrAuthor} || '%' OR author LIKE '%' || #{titleOrAuthor} || '%')  
+			</if>
+			
 			<if test='title != null'>
 				AND title LIKE '%' || #{title} || '%'  
 			</if>
@@ -67,12 +72,12 @@
 			<if test='p_date != null'>
 				AND to_char(to_date(p_date, 'YYYY"년" MM"월" DD"일"'), 'YYYYMM') = #{p_date} 
 			</if>
-			<if test='cate1 != null'>
+			<if test='cate1 != null and cate1 != "all"'>
 				AND cate1 = #{cate1} 
 			</if>
 			<if test='!max.equals("0")'>
 				<![CDATA[
-					AND (d_price <= #{min} AND d_price <= #{max}) 
+					AND (d_price >= #{min} AND d_price <= #{max}) 
 				]]>
 			</if>
 	</select>

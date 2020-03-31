@@ -24,17 +24,17 @@ public class ShopPaging {
 			endPage = totalP;
 		
 		if(startPage > pageBlock)
-			pagingHTML.append("<li><a href='#'><i class='zmdi zmdi-chevron-left'></i></a></li>");
+			pagingHTML.append("<li><a href='javascript:void(0)'><i class='zmdi zmdi-chevron-left'></i></a></li>");
 		
 		for(int i = startPage; i <= endPage; i++) {
 			if(i == currentPage) {
-				pagingHTML.append("<li class='active'><a href='#'>" + i + "</a></li>");
+				pagingHTML.append("<li class='active'><a href='javascript:void(0)'>" + i + "</a></li>");
 			}else {
-				pagingHTML.append("<li><a href='#'>" + i + "</a></li>");
+				pagingHTML.append("<li><a href='javascript:void(0)'>" + i + "</a></li>");
 			}
 		}
 		if(endPage < totalP)
-			pagingHTML.append("<li><a href='#'><i class='zmdi zmdi-chevron-right'></i></a></li>");
+			pagingHTML.append("<li><a href='javascript:void(0)'><i class='zmdi zmdi-chevron-right'></i></a></li>");
 		
 	}
 }

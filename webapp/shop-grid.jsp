@@ -181,13 +181,7 @@
 									<!-- End Single Product -->
 									</c:forEach>
 								</div>
-								<ul class="wn__pagination">
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-								</ul>
+								<ul class="wn__pagination">${paging }</ul>
 							</div>
 							<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
 								<div class="list__view__wrapper">
@@ -198,9 +192,15 @@
 									<div class="list__view ${margin }">
 										<div class="thumb">
 											<a class="first__img" href="single-product?book_id=${book.seq}"><img
-													src="${book.img1 }" alt="${book.title }"></a>
-											<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
-													src="${book.img2 }" alt="product images"></a>
+													src="${book.img1 }" alt="${book.title }" style="max-height: 350px;"></a>
+											<a class="second__img animation1" href="single-product?book_id=${book.seq}">
+												<c:if test="${book.img2 != null}">
+												<img src="${book.img2 }" alt="${book.title }" style="max-height: 350px;">
+												</c:if>
+												<c:if test="${book.img2 == null}">
+												<img src="${book.img1 }" alt="${book.title }" style="max-height: 350px;">
+												</c:if>
+											</a>
 										</div>
 										<div class="content">
 											<h2><a href="single-product.html">${book.title}</a></h2>
@@ -221,9 +221,9 @@
 											<input type="hidden" id="info_${book.seq }" value="${book.info }"/>
 											<p class="info"></p>
 											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">장바구니에 담기</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
+												<li class="cart"><a href="javascript:void(0)">장바구니에 담기</a></li>
+												<li class="wishlist"><a href="javascript:void(0)"></a></li>
+												<li class="wishlist"><a href="javascript:void(0)"></a></li>
 											</ul>
 
 										</div>
@@ -396,11 +396,14 @@
 		$(function() {
 			$('#order_select').val($('#orderBy').val())
 			$('p.info').each(function () {
-				$(this).text(removeTag($(this).prev().val()).substr(0,200) + '...');
+				$(this).text(removeTag($(this).parent().find('input[type=hidden]').val()).substr(0,200) + '...');
 			})
 			
-			$('#slider-range').slider("value", [1000, 2000]);
-		})
+			// 가격 검색 슬라이더 세팅 (초기값은 Shop서비스에서 1,000~100,000으로 설정됨)
+			$('#slider-range').slider("values", [${min},${max}]);
+			$('#amount').val('' + setComma($('#slider-range').slider('values', 0)) +
+			        "원 ~ " + setComma($('#slider-range').slider('values', 1)) + '원');
+		});
 		
 		function removeTag(str){
 			return str.replace(/(<([^>]+)>)/ig,"");
