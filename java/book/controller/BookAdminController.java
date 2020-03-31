@@ -19,14 +19,13 @@ import book.service.BookAdminService;
 public class BookAdminController {
 	@Autowired
 	private BookAdminService bookAdminService;
-	
-	
-	
+		
 	@RequestMapping(value="admin_booklist", method=RequestMethod.GET)
 	public ModelAndView admin_booklist(@RequestParam(required=false, defaultValue="1") String pg) {
 		System.out.println(pg);
+		
 		List<BookDTO> list = bookAdminService.getAdminBookList(pg);
-
+		
 		AdminBookListPaging adminBookListPaging = bookAdminService.adminBookListPaging(pg);
 				
 		ModelAndView mav = new ModelAndView();

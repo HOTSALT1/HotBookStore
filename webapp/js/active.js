@@ -492,14 +492,15 @@
     $('#slider-range').slider({
         range: true,
         min: 1000,
-        max: 100000,
-        values: [7000, 20000],
+        max: 120000,
+        step: 1000,
+        values: [1000, 100000],
         slide: function(event, ui) {
-            $('#amount').val('' + ui.values[0] + '원 - ' + ui.values[1] + '원');
+            $('#amount').val('' + setComma(ui.values[0]) + '원 ~ ' + setComma(ui.values[1]) + '원');
         }
     });
-    $('#amount').val('' + $('#slider-range').slider('values', 0) +
-        "원 - " + $('#slider-range').slider('values', 1) + '원');
+    $('#amount').val('' + setComma($('#slider-range').slider('values', 0)) +
+        "원 ~ " + setComma($('#slider-range').slider('values', 1)) + '원');
 
 
 /*====== Dropdown ======*/
@@ -570,3 +571,30 @@
 
 })(jQuery);
 
+//---------- setComma ---------- 
+//숫자에 천단위 구분기호(,) 표시
+function setComma (value){
+ if (value == null || value == ""){
+     return value;
+ }
+ // 소수점 분리
+ var valueArr = value.toString().split(".");
+ var str = valueArr[0].toString();
+     str = str.replace ( /,/g ,'' );
+ var retValue = "";
+
+ for(var i = 1; i <= str.length; i++) {
+     if ( i > 1 && ( i % 3 ) == 1 )
+         retValue = str.charAt ( str.length - i ) + "," + retValue;
+     else
+         retValue = str.charAt ( str.length - i ) + retValue;
+ }
+ return retValue + (valueArr.length > 1 ? "." + valueArr[1] : "");
+}
+
+
+//---------- getNumbers ---------- 
+//문자열에서 숫자로 된 값만 추출
+function getNumbers(str){
+	return str.replace(/[^0-9]/g,"");
+}

@@ -106,7 +106,7 @@
 									</div>
 									<p>검색 결과: 총 ${totalA }개 중 <c:if test="${articles > 1}">1–${articles}</c:if><c:if test="${articles <= 1}">${articles }</c:if>개</p>
 									<div class="orderby__wrapper">
-										<span>정렬 기준</span>
+										<span>정렬 기준</span><input type="hidden" id="orderBy" value="${orderBy }" />
 										<select id="order_select" class="shot__byselect">
 											<option value="1">상품 등록일</option>
 											<option value="2">가격 오름차순</option>
@@ -126,9 +126,17 @@
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
 											<a class="first__img" href="single-product?book_id=${book.seq}" ><img
-													src="${book.img1 }" alt="product image"></a>
-											<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
+													src="${book.img1 }" alt="product image" style="min-height: 393px;"></a>
+											<c:if test="${book.img2 != null }">
+												<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
 													src="${book.img2 }" alt="product image"></a>
+											</c:if>
+											<c:if test="${book.img2 == null }">
+												<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img style="visibility:hidden;" 
+													src="${book.img1 }" alt="product image"></a>
+											</c:if>
+											<%-- <a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
+													src="${book.img2 }" alt="product image"></a> --%>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALLER</span>
 											</div>
@@ -158,11 +166,14 @@
 											</div>
 											<div class="product__hover--content">
 												<ul class="rating d-flex">
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li class="on"><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
-													<li><i class="fa fa-star-o"></i></li>
+													<c:forEach var="s" step="1" begin="1" end="5">
+													<c:if test="${(book.score / s) >= 1}">
+														<li class="on"><i class="fa fa-star"></i></li>
+													</c:if>
+													<c:if test="${(book.score / s) < 1}">
+														<li class=""><i class="fa fa-star-o"></i></li>
+													</c:if>
+												</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -180,34 +191,37 @@
 							</div>
 							<div class="shop-grid tab-pane fade" id="nav-list" role="tabpanel">
 								<div class="list__view__wrapper">
+									<c:set var="margin"></c:set>
+									<c:forEach var="book" items="${book_list }" varStatus="i">
 									<!-- Start Single Product -->
-									<div class="list__view">
+									<c:if test="${i.index > 0}"><c:set var="margin">mt--40</c:set></c:if>
+									<div class="list__view ${margin }">
 										<div class="thumb">
 											<a class="first__img" href="single-product?book_id=${book.seq}"><img
-													src="images/product/1.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/2.jpg" alt="product images"></a>
+													src="${book.img1 }" alt="${book.title }"></a>
+											<a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
+													src="${book.img2 }" alt="product images"></a>
 										</div>
 										<div class="content">
-											<h2><a href="single-product.html">Ali Smith</a></h2>
+											<h2><a href="single-product.html">${book.title}</a></h2>
 											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>	
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
+												<c:forEach var="s" step="1" begin="1" end="5">
+													<c:if test="${(book.score / s) >= 1}">
+														<li class="on"><i class="fa fa-star"></i></li>
+													</c:if>
+													<c:if test="${(book.score / s) < 1}">
+														<li class=""><i class="fa fa-star-o"></i></li>
+													</c:if>
+												</c:forEach>
 											</ul>
 											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
+												<li><fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></li>
+												<li class="old__prize"><fmt:formatNumber pattern="#,###원">${book.price }</fmt:formatNumber></li>
 											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
+											<input type="hidden" id="info_${book.seq }" value="${book.info }"/>
+											<p class="info"></p>
 											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
+												<li class="cart"><a href="cart.html">장바구니에 담기</a></li>
 												<li class="wishlist"><a href="cart.html"></a></li>
 												<li class="compare"><a href="cart.html"></a></li>
 											</ul>
@@ -215,145 +229,7 @@
 										</div>
 									</div>
 									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/2.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/4.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Blood In Water</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/3.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/6.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Madeness Overated</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/4.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/6.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Watching You</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-
-										</div>
-									</div>
-									<!-- End Single Product -->
-									<!-- Start Single Product -->
-									<div class="list__view mt--40">
-										<div class="thumb">
-											<a class="first__img" href="single-product.html"><img
-													src="images/product/5.jpg" alt="product images"></a>
-											<a class="second__img animation1" href="single-product.html"><img
-													src="images/product/9.jpg" alt="product images"></a>
-										</div>
-										<div class="content">
-											<h2><a href="single-product.html">Court Wings Run</a></h2>
-											<ul class="rating d-flex">
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li class="on"><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-											<ul class="prize__box">
-												<li>$111.00</li>
-												<li class="old__prize">$220.00</li>
-											</ul>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-												augue nec est tristique auctor. Donec non est at libero vulputate
-												rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi,
-												vulputate adipiscing cursus eu, suscipit id nulla.</p>
-											<ul class="cart__action d-flex">
-												<li class="cart"><a href="cart.html">Add to cart</a></li>
-												<li class="wishlist"><a href="cart.html"></a></li>
-												<li class="compare"><a href="cart.html"></a></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Product -->
+									</c:forEach>
 								</div>
 							</div>
 						</div>
@@ -434,12 +310,12 @@
 								<!-- Start product images -->
 								<div class="product-images">
 									<div class="main-image images">
-										<img alt="big images" src="images/product/big-img/1.jpg">
+										<img id="modal-img" alt="" src="images/product/big-img/1.jpg">
 									</div>
 								</div>
 								<!-- end product images -->
 								<div class="product-info">
-									<h1>Simple Fabric Bags</h1>
+									<h1 id="modal-title">Simple Fabric Bags</h1>
 									<div class="rating__and__review">
 										<ul class="rating">
 											<li><span class="ti-star"></span></li>
@@ -454,15 +330,15 @@
 									</div>
 									<div class="price-box-3">
 										<div class="s-price-box">
-											<span class="new-price">$17.20</span>
-											<span class="old-price">$45.00</span>
+											<span id="modal-d_price" class="new-price">$17.20</span>
+											<span id="modal-price" class="old-price">$45.00</span>
 										</div>
 									</div>
-									<div class="quick-desc">
+									<div id="modal-info" class="quick-desc">
 										Designed for simplicity and made from high quality materials. Its sleek geometry
 										and material combinations creates a modern look.
 									</div>
-									<div class="select__color">
+									<!-- <div class="select__color">
 										<h2>Select color</h2>
 										<ul class="color__list">
 											<li class="red"><a title="Red" href="#">Red</a></li>
@@ -480,8 +356,8 @@
 											<li class="xl__size"><a title="XL" href="#">XL</a></li>
 											<li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
 										</ul>
-									</div>
-									<div class="social-sharing">
+									</div> -->
+									<!-- <div class="social-sharing">
 										<div class="widget widget_socialsharing_widget">
 											<h3 class="widget-title-modal">Share this product</h3>
 											<ul class="social__net social__net--2 d-flex justify-content-start">
@@ -495,9 +371,9 @@
 															class="zmdi zmdi-tumblr"></i></a></li>
 											</ul>
 										</div>
-									</div>
+									</div> -->
 									<div class="addtocart-btn">
-										<a href="#">Add to cart</a>
+										<a href="#">장바구니에 추가</a>
 									</div>
 								</div>
 							</div>
@@ -516,6 +392,21 @@
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
 	<script src="js/shop-grid.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#order_select').val($('#orderBy').val())
+			$('p.info').each(function () {
+				$(this).text(removeTag($(this).prev().val()).substr(0,200) + '...');
+			})
+			
+			$('#slider-range').slider("value", [1000, 2000]);
+		})
+		
+		function removeTag(str){
+			return str.replace(/(<([^>]+)>)/ig,"");
+		}
+	
+	</script>
 
 </body>
 

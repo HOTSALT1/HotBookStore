@@ -1,19 +1,17 @@
 package shop.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import book.bean.BookDTO;
+import book.bean.BookDTO_list;
 import shop.service.ShopService;
 
 @Controller
@@ -24,7 +22,7 @@ public class ShopController {
 	@RequestMapping(value = "getBooks", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView getBooks(@RequestParam String pg, ModelAndView model) {
-		List<BookDTO> list = shopService.getBookList(pg);
+		List<BookDTO_list> list = shopService.getBookList(pg);
 		model.addObject("book_list", list);
 		model.setViewName("jsonView");
 		return model;
