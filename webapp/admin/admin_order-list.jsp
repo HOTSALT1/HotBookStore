@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>관리자 상품리스트 | Hot Book Store</title>
+<title>관리자 주문통합리스트 | Hot Book Store</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,8 +41,6 @@
 
 <body>
 	<!-- Main wrapper -->
-	<input type="hidden" id="pg" value="${pg }">
-	
 	<div class="wrapper" id="wrapper">
 	
 		<!-- Header -->
@@ -55,11 +53,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="bradcaump__inner text-center">
-							<h2 class="bradcaump-title">관리자 전용 상품리스트</h2>
+							<h2 class="bradcaump-title">관리자 전용 주문통합리스트</h2>
 							<nav class="bradcaump-content">
-								<a class="breadcrumb_item" href="../admin_index.jsp">상품</a> <span
+								<a class="breadcrumb_item" href="../admin_index.jsp">주문&배송</a> <span
 									class="brd-separetor">/</span> <span
-									class="breadcrumb_item active">상품리스트</span>
+									class="breadcrumb_item active">주문통합리스트 </span>
 							</nav>
 						</div>
 					</div>
@@ -80,58 +78,25 @@
 									<tr class="title-top">
 										<th class="product-remove"><input type="checkbox" name=""
 											id="chkAll" checked /></th>
-										<th class="product-id">번호</th>
-										<th class="product-thumbnail">이미지</th>
-										<th class="product-name">상품명</th>
-										<th class="product-price">정가</th>
-										<th class="product-price">할인가</th>
-										<th class="product-stock">재고</th>
-										<th class="product-logtime">등록일/수정일</th>
-										<th class="product-modify">수정</th>
-										<th class="product-remove">삭제</th>
+										<th class="">번호</th>
+										<th class="">주문일시</th>
+										<th class="">주문자</th>
+										<th class="">주문상품</th>
+										<th class="">총 상품금액</th>
+										<th class="">총 배송비</th>
+										<th class="">총 주문금액</th>
+										<th class="">결제상태</th>
+										<th class="">미배송</th>
+										<th class="">배송중</th>
+										<th class="">배송완료</th>
 									</tr>
 								</thead>
-								<tbody id="admin_booklistTable">
-									<c:forEach var="book" items="${list }" varStatus="i" begin="0">
+								
+								<tbody id="">
 										<tr>
 											<td class="product-remove" style="padding-left: 0px;"><input
 												type="checkbox" name="" id="chk_${i.index }"
 												style="width: 13px;" /></td>
-											<td class="product-id"><a href="">${book.seq }</a></td>
-
-											<td class="product-thumbnail"><a href="#"> <img
-													src="${book.img1 }" alt="product img"
-													style="height: 100px;"></a></td>
-
-											<td class="product-name"><a href="#">${book.title }<br />${book.subTitle }</a></td>
-											<!-- 정가  -->
-											<td class="product-price"><span
-												class="amount price_${book.seq }"> <fmt:formatNumber
-														pattern="#,###원">${book.price }</fmt:formatNumber></span></td>
-
-											<!-- 할인가  -->
-											<td class="product-price"><span
-												class="amount d_price_${book.seq }"> 
-												<fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></span></td>
-												
-											<!-- 재고  -->
-											<td class="product-stock"><span
-												class="stock_${book.stock }">${book.stock }</span></td>
-
-											<!-- 등록일/수정일  -->
-											<td class="product-logtime"><span
-												class="logtime_${book.logtime }">${book.logtime }</span></td>
-
-
-											<!-- 수정 -->
-											<td class="product-modify">
-											<input type="button" class="modify_${book.seq }" value="수정"></td>
-
-											<!-- 삭제 -->
-											<td class="product-remove">
-											<input type="button" class="remove_${book.seq }"  value="삭제"></td>
-										</tr>
-										</c:forEach>
 								</tbody>
 							</table>
 						
@@ -146,7 +111,7 @@
 			</div>
 						<ul class="wn__pagination">
 									<li class="active"><a href="#">1</a></li>
-									<li><a href="admin_booklist?pg="+pg>2</a></li>
+									<li><a href="">2</a></li>
 									<li><a href="#">3</a></li>
 									<li><a href="#">4</a></li>
 									<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
@@ -170,13 +135,7 @@
 	<script src="../js/active.js"></script>
 	<script src="../js/cart.js"></script>
 	<script src="../js/member.js"></script>
-	
-	<script>
-	function adminBookListPaging(pg){
-		location.href="admin_booklist?pg="+pg;
-	}
-	</script>
-		
+			
 
 </body>
 

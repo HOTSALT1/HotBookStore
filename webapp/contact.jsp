@@ -133,6 +133,23 @@
 										<p>hothotbookstore@gmail.com</p>
 									</div>
 								</div>
+								
+								<div class="single__address">
+									<i class="icon-envelope icons"></i>
+									<div class="content">
+										<span>카카오 채널추가 :</span>
+										<p id="kakao-add-channel-button"></p>
+									</div>
+								</div>
+								
+								<div class="single__address">
+									<i class="icon-envelope icons"></i>
+									<div class="content">
+										<span>카카오 채팅하기 :</span>
+										<p id="kakao-talk-channel-chat-button"></p>
+									</div>
+								</div>
+											
 
 								<div class="single__address">
 									<i class="icon-globe icons"></i>
@@ -141,6 +158,8 @@
 										<p>www.hotBookStore.com</p>
 									</div>
 								</div>
+								
+								
 
 							</div>
 						</div>
@@ -175,7 +194,21 @@
 	</script>
 
 	<script src="js/active.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	
+	<script type='text/javascript'>
+	    Kakao.init('d4035841e96f1ae2fa8311573900f322');
+	
+	    Kakao.Channel.createAddChannelButton({
+	      container: '#kakao-add-channel-button',
+	      channelPublicId: '_xlLWxnxb' 
+	    });
+	    
+	    Kakao.Channel.createChatButton({
+	    	  container: '#kakao-talk-channel-chat-button',
+	    	  channelPublicId: '_xlLWxnxb' 
+	    	});
+	</script>
 
 </body>
-
 </html>

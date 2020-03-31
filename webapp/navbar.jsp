@@ -44,13 +44,27 @@
 									
 								</li>
 								<!-- 리뷰게시판 -->
-								<li class="drop"><a href="shop-grid.html">베스트 셀러</a></li>
+								<li class="drop"><a href="shop-grid">베스트 셀러</a></li>
 								<!-- 리뷰게시판 -->
-								<li class="drop"><a href="#">신간</a></li>
+								<li class="drop"><a href="shop-grid">신간</a></li>
                                 <!-- 리뷰게시판 -->
-                                <li class="drop"><a href="#">리뷰게시판</a></li>
+                                <li class="drop"><a href="community-index.jsp">독서토론</a></li>
+                                <!-- 리뷰게시판 -->
+                                <li class="drop with--one--item"><a href="#">책방소개</a>
+									<div class="megamenu dropdown">
+										<ul class="item item01">
+                                			<li><a href="about.jsp">뜨거운 책방 소개</a></li>
+                                			<li><a href="contact.jsp">고객센터</a></li>
+                                			<li><a href="faq.html">자주 묻는 질문</a></li>
+										</ul>
+									</div>
+
+                                </li>
+                                <!-- 리뷰게시판 -->
+                                <li class="drop"><a href="review">리뷰게시판</a></li>
                                 <!-- 리뷰게시판 -->
                                 <li class="drop"><a href="#">책방소개</a></li>
+
 							</ul>
 						</nav>
 					</div>
@@ -149,7 +163,7 @@
 								<!-- End Shopping Cart -->
 								
 							</li>
-							<li class="h_top"><a href="#">고객센터</a></li>
+							<li class="h_top"><a href="contact.jsp">고객센터</a></li>
 							<li class="h_top"><a href="http://localhost:8080/hotSalt/admin/admin_index.jsp">관리자페이지</a></li>
 						</ul>
 					</div>

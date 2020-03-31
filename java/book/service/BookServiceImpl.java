@@ -16,4 +16,9 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.getBook(book_id);
 	}
 
+	@Override
+	public int getScore(String book_id) {
+		return bookDAO.getScore(book_id);
+	}
+
 }
