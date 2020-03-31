@@ -31,4 +31,9 @@ public class BookAdminDAOMybatis implements BookAdminDAO {
 		return sqlSession.selectOne("bookSQL.getBookListTotalA");
 	}
 
+	@Override
+	public void bookModify(Map<String, String> map) {
+		sqlSession.update("bookSQL.bookModify", map);		
+	}
+
 }

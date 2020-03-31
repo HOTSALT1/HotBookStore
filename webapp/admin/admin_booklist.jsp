@@ -42,6 +42,8 @@
 <body>
 	<!-- Main wrapper -->
 	<input type="hidden" id="pg" value="${pg }">
+	<input type="hidden" name="book_id" id="book_id" value="${seq }">
+	
 	
 	<div class="wrapper" id="wrapper">
 	
@@ -103,7 +105,7 @@
 													src="${book.img1 }" alt="product img"
 													style="height: 100px;"></a></td>
 
-											<td class="product-name"><a href="boardModifyForm?book_id=${book.seq}">${book.title }<br />${book.subTitle }</a></td>
+											<td class="product-name"><a href="admin_bookModifyForm?book_id=${book.seq}">${book.title }<br />${book.subTitle }</a></td>
 											<!-- 정가  -->
 											<td class="product-price"><span
 												class="amount price_${book.seq }"> <fmt:formatNumber

@@ -13,4 +13,6 @@ public interface BookAdminDAO {
 
 	public int getBookListTotalA();
 
+	public void bookModify(Map<String, String> map);
+
 }
