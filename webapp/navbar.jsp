@@ -58,7 +58,13 @@
                                 			<li><a href="faq.html">자주 묻는 질문</a></li>
 										</ul>
 									</div>
-								</li>
+
+                                </li>
+                                <!-- 리뷰게시판 -->
+                                <li class="drop"><a href="review">리뷰게시판</a></li>
+                                <!-- 리뷰게시판 -->
+                                <li class="drop"><a href="#">책방소개</a></li>
+
 							</ul>
 						</nav>
 					</div>
