@@ -81,28 +81,30 @@
 						<div class="contact-form-wrap">
 							<h2 class="contact__title">Get in touch</h2>
 							<p>뜨거운 책방에 제안할 의견 또는 불편사항이 있다면 접수해주세요.<br>보내주신 의견은 모두 서비스 개선을 위해 소중히 활용되고 있습니다.</p>
-							<form id="contact-form" action="" method="post">
+							 <form id="contact-form" class="gform pure-form pure-form-stacked" method="POST" data-email="hothotbookstore@gmail.com"
+  action="https://script.google.com/macros/s/AKfycbzzC3GdKWzIK-41UP7000qr6hKLqJF3kFaCU9vu/exec">
+							
 								<div class="single-contact-form space-between">
-									<input type="text" name="lastname" placeholder="성*">
-									<input type="text" name="firstname" placeholder="이름*">
+									<input type="text" name="name" id="name" placeholder="이름*">
 								</div>
 								<div class="single-contact-form space-between">
 									<input type="email" name="email" placeholder="이메일 주소*">
 								</div>
 								<div class="single-contact-form">
-									<input type="text" name="subject" placeholder="제목*">
+									<input type="text" id="subject" name="subject" placeholder="제목*">
 								</div>
 								<div class="single-contact-form message">
-									<textarea name="message" placeholder="메세지를 입력해주세요.."></textarea>
+									<textarea  id="message" name="message" placeholder="메세지를 입력해주세요.."></textarea>
 								</div>
 								<div class="contact-btn">
 									<button id="sendEmail">이메일 보내기</button>
 								</div>
 							</form>
 						</div>
-						<!-- <div class="form-output">
-							<p class="form-messege">
-						</div> -->
+						<div style="display:none" class="thankyou_message">
+							 <h2><em>이메일 보내기 완료</em>  소중한 의견 감사합니다
+							 </h2>
+						</div>
 					</div>
 					<div class="col-lg-4 col-12 md-mt-40 sm-mt-40">
 						<div class="wn__address">
@@ -173,16 +175,15 @@
 	</div>
 	<!-- //Main wrapper -->
 
-	<!-- JS Files -->
 	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
+	<script src="js/contact.js"></script>
 	
-
 	
-	<!--  카카오맵 js -->
+		<!--  카카오맵 js -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d4035841e96f1ae2fa8311573900f322"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -210,13 +211,25 @@
 	    	  channelPublicId: '_xlLWxnxb' 
 	    	});
 	</script>
-	
+	<script data-cfasync="false" type="text/javascript"
+src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 	<script type="text/javascript">
 	$('#sendEmail').click(function(){
-		alert('이메일 보내기 완료! 소중한 의견 감사합니다');
+		
+		$('#name').empty();
+		$('#email').empty();
+		$('#subject').empty();
+		$('#message').empty();
+		
+		if($('#name').val()==''||$('#email').val()==''||$('#subject').val()==''||$('#message').val()==''){
+			alert('모든 항목을 입력해주세요');
+		}else{
+			alert('이메일 보내기 완료! 소중한 의견 감사합니다');			
+		}
 	});
 	
-	</script>
+	</script> 
+
 
 </body>
 </html>
