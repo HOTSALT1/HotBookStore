@@ -28,6 +28,10 @@ public interface MemberDAO {
 
 	public void e_verify(String email);
 
+	public MemberDTO member_findPwd(Map<String, String> map);
+
+	public void member_modifyPwd(Map<String, String> map);
+
 
 
 }

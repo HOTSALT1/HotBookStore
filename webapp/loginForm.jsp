@@ -26,9 +26,9 @@
         <div style="margin-top: 3px;">
         	<span class="login-span" style="display:inline-block; margin-left: 3px;"><a href="signup_agreement">회원가입</a></span>
         	<span class="login-span" style="display:inline-block; float: right; margin-right: 3px;">
-        		<a href="idFind.jsp" id="idfind">아이디</a>
+        		<a href="member_findId.jsp" id="idfind">아이디</a>
         			<span style="color :gray;">/</span>
-				<a href="#">비밀번호 찾기</a>
+				<a href="member_findPwd.jsp">비밀번호 찾기</a>
 			</span>
         </div>
         <div class="login-text">

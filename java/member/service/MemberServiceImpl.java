@@ -183,7 +183,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return buffer.toString();
 	}
-
+	//관리자 회원목록
 	@Override
 	public ModelAndView member_list(ModelAndView mav) {
 		List<MemberDTO> list = memberDAO.member_list();
@@ -201,6 +201,34 @@ public class MemberServiceImpl implements MemberService {
 		return "fail";
 
 	}
+
+	@Override
+	public ModelAndView member_findPwd(Map<String, String> map, ModelAndView mav) {
+		MemberDTO memberDTO = memberDAO.member_findPwd(map);
+		System.out.println(map);
+		System.out.println(memberDTO);
+		if(memberDTO==null) {
+			mav.addObject("result","false");
+		}else {
+			mav.addObject("id", map.get("id"));
+			mav.addObject("email", map.get("email"));
+			mav.setViewName("jsonView");
+		}
+		return mav;	
+	}
+
+	
+	public String member_modifyPwd(Map<String, String> map, BCryptPasswordEncoder pwdEncoder) {
+		String inputPass = map.get("pwd");
+		String pwd = pwdEncoder.encode(inputPass);
+		//session.invalidate();
+		map.put("pwd",pwd);
+		memberDAO.member_modifyPwd(map);	
+		
+		return "succes";
+
+	}
+	
 }
 
 

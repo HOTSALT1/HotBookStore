@@ -163,7 +163,7 @@ function chkValidate(selected) {
 				dataType : 'text',
 				success : function(data){
 					if(data!='false'){
-						$('#check-mail').text('이 이메일는 사용불가능합니다');
+						$('#check-mail').text('이 이메일은 사용불가능합니다');
 					}else{
 						$('#check-mail').text('이 이메일은 사용가능합니다');
 					}
@@ -210,7 +210,7 @@ function writeCheckAll(){
 
 $('#write-button').click(function(){
 	if(chk){
-		alert(chk)
+		//alert(chk)
 		if($('#birthMonth').val().length==1){
 			$('#birthMonth').val('0'+$('#birthMonth').val())
 		}
@@ -220,7 +220,6 @@ $('#write-button').click(function(){
 		$('#birth').val(birth)
 		$('#email').val(email)
 		/* 회원가입 db데이터 넣기 */
-		alert($('#writeForm').serialize());
 		$.ajax({
 			type : 'POST',
 			url : '/hotSalt/signup',
