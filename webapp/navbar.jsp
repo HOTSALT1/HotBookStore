@@ -7,15 +7,15 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<div class="logo">
-							<a href="index">
-								<img src="images/logo-white.png" alt="logo images">
+							<a href="/hotSalt/index">
+								<img src="/hotSalt/images/logo-white.png" alt="logo images">
 							</a>
 						</div>
 					</div>
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="shop-grid">카테고리</a>
+								<li class="drop with--one--item"><a href="/hotSalt/shop-grid">카테고리</a>
 									<div class="megamenu mega02">
 										<ul class="item item02 cate1">
 											<li><a href="javascript:void(0)">국어 외국어 사전</a></li>
@@ -44,28 +44,28 @@
 									
 								</li>
 								<!-- 베스트 셀러 -->
-								<li class="drop"><a href="shop-grid">베스트 셀러</a></li>
+								<li class="drop"><a href="/hotSalt/shop-grid">베스트 셀러</a></li>
 								<!-- 신간 -->
-								<li class="drop"><a href="shop-grid">신간</a></li>
+								<li class="drop"><a href="/hotSalt/shop-grid">신간</a></li>
                                 <!-- 독서토론 -->
                                 	<li class="drop"><a href="#">책방 커뮤니티</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="about.html">책방 커뮤니티</a></li>
-											<li class="label2"><a href="portfolio.html">커뮤니티</a>
+											<li><a href="/hotSalt/about.html">책방 커뮤니티</a></li>
+											<li class="label2"><a href="/hotSalt/portfolio.html">커뮤니티</a>
 												<ul>
-													<li><a href="portfolio.html">공지사항</a></li>
-													<li><a href="portfolio-three-column.html">리뷰게시판</a></li>												
-													<li><a href="portfolio-details.html">Portfolio Details</a></li>
+													<li><a href="/hotSalt/portfolio.html">공지사항</a></li>
+													<li><a href="/hotSalt/portfolio-three-column.html">리뷰게시판</a></li>												
+													<li><a href="/hotSalt/portfolio-details.html">Portfolio Details</a></li>
 												</ul>
 											</li>
-											<li><a href="my-account.html">My Account</a></li>
-											<li><a href="cart.html">Cart Page</a></li>
-											<li><a href="checkout.html">Checkout Page</a></li>
-											<li><a href="wishlist.html">Wishlist Page</a></li>
-											<li><a href="error404.html">404 Page</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="team.html">Team Page</a></li>
+											<li><a href="/hotSalt/my-account.html">My Account</a></li>
+											<li><a href="/hotSalt/cart.html">Cart Page</a></li>
+											<li><a href="/hotSalt/checkout.html">Checkout Page</a></li>
+											<li><a href="/hotSalt/wishlist.html">Wishlist Page</a></li>
+											<li><a href="/hotSalt/error404.html">404 Page</a></li>
+											<li><a href="/hotSalt/faq.html">Faq Page</a></li>
+											<li><a href="/hotSalt/team.html">Team Page</a></li>
 										</ul>
 									</div>
 								</li>
@@ -74,9 +74,9 @@
                                 <li class="drop with--one--item"><a href="#">책방소개</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-                                			<li><a href="about.jsp">뜨거운 책방 소개</a></li>
-                                			<li><a href="contact.jsp">고객센터</a></li>
-                                			<li><a href="faq.html">자주 묻는 질문</a></li>
+                                			<li><a href="/hotSalt/about.jsp">뜨거운 책방 소개</a></li>
+                                			<li><a href="/hotSalt/contact.jsp">고객센터</a></li>
+                                			<li><a href="/hotSalt/faq.html">자주 묻는 질문</a></li>
 										</ul>
 									</div>
 
@@ -88,8 +88,8 @@
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<c:if test="${sessionScope.memId== null }">
-								<li style="min-width: 50px;"class="h_top"><a href="loginForm">로그인</a></li>
-								<li class="h_top"><a href="signup_agreement">회원가입</a></li>
+								<li style="min-width: 50px;"class="h_top"><a href="/hotSalt/loginForm">로그인</a></li>
+								<li class="h_top"><a href="/hotSalt/signup_agreement">회원가입</a></li>
 							</c:if>
 							<c:if test="${sessionScope.memId !=null }">
 								<li class="h_top"><a href="#" id="logout">로그아웃</a></li>
@@ -107,7 +107,7 @@
 														<span><a href="#">주문내역</a></span>
 														<span><a href="#">장바구니</a></span>
 														<span><a href="#">적립금</a></span>
-														<span><a href="mypage_pwd_chk.jsp">회원정보</a></span>
+														<span><a href="/hotSalt/mypage_pwd_chk.jsp">회원정보</a></span>
 													</div>
 												</div>
 											</div>
@@ -141,7 +141,7 @@
 											<span id="d_price"><fmt:formatNumber pattern="#,###원">${d_price }</fmt:formatNumber></span>
 										</div>
 										<div class="mini_action checkout">
-											<a class="checkout__btn" href="cart.html">주문하기</a>
+											<a id="checkout_all" class="checkout__btn" href="javascript:void(0)">주문하기</a>
 										</div>
 										<div class="single__items">
 											<div class="miniproduct">
@@ -150,12 +150,12 @@
 												<c:if test="${i.index > 0 }"><c:set var="gap">mt--20</c:set></c:if>
 												<div id="book_id_${book.seq }" class="item01 d-flex ${gap }">
 													<div class="thumb">
-														<a href="product-details.html"><img
+														<a href="/hotSalt/product-details.html"><img
 																src="${book.img1 }"
 																alt="${book.title }"></a>
 													</div>
 													<div class="content">
-														<h6><a href="product-details.html">${book.title }</a></h6>
+														<h6><a href="/hotSalt/product-details.html">${book.title }</a></h6>
 														<span id="d_price_${book.seq }" class="prize"><fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></span>
 														<div class="product_prize d-flex justify-content-between">
 															<span id="qty_${book.seq }" class="qun">수량: ${cart_list[i.index].qty }</span>
@@ -173,14 +173,14 @@
 											</div>
 										</div>
 										<div class="mini_action cart">
-											<a class="cart__btn" href="cart">View and edit cart</a>
+											<a class="cart__btn" href="/hotSalt/cart">내 장바구니</a>
 										</div>
 									</div>
 								</div>
 								<!-- End Shopping Cart -->
 								
 							</li>
-							<li class="h_top"><a href="contact.jsp">고객센터</a></li>
+							<li class="h_top"><a href="/hotSalt/contact.jsp">고객센터</a></li>
 							<li class="h_top"><a href="http://localhost:8080/hotSalt/admin/admin_index.jsp">관리자페이지</a></li>
 						</ul>
 					</div>
@@ -190,52 +190,52 @@
 					<div class="col-lg-12 d-none">
 						<nav class="mobilemenu__nav">
 							<ul class="meninmenu">
-								<li><a href="index.html">Home</a>
+								<li><a href="/hotSalt/index">Home</a>
 									<ul>
-										<li><a href="index.html">Home Style Default</a></li>
-										<li><a href="index-2.html">Home Style Two</a></li>
-										<li><a href="index-3.html">Home Style Three</a></li>
-										<li><a href="index-box.html">Home Box Style</a></li>
+										<li><a href="/hotSalt/index.html">Home Style Default</a></li>
+										<li><a href="/hotSalt/index-2.html">Home Style Two</a></li>
+										<li><a href="/hotSalt/index-3.html">Home Style Three</a></li>
+										<li><a href="/hotSalt/index-box.html">Home Box Style</a></li>
 									</ul>
 								</li>
 								<li><a href="#">Pages</a>
 									<ul>
-										<li><a href="about.html">About Page</a></li>
-										<li><a href="portfolio.html">Portfolio</a>
+										<li><a href="/hotSalt/about.html">About Page</a></li>
+										<li><a href="/hotSalt/portfolio.html">Portfolio</a>
 											<ul>
-												<li><a href="portfolio.html">Portfolio</a></li>
-												<li><a href="portfolio-three-column.html">Portfolio 3 Column</a></li>
-												<li><a href="portfolio-details.html">Portfolio Details</a></li>
+												<li><a href="/hotSalt/portfolio.html">Portfolio</a></li>
+												<li><a href="/hotSalt/portfolio-three-column.html">Portfolio 3 Column</a></li>
+												<li><a href="/hotSalt/portfolio-details.html">Portfolio Details</a></li>
 											</ul>
 										</li>
-										<li><a href="my-account.html">My Account</a></li>
-										<li><a href="cart.html">Cart Page</a></li>
-										<li><a href="checkout.html">Checkout Page</a></li>
-										<li><a href="wishlist.html">Wishlist Page</a></li>
-										<li><a href="error404.html">404 Page</a></li>
-										<li><a href="faq.html">Faq Page</a></li>
-										<li><a href="team.html">Team Page</a></li>
+										<li><a href="/hotSalt/my-account.html">My Account</a></li>
+										<li><a href="/hotSalt/cart.html">Cart Page</a></li>
+										<li><a href="/hotSalt/checkout.html">Checkout Page</a></li>
+										<li><a href="/hotSalt/wishlist.html">Wishlist Page</a></li>
+										<li><a href="/hotSalt/error404.html">404 Page</a></li>
+										<li><a href="/hotSalt/faq.html">Faq Page</a></li>
+										<li><a href="/hotSalt/team.html">Team Page</a></li>
 									</ul>
 								</li>
-								<li><a href="shop-grid.html">Shop</a>
+								<li><a href="/hotSalt/shop-grid.html">Shop</a>
 									<ul>
-										<li><a href="shop-grid.html">Shop Grid</a></li>
-										<li><a href="shop-list.html">Shop List</a></li>
-										<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-										<li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-										<li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
+										<li><a href="/hotSalt/shop-grid.html">Shop Grid</a></li>
+										<li><a href="/hotSalt/shop-list.html">Shop List</a></li>
+										<li><a href="/hotSalt/shop-left-sidebar.html">Shop Left Sidebar</a></li>
+										<li><a href="/hotSalt/shop-right-sidebar.html">Shop Right Sidebar</a></li>
+										<li><a href="/hotSalt/shop-no-sidebar.html">Shop No sidebar</a></li>
+										<li><a href="/hotSalt/single-product.html">Single Product</a></li>
 									</ul>
 								</li>
-								<li><a href="blog.html">Blog</a>
+								<li><a href="/hotSalt/blog.html">Blog</a>
 									<ul>
-										<li><a href="blog.html">Blog Page</a></li>
-										<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-										<li><a href="blog-no-sidebar.html">Blog No Sidebar</a></li>
-										<li><a href="blog-details.html">Blog Details</a></li>
+										<li><a href="/hotSalt/blog.html">Blog Page</a></li>
+										<li><a href="/hotSalt/blog-left-sidebar.html">Blog Left Sidebar</a></li>
+										<li><a href="/hotSalt/blog-no-sidebar.html">Blog No Sidebar</a></li>
+										<li><a href="/hotSalt/blog-details.html">Blog Details</a></li>
 									</ul>
 								</li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="/hotSalt/contact.html">Contact</a></li>
 							</ul>
 						</nav>
 					</div>

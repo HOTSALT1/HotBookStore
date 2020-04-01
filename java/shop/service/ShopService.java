@@ -14,6 +14,6 @@ public interface ShopService {
 	
 	public ModelAndView getBooks(ModelAndView mav, Map<String, Object> map);
 	
-	public ModelAndView getDPBooks(ModelAndView mav, String cate2, int count, OrderBy orderBy, String list_name);
+	public ModelAndView getDPBooks(ModelAndView mav, String cate1, String cate2, int count, OrderBy orderBy, String list_name);
 
 }

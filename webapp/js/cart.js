@@ -196,6 +196,14 @@ $('a#checkout').click(function() {
 	goCheckout(items);
 })
 
+// 상단 메뉴바에서 장바구니에 있는 상품 주문하기 버튼 클릭시
+$('a#checkout_all').click(function() {
+	if(confirm("장바구니에 담긴 상품들을 바로 주문합니다. 확인 버튼을 누르시면 결제 페이지로 이동합니다.")){
+		location.href="/hotSalt/checkout_all"
+	}
+})
+
+
 // 바로주문 버튼 클릭시
 $('a[id^=buy1_], a[id^=buy2_], .modal-buy').click(function() {
 	if(!confirm("해당 상품을 바로 구매하시겠습니까? (확인을 클릭하시면 구매 페이지로 이동합니다.")){

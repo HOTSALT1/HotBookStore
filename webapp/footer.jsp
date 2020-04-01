@@ -58,14 +58,14 @@ footer a:hover {text-decoration: none;}
 	        <span class="footer-menu"><a href="#">고객센터</a></span>
 	        
 	        <span class="footer-sns">
-	        <a href="#" style="width: 30px; height: 30px; background-image: url(img/kakaotalk.png)"></a>
-	        <a href="#" style="width: 30px; height: 30px; background-image: url(img/instar.png)"></a> 
-	        <a href="#" style="width: 30px; height: 30px; background-image: url(img/facebook.png)"></a>
-	        <a href="#" style="width: 30px; height: 30px; background-image: url(img/twitter.png)"></a>
+	        <a href="#" style="width: 30px; height: 30px; background-image: url(/hotSalt/img/kakaotalk.png)"></a>
+	        <a href="#" style="width: 30px; height: 30px; background-image: url(/hotSalt/img/instar.png)"></a> 
+	        <a href="#" style="width: 30px; height: 30px; background-image: url(/hotSalt/img/facebook.png)"></a>
+	        <a href="#" style="width: 30px; height: 30px; background-image: url(/hotSalt/img/twitter.png)"></a>
 	        </span>
 	    </div>
 	    <div class="footer-con">
-	    	<div class="footer-con-img"><img src="img/footerlogo-03.png"></div>
+	    	<div class="footer-con-img"><img src="/hotSalt/img/footerlogo-03.png"></div>
 		    <div class="footer-con-name">
 		    	<span style="display: inline-block; margin-bottom: 2px; font-weight: 600; font-size: 16px;">HOT BOOK STORE</span><br>
 		    	<span>서울특별시 서초구 서초대로74길33 비트빌 3층</span>

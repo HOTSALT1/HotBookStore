@@ -22,8 +22,8 @@ public class IndexController {
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public ModelAndView index1(ModelAndView mav) {
 		orderService.loadCart(mav);
-		shopService.getDPBooks(mav, "best", 12, OrderBy.SCORE, "best_book_list");
-		shopService.getDPBooks(mav, "new", 6, OrderBy.P_DATE ,"new_book_list");
+		shopService.getDPBooks(mav, "all", "best", 12, OrderBy.SCORE, "best_book_list");
+		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE ,"new_book_list");
 		mav.setViewName("/index0");
 		return mav;
 	}

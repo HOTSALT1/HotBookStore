@@ -47,11 +47,6 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	HttpServletResponse response;
 
-	@Override
-	public List<String> test() {
-		return orderDAO.test();
-	}
-
 	/* 선택된 상품을 장바구니에 추가하거나 수량을 업데이트하는 메소드 */
 	@Override
 	public String addToCart(Map<String, String> map) {
@@ -192,6 +187,20 @@ public class OrderServiceImpl implements OrderService {
 		if(result > 0) return "true";
 		else return "error";
 	}
+	
+	@Override
+	public void addCheckout_all() {
+		List<ViewCartDTO> checkout_list = new ArrayList<ViewCartDTO>();
+		
+		// 회원 구매시
+		if(session.getAttribute("memId")!=null) {
+			checkout_list = orderDAO.getCart((String)session.getAttribute("memId")); 
+		}else {
+		// 비회원 구매시
+			checkout_list = getCartInCookies();
+		}
+		checkout_setting(checkout_list);
+	}
 
 	/* 구매 버튼 클릭시 구매할 cart_id 리스트를 세션에 임시 저장 */
 	@Override
@@ -214,8 +223,17 @@ public class OrderServiceImpl implements OrderService {
 					}
 				}
 			}
+			if(checkout_list.size() == 0) {
+				ViewCartDTO viewCartDTO = new ViewCartDTO();
+				viewCartDTO.setBook_id(Integer.parseInt(list.get(0).get("book_id")));
+				viewCartDTO.setQty(Integer.parseInt(list.get(0).get("qty")));
+				checkout_list.add(viewCartDTO);
+			}
 		}
-		
+		checkout_setting(checkout_list);
+	}
+	
+	public void checkout_setting(List<ViewCartDTO> checkout_list) {
 		List<BookDTO> book_list = orderDAO.getBooksByViewCart(checkout_list);
 		
 		for(int i = 0; i < book_list.size(); i++) {
@@ -239,7 +257,6 @@ public class OrderServiceImpl implements OrderService {
 		
 		session.setAttribute("order_id", "hotSalt_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		session.setAttribute("order_price", order_price);
-		
 	}
 	
 	/* 장바구니 거치지 않고 바로 구매시 */
@@ -301,7 +318,7 @@ public class OrderServiceImpl implements OrderService {
 			int status = (Integer) result.get("status");
 			String order_id = (String) (result_data.get("order_id"));
 			int order_price = (Integer) result_data.get("price");
-			List<CartDTO> checkout_list = (List<CartDTO>) session.getAttribute("cart_checkout");
+			List<ViewCartDTO> checkout_list = (List<ViewCartDTO>) session.getAttribute("cart_checkout");
 			
 			// order_list 테이블에 등록하기 위해 Map 생성
 			Map<String, Object> order_listMap = new HashMap<String, Object>();
@@ -344,11 +361,13 @@ public class OrderServiceImpl implements OrderService {
 				// 비회원이면 
 				}else {
 					// 구매 내역을 쿠키의 장바구니 데이터에서 삭제
-					for(CartDTO cart: checkout_list) {
-						Cookie cookie = new Cookie("cart_" + cart.getBook_id(), "0");
-						cookie.setPath("/");
-						cookie.setMaxAge(0); // 쿠키에서 삭제
-						response.addCookie(cookie);
+					if(checkout_list != null && checkout_list.size()>0) {
+						for(ViewCartDTO cart: checkout_list) {
+							Cookie cookie = new Cookie("cart_" + cart.getBook_id(), "0");
+							cookie.setPath("/");
+							cookie.setMaxAge(0); // 쿠키에서 삭제
+							response.addCookie(cookie);
+						}
 					}
 				}
 				// book_order 테이블에 등록
@@ -361,7 +380,8 @@ public class OrderServiceImpl implements OrderService {
 				
 				// order_listMap에 정상 결제되었음을 알리는 note 추가
 				order_listMap.put("note", "정상 결제");
-				
+				mav.setViewName("/order_confirmed");
+				mav.addObject("order_id", order_id);
 			}else {
 			// 비정상적인 결제시 취소 처리
 				System.out.println("주문번호: " + order_id);
@@ -374,6 +394,9 @@ public class OrderServiceImpl implements OrderService {
 				
 				order_listMap.put("status", "결제취소");
 				order_listMap.put("note", "결제 금액 불일치");
+				
+				mav.setViewName("/order_canceled");
+				mav.addObject("order_id", "결제 금액 불일치");
 			}
 			
 			// user_id를 추가하여 내역을 order_list 테이블에 등록
@@ -383,7 +406,7 @@ public class OrderServiceImpl implements OrderService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		mav.setViewName("/verify");
+		
 		return mav;
 	}
 	
@@ -408,6 +431,6 @@ public class OrderServiceImpl implements OrderService {
 		mav.addObject("order_list",orderDAO.admin_order_list());
 		return mav;
 	}
-	
+
 }
 
