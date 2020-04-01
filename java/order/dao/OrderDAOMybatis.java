@@ -20,11 +20,6 @@ public class OrderDAOMybatis implements OrderDAO {
 	private SqlSession session;
 	
 	@Override
-	public List<String> test() {
-		return session.selectList("orderSQL.test");
-	}
-
-	@Override
 	public String getCartId(Map<String, String> map) {
 		return session.selectOne("orderSQL.getCartId", map);
 	}
@@ -43,7 +38,7 @@ public class OrderDAOMybatis implements OrderDAO {
 	public List<ViewCartDTO> getCart(String memId) {
 		return session.selectList("orderSQL.getCart", memId);
 	}
-
+	
 	@Override
 	public BookDTO getBook(int book_id) {
 		return session.selectOne("shopSQL.getBook", book_id);
@@ -83,6 +78,5 @@ public class OrderDAOMybatis implements OrderDAO {
 	public List<OrderDTO> admin_order_list() {
 		return session.selectList("orderSQL.admin_order_list");
 	}
-	
-	
+
 }

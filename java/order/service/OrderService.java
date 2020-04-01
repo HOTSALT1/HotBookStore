@@ -10,8 +10,6 @@ import order.bean.ViewCartDTO;
 
 public interface OrderService {
 
-	public List<String> test();
-
 	public String addToCart(Map<String, String> map);
 
 	public List<ViewCartDTO> getCart(String memId);
@@ -31,5 +29,7 @@ public interface OrderService {
 	public void checkoutDirect(List<Map<String, String>> list);
 
 	public ModelAndView admin_order_list(ModelAndView model);
+
+	public void addCheckout_all();
 
 }
