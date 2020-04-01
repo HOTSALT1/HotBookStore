@@ -35,6 +35,14 @@ public class OrderController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/checkout_all", method = RequestMethod.GET)
+	public ModelAndView checkout_all(ModelAndView model) {
+		orderService.loadCart(model);
+		orderService.addCheckout_all();
+		model.setViewName("/checkout");
+		return model;
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
 	public String addCheckout(@RequestBody List<Map<String, String>> list) {
@@ -73,7 +81,9 @@ public class OrderController {
 	
 	@RequestMapping(value = "/verify/{receipt_id}", method = RequestMethod.GET)
 	public ModelAndView verify(ModelAndView model, @PathVariable String receipt_id) {
-		return orderService.verify(model, receipt_id);
+		orderService.verify(model, receipt_id);
+		orderService.loadCart(model);
+		return model;
 	}
 	
 	@ResponseBody
