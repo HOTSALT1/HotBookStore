@@ -19,8 +19,6 @@ $('#pwd').keyup(function(){
 		}else{
 			$('#pwd-chk').text('')
 	}
-
-	
 })
 
 $('#repwd').keyup(function(){
@@ -39,7 +37,7 @@ $('#modify-btn').click(function(){
 	if(chk==true){
 		$.ajax({
 			type : 'post',
-			data : {'id':$('#id').val(), 'pwd' : $('#pwd').val(), 'zipcode' : $('#zipcode').val(), 'addr1':$('#addr1').val(), 'addr2':$('#addr2').val(), 'addr3':$('#addr3').val() },
+			data : {'id':$('#id').val(), 'pwd' : $('#pwd').val(), 'zipcode' : $('#zipcode').val(), 'addr1':$('#addr1').val(), 'addr2':$('#addr2').val(), 'addr3':$('#addr3').val()},
 			url : '/hotSalt/member_modify',
 			dataType : 'text',
 			success : function(data){
