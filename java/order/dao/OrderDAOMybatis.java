@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import book.bean.BookDTO;
 import order.bean.CartDTO;
+import order.bean.OrderDTO;
 import order.bean.ViewCartDTO;
 
 @Repository
@@ -76,6 +77,11 @@ public class OrderDAOMybatis implements OrderDAO {
 	@Override
 	public List<BookDTO> getBooksByViewCart(List<ViewCartDTO> list) {
 		return session.selectList("orderSQL.getBooksByViewCart", list);
+	}
+
+	@Override
+	public List<OrderDTO> admin_order_list() {
+		return session.selectList("orderSQL.admin_order_list");
 	}
 	
 	

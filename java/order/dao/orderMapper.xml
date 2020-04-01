@@ -66,4 +66,24 @@
 			VALUES(#{order_id}, #{user_id}, #{price}, #{name}, #{pg_name}, #{method}, #{method_name}, #{status}, #{receipt_id}, #{payment_data}, #{tax_ref}, #{note})
 	</insert>
 	
+	
+	
+	
+	<!-- 관리자 페이지용 -->
+	<!-- order_list 테이블에서 데이터를 가져오는 쿼리 -->
+	<select id="admin_order_list" resultType="order.bean.OrderDTO" parameterType="java.util.Map">
+		SELECT * FROM order_list 
+			WHERE user_id LIKE '%' || #{user_id} || '%' 
+				<if test='method != null'>
+					AND method = #{method} 
+				</if>
+				<if test='status != null'>
+					AND status = #{status} 
+				</if>
+				<if test='tax_ref != null and tax_ref == true'>
+					AND tax_ref IS NOT null  
+				</if>
+		ORDER BY order_id DESC
+	</select>
+	
 </mapper>

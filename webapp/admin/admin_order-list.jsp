@@ -35,6 +35,8 @@
 <!-- Cusom css -->
 <link rel="stylesheet" href="../css/custom.css">
 
+<script src="../js/vendor/jquery-3.2.1.min.js"></script>
+
 <!-- Modernizer js -->
 <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
@@ -91,12 +93,15 @@
 										<th class="">배송완료</th>
 									</tr>
 								</thead>
-								
 								<tbody id="">
+									<c:forEach items="order_list" var="order">
 										<tr>
 											<td class="product-remove" style="padding-left: 0px;"><input
 												type="checkbox" name="" id="chk_${i.index }"
 												style="width: 13px;" /></td>
+											<td>${order.logtime }</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						
@@ -128,7 +133,6 @@
 	<!-- //Main wrapper -->
 
 	<!-- JS Files -->
-	<script src="../js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/plugins.js"></script>
