@@ -75,7 +75,7 @@
 							<button data-filter=".cat--5">책 뉴스</button>
 							<button data-filter=".cat--6">행사 안내</button>
 							<button data-filter=".cat--7">서비스 홍보</button>
-							<button onclick=>글 적기</button>
+							<button onclick=>자유로운 글 작성</button>
 						</div>
 					</div>
 				</div>

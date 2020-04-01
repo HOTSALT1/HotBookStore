@@ -99,7 +99,7 @@
 														<span><a href="/hotSalt/orderHistory">주문내역</a></span>
 														<span><a href="#">장바구니</a></span>
 														<span><a href="#">적립금</a></span>
-														<span><a href="mypage_pwd_chk.jsp">회원정보</a></span>
+														<span><a href="/hotSalt/mypage_pwd_chk.jsp">회원정보</a></span>
 														<c:if test="${sessionScope.memId =='admin' }">
 														<span><a href="/hotSalt/admin/admin_index">관리자 페이지로 이동</a></span>
 														</c:if>
@@ -175,7 +175,7 @@
 								<!-- End Shopping Cart -->
 								
 							</li>
-							<li class="h_top"><a href="contact.jsp">고객센터</a></li>
+							<li class="h_top"><a href="/hotSalt/contact.jsp">고객센터</a></li>
 						</ul>
 					</div>
 				</div>
