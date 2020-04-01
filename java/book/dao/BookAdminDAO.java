@@ -15,4 +15,6 @@ public interface BookAdminDAO {
 
 	public void bookModify(Map<String, String> map);
 
+	public void admin_bookDelete(Map<String, String[]> map);
+
 }

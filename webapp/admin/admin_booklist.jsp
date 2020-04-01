@@ -77,6 +77,7 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
 						<div class="table-content wnro__table table-responsive">
+						<form id="admin_booklistForm" action="admin_bookDelete">					
 							<table>
 								<thead>
 									<tr class="title-top">
@@ -96,9 +97,8 @@
 								<tbody id="admin_booklistTable">
 									<c:forEach var="book" items="${list }" varStatus="i" begin="0">
 										<tr>
-											<td class="product-remove" style="padding-left: 0px;"><input
-												type="checkbox" name="" id="chk_${i.index }"
-												style="width: 13px;" /></td>
+											<td class="product-remove" style="padding-left: 0px;">
+											<input type="checkbox" name="" id="chk_${i.index }" style="width: 13px;" /></td>
 											<td class="product-id"><a href="">${book.seq }</a></td>
 
 											<td class="product-thumbnail"><a href="#"> <img
@@ -136,17 +136,17 @@
 										</c:forEach>
 								</tbody>
 							</table>
-						
+							</form>						
 						</div>
 						<div class="cartbox__btn">
 							<ul	class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="">선택 삭제</a></li>
+								<li><input type="button" value="선택 삭제" id="choiceDeleteBtn"></li>
 							</ul>
 						</div>	
 					</div>
 				</div>
 			</div>
-						<ul class="wn__pagination">${paging }</ul>
+				<ul class="wn__pagination">${paging }</ul>
 		</div>
 
 		<!-- Footer Area -->
@@ -165,7 +165,7 @@
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/plugins.js"></script>
 	<script src="../js/active.js"></script>
-	<script src="../js/cart.js"></script>
+	<script src="../js/admin_list.js"></script>
 	<script src="../js/member.js"></script>
 	
 	<script>
@@ -174,10 +174,6 @@
 	}
 	</script>
 	
-	<script>
-	
-	</script>
-		
 
 </body>
 

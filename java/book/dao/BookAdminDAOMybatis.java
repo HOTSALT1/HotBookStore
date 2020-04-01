@@ -36,4 +36,10 @@ public class BookAdminDAOMybatis implements BookAdminDAO {
 		sqlSession.update("bookSQL.bookModify", map);		
 	}
 
+	@Override
+	public void admin_bookDelete(Map<String, String[]> map) {
+		sqlSession.delete("bookSQL.admin_bookDelete", map);
+		
+	}
+
 }
