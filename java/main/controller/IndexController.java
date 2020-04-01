@@ -33,6 +33,13 @@ public class IndexController {
 	public String communityindex() {
 		return "/community-index";
 	}
+	
+	//커뮤니티 홈페이지 페이지 매핑
+	@RequestMapping(value = "/contact")
+	public String contact() {
+		return "/contact";
+	}
+
 
 	
 	

@@ -228,6 +228,7 @@ public class MemberServiceImpl implements MemberService {
 		return "succes";
 
 	}
+
 	
 }
 

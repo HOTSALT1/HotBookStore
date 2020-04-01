@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import book.bean.BookDTO;
 import book.service.BookAdminService;
+import member.service.MemberService;
 import shop.service.ShopService;
 
 @Controller
@@ -29,6 +30,9 @@ public class AdminController {
 	BookAdminService bookAdminService;
 	@Autowired
 	ShopService shopService;
+	@Autowired
+	MemberService memberService;
+	
 	
 	//상품등록페이지 매핑
 	@RequestMapping(value = "/admin_insertForm")
@@ -158,6 +162,9 @@ public class AdminController {
 	public String admin_index() {
 		return "/admin/admin_index";
 	}
+	
+	
+
 	
 
 }

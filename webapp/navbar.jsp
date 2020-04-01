@@ -175,12 +175,7 @@
 								<!-- End Shopping Cart -->
 								
 							</li>
-<<<<<<< HEAD
 							<li class="h_top"><a href="contact.jsp">고객센터</a></li>
-=======
-							<li class="h_top"><a href="/hotSalt/contact.jsp">고객센터</a></li>
-							<li class="h_top"><a href="http://localhost:8080/hotSalt/admin/admin_index.jsp">관리자페이지</a></li>
->>>>>>> e1ddaa4e5e5a8a6bc6819de810f33f9437ed7fb6
 						</ul>
 					</div>
 				</div>
