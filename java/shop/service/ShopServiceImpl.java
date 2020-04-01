@@ -51,6 +51,7 @@ public class ShopServiceImpl implements ShopService {
 		map.put("startNum", (Integer.parseInt((String)map.get("endNum")) - (articlesPerPage - 1)) + "");
 		nvl(map, "min", "1000");
 		nvl(map, "max", "100000");
+		nvl(map, "cate1", "all");
 		
 		List<BookDTO_list> list = shopDAO.getBooks(map);
 		for(BookDTO_list dto: list) {
