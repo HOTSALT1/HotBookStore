@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,34 +115,22 @@
             <td>주문일자</td>
             <td>주문상품</td>
             <td>주문금액</td>
-            <td>수량</td>
             <td>주문상태</td>
-            <td>배송조회</td>
-            <td>주문자</td>
+            <td>문화비소득공제</td>
             <td style="border-right: none;">수령자</td>
         </tr>
+        
+        <c:forEach var="order" items="${order_list }">
         <tr id="orderHistory_table_tr2">
-            <td>주문번호</td>
-            <td>주문일자</td>
-            <td>주문상품</td>
-            <td>주문금액</td>
-            <td>수량</td>
-            <td>주문상태</td>
-            <td>배송조회</td>
-            <td>주문자</td>
+            <td>${order.order_id }</td>
+            <td>${order.logtime }</td>
+            <td>${order.name }</td>
+            <td>${order.price }</td>
+            <td>${order.status }</td>
+            <td>${order.status }</td>
             <td style="border-right: none;">수령자</td>
         </tr>
-        <tr id="orderHistory_table_tr2">
-            <td>주문번호</td>
-            <td>주문일자</td>
-            <td>주문내역</td>
-            <td>주문금액</td>
-            <td>수량</td>
-            <td>주문상태</td>
-            <td>배송조회</td>
-            <td>주문자</td>
-            <td style="border-right: none;">수령자</td>
-        </tr>
+        </c:forEach>
     </table>
     <div style="margin: 0 auto;border-top: 1px solid #c3c3c3;
     width: 900px;

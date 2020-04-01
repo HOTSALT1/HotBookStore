@@ -343,7 +343,7 @@
 	<script src="js/cart.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$('#order_select').val($('#orderBy').val())
+			$('#order_select').val($('#orderBy').val());
 			$('p.info').each(function () {
 				$(this).text(removeTag($(this).parent().find('input[type=hidden]').val()).substr(0,200) + '...');
 			})

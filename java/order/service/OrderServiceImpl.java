@@ -432,5 +432,11 @@ public class OrderServiceImpl implements OrderService {
 		return mav;
 	}
 
+	@Override
+	public void loadOrderHistory(ModelAndView model, Map<String, Object> map) {
+		
+		
+	}
+
 }
 
