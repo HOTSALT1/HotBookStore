@@ -51,7 +51,6 @@
                                 	<li class="drop"><a href="community-index">책방 커뮤니티</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-<<<<<<< HEAD
 											<li><a href="community-index">home</a></li>
 											<li><a href="">공지사항</a></li>
 											<li><a href="/hotSalt/review">리뷰게시판</a></li>
@@ -59,23 +58,6 @@
 											<li><a href="">책 뉴스</a></li>
 											<li><a href="">행사안내</a></li>
 											<li><a href="">서비스 홍보</a></li>
-=======
-											<li><a href="/hotSalt/about.html">책방 커뮤니티</a></li>
-											<li class="label2"><a href="/hotSalt/portfolio.html">커뮤니티</a>
-												<ul>
-													<li><a href="/hotSalt/portfolio.html">공지사항</a></li>
-													<li><a href="/hotSalt/portfolio-three-column.html">리뷰게시판</a></li>												
-													<li><a href="/hotSalt/portfolio-details.html">Portfolio Details</a></li>
-												</ul>
-											</li>
-											<li><a href="/hotSalt/my-account.html">My Account</a></li>
-											<li><a href="/hotSalt/cart.html">Cart Page</a></li>
-											<li><a href="/hotSalt/checkout.html">Checkout Page</a></li>
-											<li><a href="/hotSalt/wishlist.html">Wishlist Page</a></li>
-											<li><a href="/hotSalt/error404.html">404 Page</a></li>
-											<li><a href="/hotSalt/faq.html">Faq Page</a></li>
-											<li><a href="/hotSalt/team.html">Team Page</a></li>
->>>>>>> e1ddaa4e5e5a8a6bc6819de810f33f9437ed7fb6
 										</ul>
 									</div>
 								</li>
@@ -117,14 +99,10 @@
 														<span><a href="#">주문내역</a></span>
 														<span><a href="#">장바구니</a></span>
 														<span><a href="#">적립금</a></span>
-<<<<<<< HEAD
-														<span><a href="mypage_pwd_chk.jsp">회원정보</a></span>
+														<span><a href="/hotSalt/mypage_pwd_chk.jsp">회원정보</a></span>
 														<c:if test="${sessionScope.memId =='admin' }">
 														<span><a href="/hotSalt/admin/admin_index">관리자 페이지로 이동</a></span>
 														</c:if>
-=======
-														<span><a href="/hotSalt/mypage_pwd_chk.jsp">회원정보</a></span>
->>>>>>> e1ddaa4e5e5a8a6bc6819de810f33f9437ed7fb6
 													</div>
 												</div>
 											</div>
