@@ -96,7 +96,16 @@ public class OrderController {
 		return "ongoing checkout";
 	}
 	
-	// 관리자 페이지용
+	// 주문내역
+	@RequestMapping(value = "/orderHistory", method = RequestMethod.GET)
+	public ModelAndView orderHistory(ModelAndView model, @RequestParam(required = false) Map<String, Object> map) {
+		orderService.loadCart(model);
+		orderService.loadOrderHistory(model, map);
+		model.setViewName("/orderHistory");
+		return model;
+	}
+	
+	// -------------- 관리자 페이지용 -------------- 
 	@RequestMapping(value = "/admin_order-list", method = RequestMethod.GET)
 	public ModelAndView admin_order_list(ModelAndView model) {
 		return orderService.admin_order_list(model);
