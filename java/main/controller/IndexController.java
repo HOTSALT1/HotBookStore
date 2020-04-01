@@ -28,6 +28,12 @@ public class IndexController {
 		return mav;
 	}
 	
+	//커뮤니티 홈페이지 페이지 매핑
+	@RequestMapping(value = "/community-index")
+	public String communityindex() {
+		return "/community-index";
+	}
+
 	
 	
 }

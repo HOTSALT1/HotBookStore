@@ -25,7 +25,7 @@
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/fonts/**" location="/fonts/" />
 	<resources mapping="/main/**" location="/main/" />
-
+	<resources mapping="/community-img/**" location="/community-img/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->

@@ -48,24 +48,16 @@
 								<!-- 신간 -->
 								<li class="drop"><a href="/hotSalt/shop-grid">신간</a></li>
                                 <!-- 독서토론 -->
-                                	<li class="drop"><a href="#">책방 커뮤니티</a>
+                                	<li class="drop"><a href="community-index">책방 커뮤니티</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="/hotSalt/about.html">책방 커뮤니티</a></li>
-											<li class="label2"><a href="/hotSalt/portfolio.html">커뮤니티</a>
-												<ul>
-													<li><a href="/hotSalt/portfolio.html">공지사항</a></li>
-													<li><a href="/hotSalt/portfolio-three-column.html">리뷰게시판</a></li>												
-													<li><a href="/hotSalt/portfolio-details.html">Portfolio Details</a></li>
-												</ul>
-											</li>
-											<li><a href="/hotSalt/my-account.html">My Account</a></li>
-											<li><a href="/hotSalt/cart.html">Cart Page</a></li>
-											<li><a href="/hotSalt/checkout.html">Checkout Page</a></li>
-											<li><a href="/hotSalt/wishlist.html">Wishlist Page</a></li>
-											<li><a href="/hotSalt/error404.html">404 Page</a></li>
-											<li><a href="/hotSalt/faq.html">Faq Page</a></li>
-											<li><a href="/hotSalt/team.html">Team Page</a></li>
+											<li><a href="community-index">home</a></li>
+											<li><a href="">공지사항</a></li>
+											<li><a href="/hotSalt/review">리뷰게시판</a></li>
+											<li><a href="">북칼럼</a></li>
+											<li><a href="">책 뉴스</a></li>
+											<li><a href="">행사안내</a></li>
+											<li><a href="">서비스 홍보</a></li>
 										</ul>
 									</div>
 								</li>
@@ -107,7 +99,10 @@
 														<span><a href="#">주문내역</a></span>
 														<span><a href="#">장바구니</a></span>
 														<span><a href="#">적립금</a></span>
-														<span><a href="/hotSalt/mypage_pwd_chk.jsp">회원정보</a></span>
+														<span><a href="mypage_pwd_chk.jsp">회원정보</a></span>
+														<c:if test="${sessionScope.memId =='admin' }">
+														<span><a href="/hotSalt/admin/admin_index">관리자 페이지로 이동</a></span>
+														</c:if>
 													</div>
 												</div>
 											</div>
@@ -180,8 +175,7 @@
 								<!-- End Shopping Cart -->
 								
 							</li>
-							<li class="h_top"><a href="/hotSalt/contact.jsp">고객센터</a></li>
-							<li class="h_top"><a href="http://localhost:8080/hotSalt/admin/admin_index.jsp">관리자페이지</a></li>
+							<li class="h_top"><a href="contact.jsp">고객센터</a></li>
 						</ul>
 					</div>
 				</div>

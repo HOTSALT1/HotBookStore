@@ -91,7 +91,7 @@
 							<article class="blog__post d-flex flex-wrap">
 								<div class="thumb">
 									<a  href="review-details?review_seq=${list.review_seq}">
-										<img src="${list.IMG1}" alt="blog images">
+										<img src="${list.IMG1}" alt="책 표지">
 									</a>
 								</div>
 								<div class="content">
