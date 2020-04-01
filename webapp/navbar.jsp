@@ -96,7 +96,7 @@
 											<div class="switcher-options">
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
-														<span><a href="#">주문내역</a></span>
+														<span><a href="/hotSalt/orderHistory">주문내역</a></span>
 														<span><a href="#">장바구니</a></span>
 														<span><a href="#">적립금</a></span>
 														<span><a href="/hotSalt/mypage_pwd_chk.jsp">회원정보</a></span>

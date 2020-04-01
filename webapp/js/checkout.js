@@ -120,14 +120,28 @@ $('#btn-confirm').click(function() {
 		pg = 'payapp';
 	}
 	
+	var data = new Object();
 	if($('#tax').is(":checked")){
-		$.ajax({
-			type:"post",
-			url:"/hotSalt/tax-ref",
-			data:{'tax_num':$('#tax_num').val()},
-			async: false
-		})
+		data.tax_ref = $('#tax_num').val();
 	}
+	data.zipcode = $('#zonecode').val();
+	data.addr_new = $('#address').val();
+	data.addr_old = $('#jibunAddress').val();
+	data.addr_detail = $('#detailAddress').val();
+	data.r_tel1 = $('#r_tel1').val();
+	data.r_tel2 = $('#r_tel2').val();
+	data.delivery_msg = $('#r_message').val();
+	data.receiver = $('#r_name').val();
+	data.buyer = $('#name').val();
+	data.tel = $('#tel').val();
+	
+	$.ajax({
+		type:"post",
+		url:"/hotSalt/order-info",
+		data:data,
+		async: false
+	})
+	
 	paymentTest(pg, method);
 	
 });

@@ -52,9 +52,10 @@ public class OrderController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/tax-ref")
-	public String tax_ref(@RequestParam String tax_num) {
-		session.setAttribute("tax_num", tax_num);
+	@RequestMapping(value = "/order-info", method = RequestMethod.POST)
+	public String tax_ref(@RequestParam Map<String, Object> map) {
+		session.setAttribute("order_info", map);
+		System.out.println(map);
 		return "true";
 	}
 	
@@ -100,7 +101,7 @@ public class OrderController {
 	@RequestMapping(value = "/orderHistory", method = RequestMethod.GET)
 	public ModelAndView orderHistory(ModelAndView model, @RequestParam(required = false) Map<String, Object> map) {
 		orderService.loadCart(model);
-		orderService.loadOrderHistory(model, map);
+		orderService.loadOrder(model, map);
 		model.setViewName("/orderHistory");
 		return model;
 	}

@@ -129,12 +129,13 @@
 							</ul>
 							<div class="action">
 								<div class="actions_inner">
+									<input type="hidden" id="" value="${book.seq }" />
 									<ul class="add_to_links">
-										<li><a class="cart addToCart" href="javascript:void(0)"><i class="bi bi-shopping-bag4"></i></a>
+										<li><a id="buy3_${book.seq }" class="cart " href="javascript:void(0)"><i class="bi bi-shopping-bag4"></i></a>
 										</li>
-										<li><a class="wishlist" href="javascript:void(0)"><i
+										<li><a class="addToCart" href="javascript:void(0)"><i
 													class="bi bi-shopping-cart-full"></i></a></li>
-										<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
+										<li><a class="wishlist" href="#"><i class="bi bi-heart-beat"></i></a></li>
 										<li><a data-toggle="modal" title="Quick View"
 												class="quickview modal-view detail-link" href="#productmodal"><i
 													class="bi bi-search"></i></a></li>
@@ -209,6 +210,7 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
+													<input type="hidden" name="" value=""/>
 													<ul class="add_to_links">
 														<li><a class="cart" href="cart.html"><i
 																	class="bi bi-shopping-bag4"></i></a></li>

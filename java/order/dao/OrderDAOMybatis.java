@@ -79,4 +79,9 @@ public class OrderDAOMybatis implements OrderDAO {
 		return session.selectList("orderSQL.admin_order_list");
 	}
 
+	@Override
+	public List<OrderDTO> loadOrder(Map<String, Object> map) {
+		return session.selectList("orderSQL.loadOrder", map);
+	}
+
 }

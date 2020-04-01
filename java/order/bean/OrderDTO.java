@@ -8,7 +8,14 @@ import lombok.Data;
 public class OrderDTO {
 	private String order_id;
 	private String user_id;
+	private String buyer;
+	private String receiver;
 	private int price;
+	private int point;
+	private String addr_new;
+	private String addr_old;
+	private String addr_detail;
+	private String delivery_msg;
 	private String name;
 	private String pg_name;
 	private String method;
