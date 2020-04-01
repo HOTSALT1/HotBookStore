@@ -122,7 +122,7 @@
         
         <c:forEach var="order" items="${order_list }">
         <tr class="orderHistory_table_tr2">
-            <td>${order.order_id }</td>
+            <td><a href="/hotSalt/">${order.order_id }</a></td>
             <td>${order.logtime }</td>
             <td>${order.name }</td>
             <td>${order.price }</td>

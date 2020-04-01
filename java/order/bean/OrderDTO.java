@@ -12,9 +12,14 @@ public class OrderDTO {
 	private String receiver;
 	private int price;
 	private int point;
+	private int usedPoint;
 	private String addr_new;
 	private String addr_old;
 	private String addr_detail;
+	private String zipcode;
+	private String tel;
+	private String r_tel1;
+	private String r_tel2;
 	private String delivery_msg;
 	private String name;
 	private String pg_name;
