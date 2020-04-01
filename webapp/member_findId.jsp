@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="style.css">
 
 	<!-- Cusom css -->
+	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Modernizer js -->
@@ -81,7 +82,7 @@
     <jsp:include page="footer.jsp"></jsp:include>
         
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
+	
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
