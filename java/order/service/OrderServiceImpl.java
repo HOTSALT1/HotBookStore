@@ -349,8 +349,7 @@ public class OrderServiceImpl implements OrderService {
 			nvl(order_listMap, "r_tel2", "");
 			nvl(order_listMap, "tel", "");
 			nvl(order_listMap, "tax_ref", "");
-			
-			
+			nvl(order_listMap, "delivery_fee", 0);
 			
 			System.out.println(result_data);
 			
@@ -471,6 +470,20 @@ public class OrderServiceImpl implements OrderService {
 			}
 		}
 		mav.addObject("order_list",orderDAO.loadOrder(map));
+	}
+	
+	@Override
+	public void loadOrder(ModelAndView mav, String order_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(session.getAttribute("memId")!=null) {
+			map.put("user_id", (String)session.getAttribute("memId"));
+		}
+		map.put("order_id", order_id);
+		List<OrderDTO> list = orderDAO.loadOrder(map);
+		if(list.size()>0) {
+			mav.addObject("selected_order",list.get(0));
+			mav.addObject("list_bookOrder",orderDAO.getBookOrders(order_id));
+		}
 	}
 	
 	public Map<String, Object> nvl(Map<String, Object> map, String key, Object defaultValue){

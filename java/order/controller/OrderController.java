@@ -106,6 +106,15 @@ public class OrderController {
 		return model;
 	}
 	
+	// 상세주문내역
+	@RequestMapping(value = "/orderHistoryDetail/{order_id}", method = RequestMethod.GET)
+	public ModelAndView orderHistoryDetail(ModelAndView model, @PathVariable String order_id) {
+		orderService.loadCart(model);
+		orderService.loadOrder(model, order_id);
+		model.setViewName("/orderHistoryDetail");
+		return model;
+	}
+	
 	// -------------- 관리자 페이지용 -------------- 
 	@RequestMapping(value = "/admin_order-list", method = RequestMethod.GET)
 	public ModelAndView admin_order_list(ModelAndView model) {

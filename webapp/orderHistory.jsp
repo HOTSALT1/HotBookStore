@@ -117,18 +117,20 @@
             <td>주문금액</td>
             <td>주문상태</td>
             <td>문화비소득공제</td>
+            <td>구매자</td>
             <td style="border-right: none;">수령자</td>
         </tr>
         
         <c:forEach var="order" items="${order_list }">
         <tr class="orderHistory_table_tr2">
-            <td><a href="/hotSalt/">${order.order_id }</a></td>
-            <td>${order.logtime }</td>
+            <td><a href="/hotSalt/orderHistoryDetail/${order.order_id }">${order.order_id }</a></td>
+            <td><fmt:formatDate pattern="YYYY년 MM월 DD일 HH:mm:ss" value="${order.logtime }"/></td>
             <td>${order.name }</td>
             <td>${order.price }</td>
             <td>${order.status }</td>
             <td>${order.tax_ref }</td>
-            <td style="border-right: none;">수령자</td>
+            <td>${order.buyer }</td>
+            <td style="border-right: none;">${order.receiver }</td>
         </tr>
         </c:forEach>
     </table>
