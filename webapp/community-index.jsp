@@ -69,60 +69,24 @@
 					<div class="col-lg-12">
 						<div class="gallery__menu">
 							<button data-filter="*" class="is-checked">전체 글 보기</button>
-							<button data-filter=".cat--1">공지사항 </button>
-							<button data-filter=".cat--2">리뷰게시판</button>
-							<button data-filter=".cat--3">책속의 메아리</button>
+							<button data-filter=".cat--1" >공지사항 </button>
+							<button data-filter=".cat--2" >리뷰게시판</button>
 							<button data-filter=".cat--4">북칼럼</button>
 							<button data-filter=".cat--5">책 뉴스</button>
 							<button data-filter=".cat--6">행사 안내</button>
 							<button data-filter=".cat--7">서비스 홍보</button>
+							<button onclick=>글 적기</button>
 						</div>
 					</div>
 				</div>
 				<div class="row masonry__wrap">
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--1">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/1.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/1.jpg" data-lightbox="grportimg"
-										data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Portfolio -->
-					<!-- Start Single Portfolio -->
-					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--2">
-						<div class="portfolio">
-							<div class="thumb">
-								<a href="portfolio-details.html">
-									<img src="images/portfolio/md-img/2.jpg" alt="portfolio images">
-								</a>
-								<div class="search">
-									<a href="images/portfolio/big-2/2.jpg" data-lightbox="grportimg"
-										data-title="My caption"><i class="zmdi zmdi-search"></i></a>
-								</div>
-								<div class="link">
-									<a href="portfolio-details.html"><i class="fa fa-link"></i></a>
-								</div>
-							</div>
-							<div class="content">
-								<h6><a href="portfolio-details.html">Coffee & Cookie Time</a></h6>
-								<p>road theme</p>
-							</div>
-						</div>
-					</div>
+					
+					<!-- Start 공지사항 -->
+					<jsp:include page="community_notice.jsp"></jsp:include>
+					<!-- End 공지사항 -->
+					
+					<!-- Start 리뷰게시판  -->
+					<jsp:include page="community_reviewboard.jsp"></jsp:include>
 					<!-- End Single Portfolio -->
 					<!-- Start Single Portfolio -->
 					<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-12 gallery__item cat--3">

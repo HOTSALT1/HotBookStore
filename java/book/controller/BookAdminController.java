@@ -54,5 +54,11 @@ public class BookAdminController {
 	public @ResponseBody void admin_bookModify(@RequestParam Map<String,String> map) {
 		bookAdminService.bookModify(map);
 	}
-
+	
+	//책 삭제
+	@RequestMapping(value="admin_bookDelete", method=RequestMethod.GET)
+	public String admin_bookDelete(@RequestParam String[] check, Model model) {
+		bookAdminService.admin_bookDelete(check);
+		return "/admin/admin_booklist";
+	}
 }
