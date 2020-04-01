@@ -77,7 +77,7 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
 						<div class="table-content wnro__table table-responsive">
-						<form id="admin_booklistForm" action="admin_bookDelete">					
+						<form id="admin_booklistForm" action="">					
 							<table>
 								<thead>
 									<tr class="title-top">
@@ -131,7 +131,7 @@
 
 											<!-- 삭제 -->
 											<td class="product-remove">
-											<input type="button" class="remove_${book.seq }"  value="삭제" onclick="bookDeleteForm()"></td>
+											<input type="button" class="remove_${book.seq }" id="deleteBtn" value="삭제" onclick="bookDeleteForm()"></td>
 										</tr>
 										</c:forEach>
 								</tbody>
@@ -171,6 +171,15 @@
 	<script>
 	function adminBookListPaging(pg){
 		location.href="admin_booklist?pg="+pg;
+	}
+	</script>
+	
+	<script>
+	function bookDeleteForm(){
+		document.admin_booklistForm.method = 'post';
+		document.admin_booklistForm.action = '/admin/admin_bookDelete';
+		document.admin_booklistForm.submit();
+
 	}
 	</script>
 	
