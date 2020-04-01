@@ -44,4 +44,11 @@ public class BookAdminServiceImpl implements BookAdminService {
 		bookAdminDAO.bookModify(map);		
 	}
 
+	@Override
+	public void admin_bookDelete(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		bookAdminDAO.admin_bookDelete(map);
+	}
+
 }

@@ -103,5 +103,11 @@
 		WHERE seq=#{book_id}
 	</update>
 	
+	<delete id="admin_bookDelete" parameterType="java.util.Map">
+		delete book where seq in
+		<foreach collection="array" item="item" index="i" separator="," open="(" close=")">
+			${array[i]}
+		</foreach>
+	</delete>
 	
 </mapper>

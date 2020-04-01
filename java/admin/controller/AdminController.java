@@ -159,10 +159,5 @@ public class AdminController {
 		return "/admin/admin_index";
 	}
 	
-	//상품리스트에서 삭제버튼 확인
-	@RequestMapping(value = "/admin_bookDelete")
-	public String admin_bookDelete() {
-		return "/admin/admin_bookDelete";
-	}
 
 }
