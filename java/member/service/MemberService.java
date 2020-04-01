@@ -34,8 +34,6 @@ public interface MemberService {
 
 	public String member_modifyPwd(Map<String, String> map, BCryptPasswordEncoder pwdEncoder);
 
-
-
 	
 
 
