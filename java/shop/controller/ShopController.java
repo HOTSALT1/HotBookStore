@@ -34,6 +34,7 @@ public class ShopController {
 	
 	@RequestMapping(value = "shop-grid", method = RequestMethod.GET)
 	public ModelAndView shop_grid(@RequestParam(required = false) Map<String, Object> map, ModelAndView model) {
+		orderService.loadCart(model);
 		return shopService.getBooks(model, map);
 	}
 	
