@@ -16,4 +16,6 @@ public interface BookAdminService {
 
 	public void bookModify(Map<String, String> map);
 
+	public void admin_bookDelete(String[] check);
+
 }
