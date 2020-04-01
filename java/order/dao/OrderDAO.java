@@ -30,4 +30,6 @@ public interface OrderDAO {
 
 	public List<OrderDTO> admin_order_list();
 
+	public List<OrderDTO> loadOrder(Map<String, Object> map);
+
 }

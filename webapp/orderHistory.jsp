@@ -63,23 +63,23 @@
    		margin-bottom:10px;
    		border-bottom:none;
    		}
-   		#orderHistory_table_tr1{
+   		.orderHistory_table_tr1{
    		height:35px;
    		border-top:1px solid #c3c3c3;
    		border-bottom:1px solid #c3c3c3;
    		}
-   		#orderHistory_table_tr1 td{
+   		.orderHistory_table_tr1 td{
    		background-color: #efefef;
 	    text-align: center;
 	    border: none;
 	    padding: 0;
 	    border-right: 1px solid #c3c3c3;
    		}
-   		#orderHistory_table_tr2{
+   		.orderHistory_table_tr2{
    		height:35px;
    		border-bottom: 1px solid #e6e4e4;
    		}
-   		#orderHistory_table_tr2 td{
+   		.orderHistory_table_tr2 td{
 	    text-align: center;
 	    border: none;
 	    padding: 0;
@@ -110,7 +110,7 @@
 	</div>
 	<div style="border-top:2px solid #f56a6a; width: 900px; margin: 0 auto;margin-bottom:5px;margin-top: 20px;"></div>
 	<table id="orderHistory_table">
-        <tr id="orderHistory_table_tr1">
+        <tr class="orderHistory_table_tr1">
             <td>주문번호</td>
             <td>주문일자</td>
             <td>주문상품</td>
@@ -121,13 +121,13 @@
         </tr>
         
         <c:forEach var="order" items="${order_list }">
-        <tr id="orderHistory_table_tr2">
+        <tr class="orderHistory_table_tr2">
             <td>${order.order_id }</td>
             <td>${order.logtime }</td>
             <td>${order.name }</td>
             <td>${order.price }</td>
             <td>${order.status }</td>
-            <td>${order.status }</td>
+            <td>${order.tax_ref }</td>
             <td style="border-right: none;">수령자</td>
         </tr>
         </c:forEach>

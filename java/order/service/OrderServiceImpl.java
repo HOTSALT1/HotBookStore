@@ -2,6 +2,7 @@ package order.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import book.bean.BookDTO;
 import kr.co.bootpay.javaApache.BootpayApi;
 import kr.co.bootpay.javaApache.model.request.Cancel;
-import order.bean.CartDTO;
+import order.bean.OrderDTO;
 import order.bean.ViewCartDTO;
 import order.dao.OrderDAO;
 import shop.dao.ShopDAO;
@@ -209,9 +210,17 @@ public class OrderServiceImpl implements OrderService {
 		
 		// 회원 구매시
 		if(session.getAttribute("memId")!=null) {
-			for(Map<String, String> map : list) {
-				map.put("mem_id", (String)session.getAttribute("memId"));
-				checkout_list.add(orderDAO.getCartByIds(map));
+			// 장바구니에 담지 않고 바로 구매시
+			if(list.size()==1 && list.get(0).get("cart_id")==null) {
+				ViewCartDTO viewCartDTO = new ViewCartDTO();
+				viewCartDTO.setBook_id(Integer.parseInt(list.get(0).get("book_id")));
+				viewCartDTO.setQty(Integer.parseInt(list.get(0).get("qty")));
+				checkout_list.add(viewCartDTO);
+			}else {
+				for(Map<String, String> map : list) {
+					map.put("mem_id", (String)session.getAttribute("memId"));
+					checkout_list.add(orderDAO.getCartByIds(map));
+				}
 			}
 		}else {
 		// 비회원 구매시
@@ -321,7 +330,7 @@ public class OrderServiceImpl implements OrderService {
 			List<ViewCartDTO> checkout_list = (List<ViewCartDTO>) session.getAttribute("cart_checkout");
 			
 			// order_list 테이블에 등록하기 위해 Map 생성
-			Map<String, Object> order_listMap = new HashMap<String, Object>();
+			Map<String, Object> order_listMap = (Map<String, Object>) session.getAttribute("order_info");
 			order_listMap.put("order_id", order_id);
 			order_listMap.put("price", order_price);
 			order_listMap.put("name", result_data.get("name") + " 외");
@@ -330,13 +339,20 @@ public class OrderServiceImpl implements OrderService {
 			order_listMap.put("method_name", result_data.get("method_name"));
 			order_listMap.put("status", result_data.get("status_ko"));
 			order_listMap.put("receipt_id", result_data.get("receipt_id"));
-			if(session.getAttribute("tax_num") != null) {
-				order_listMap.put("tax_ref", session.getAttribute("tax_num"));
-			}else {
-				order_listMap.put("tax_ref", "");
-			}
-			//order_listMap.put("payment_data", result_data.getString("payment_data"));
+			//order_listMap.put("payment_data", result_data.get("payment_data"));
 			order_listMap.put("payment_data", "테스트중");
+			nvl(order_listMap, "addr_detail", "");
+			nvl(order_listMap, "delivery_msg", "");
+			nvl(order_listMap, "point", 0);
+			nvl(order_listMap, "usedpoint", 0);
+			nvl(order_listMap, "r_tel1", "");
+			nvl(order_listMap, "r_tel2", "");
+			nvl(order_listMap, "tel", "");
+			nvl(order_listMap, "tax_ref", "");
+			
+			
+			
+			System.out.println(result_data);
 			
 			// 정상 결제시
 			if(	status == 200 && 
@@ -401,6 +417,7 @@ public class OrderServiceImpl implements OrderService {
 			
 			// user_id를 추가하여 내역을 order_list 테이블에 등록
 			order_listMap.put("user_id", user_id);
+			System.out.println(order_listMap);
 			orderDAO.addOrderList(order_listMap);
 			
 		} catch (Exception e) {
@@ -433,9 +450,34 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void loadOrderHistory(ModelAndView model, Map<String, Object> map) {
+	public void loadOrder(ModelAndView mav, Map<String, Object> map) {
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, 1);
 		
+		Calendar cal2 = Calendar.getInstance();
+		cal2.add(Calendar.YEAR, -1);
+		
+		nvl(map, "start", sdf.format(cal2.getTime()));
+		nvl(map, "end", sdf.format(cal.getTime()));
+		System.out.println(map);
+		if(session.getAttribute("memId")!=null) {
+			map.put("user_id", (String)session.getAttribute("memId"));
+		}else {
+			if(map.get("order_id")==null) {
+				mav.addObject("order_list", new ArrayList<OrderDTO>());
+				return;
+			}
+		}
+		mav.addObject("order_list",orderDAO.loadOrder(map));
+	}
+	
+	public Map<String, Object> nvl(Map<String, Object> map, String key, Object defaultValue){
+		if(map.get(key)==null) {
+			map.put(key, defaultValue);
+		}
+		return map;
 	}
 
 }

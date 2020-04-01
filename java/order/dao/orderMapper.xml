@@ -49,7 +49,6 @@
 		DELETE cart WHERE user_id = #{user_id} AND book_id = #{cart_id}
 	</delete>
 	
-	
 	<!-- book_order 테이블에 추가하는 쿼리들 -->
 	<insert id="addBookOrders" parameterType="java.util.Map">
 		begin
@@ -60,13 +59,37 @@
 		end;
 	</insert>
 	
-	<!-- order_list 테이블에 추가하는 쿼리들 -->
+	<!-- order_list 테이블에 추가하는 쿼리 -->
 	<insert id="addOrderList" parameterType="java.util.Map">
-		INSERT INTO order_list (order_id, user_id, price, name, pg_name, method, method_name, status, receipt_id, payment_data, tax_ref, note) 
-			VALUES(#{order_id}, #{user_id}, #{price}, #{name}, #{pg_name}, #{method}, #{method_name}, #{status}, #{receipt_id}, #{payment_data}, #{tax_ref}, #{note})
+		INSERT INTO order_list(
+			order_id, user_id, price, name, pg_name, 
+			method, method_name, status, receipt_id, payment_data, 
+			tax_ref, note, BUYER, RECEIVER, ADDR_NEW,
+			ADDR_OLD, ADDR_DETAIL, DELIVERY_MSG, POINT, ZIPCODE,
+			R_TEL1, R_TEL2, TEL
+			
+			)VALUES(
+			#{order_id}, #{user_id}, #{price}, #{name}, #{pg_name}, 
+			#{method}, #{method_name}, #{status}, #{receipt_id}, #{payment_data}, 
+			#{tax_ref}, #{note}, #{buyer}, #{receiver}, #{addr_new},
+			#{addr_old}, #{addr_detail}, #{delivery_msg}, #{point}, #{zipcode},
+			#{r_tel1}, #{r_tel2}, #{tel}
+			)
 	</insert>
 	
-	
+	<!-- order_list 조회용 쿼리 -->
+	<select id="loadOrder" resultType="order.bean.OrderDTO" parameterType="java.util.Map">
+		SELECT * FROM order_list WHERE
+			<if test="user_id != null">
+			 	user_id = #{user_id} 
+			</if>
+			<if test="order_id != null">
+			 	order_id = #{order_id} 
+			</if>
+			<![CDATA[
+			AND logtime >= #{start} AND logtime < #{end}
+			]]>
+	</select>
 	
 	
 	<!-- 관리자 페이지용 -->

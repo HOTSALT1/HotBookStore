@@ -205,7 +205,7 @@ $('a#checkout_all').click(function() {
 
 
 // 바로주문 버튼 클릭시
-$('a[id^=buy1_], a[id^=buy2_], .modal-buy').click(function() {
+$('a[id^=buy1_], a[id^=buy2_], a[id^=buy3_], .modal-buy').click(function() {
 	if(!confirm("해당 상품을 바로 구매하시겠습니까? (확인을 클릭하시면 구매 페이지로 이동합니다.")){
 		return false;
 	}

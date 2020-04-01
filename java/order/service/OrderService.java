@@ -32,6 +32,6 @@ public interface OrderService {
 
 	public void addCheckout_all();
 
-	public void loadOrderHistory(ModelAndView model, Map<String, Object> map);
+	public void loadOrder(ModelAndView model, Map<String, Object> map);
 
 }
