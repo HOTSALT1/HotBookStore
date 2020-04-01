@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import book.bean.BookDTO_list;
+import shop.bean.OrderBy;
 import shop.bean.ShopPaging;
 import shop.dao.ShopDAO;
 
@@ -40,6 +41,7 @@ public class ShopServiceImpl implements ShopService {
 		return shopDAO.getBooks(map);
 	}
 	
+	@Override
 	public ModelAndView getBooks(ModelAndView mav, Map<String, Object> map) {
 		int articlesPerPage = 12;
 		
@@ -79,6 +81,26 @@ public class ShopServiceImpl implements ShopService {
 		
 		mav.addObject("paging", shopPaging.getPagingHTML());
 		
+		return mav;
+	}
+	
+	@Override
+	// 인덱스 페이지에 뿌려줄 신간 6개 가져오기 
+	public ModelAndView getDPBooks(ModelAndView mav, String cate2, int count, OrderBy orderBy, String list_name) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		nvl(map, "orderBy", orderBy.getValue());	// 입력 받은 순서로(orderBy)
+		map.put("startNum", 1 + "");				// 1개부터
+		map.put("endNum", count + "");				// 입력받은 수까지
+		nvl(map, "min", "1000");					// 최소 가격
+		nvl(map, "max", "100000");					// 최대 가격
+		nvl(map, "cate2", cate2);					// 입력받은 카테고리 중에서 고르기
+		
+		List<BookDTO_list> list = shopDAO.getBooks(map);
+		for(BookDTO_list dto: list) {
+			if(dto.getInfo()!=null)
+				dto.setInfo(dto.getInfo().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+		}
+		mav.addObject(list_name, list); // 입력받은 이름으로 리스트를 만들어서 뷰에 싣기
 		return mav;
 	}
 	
