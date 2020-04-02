@@ -35,7 +35,7 @@
 		end;
 	</update>
 	<select id="memberList" resultType="member.bean.MemberDTO">
-		select id, name, email, tel, birth, logtime from member
+		select id, name, email, tel, birth, logtime from member where status != 'deleted' 
 	</select>
 	
 	<select id="memberfindPwd" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
