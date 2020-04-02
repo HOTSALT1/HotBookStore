@@ -66,20 +66,20 @@
 			method, method_name, status, receipt_id, payment_data, 
 			tax_ref, note, BUYER, RECEIVER, ADDR_NEW,
 			ADDR_OLD, ADDR_DETAIL, DELIVERY_MSG, POINT, ZIPCODE,
-			R_TEL1, R_TEL2, TEL, delivery_fee
+			R_TEL1, R_TEL2, TEL, delivery_fee, usedPoint
 			
 			)VALUES(
 			#{order_id}, #{user_id}, #{price}, #{name}, #{pg_name}, 
 			#{method}, #{method_name}, #{status}, #{receipt_id}, #{payment_data}, 
 			#{tax_ref}, #{note}, #{buyer}, #{receiver}, #{addr_new},
 			#{addr_old}, #{addr_detail}, #{delivery_msg}, #{point}, #{zipcode},
-			#{r_tel1}, #{r_tel2}, #{tel}, #{delivery_fee}
+			#{r_tel1}, #{r_tel2}, #{tel}, #{delivery_fee}, #{usedPoint}
 			)
 	</insert>
 	
 	<!-- order_list 조회용 쿼리 -->
 	<select id="loadOrder" resultType="order.bean.OrderDTO" parameterType="java.util.Map">
-		SELECT * FROM order_list WHERE
+		SELECT * FROM order_list WHERE 
 			<if test="user_id != null">
 			 	user_id = #{user_id} 
 			</if>
@@ -91,14 +91,32 @@
 			</if>
 			<if test="start != null">
 			<![CDATA[
-				AND logtime >= #{start} AND logtime < #{end}
+				AND logtime >= #{start} AND logtime < #{end} 
 			]]>
 			</if>
+			Order by logtime desc
 	</select>
 	
 	<!-- book_order 테이블 조회용 쿼리 -->
 	<select id="getBookOrders" resultType="order.bean.BookOrderDTO" parameterType="String">
 		SELECT * FROM book_order WHERE order_id = #{order_id}
+	</select>
+	
+	<!-- 포인트 조회용 쿼리 -->
+	<select id="getPoint_log" resultType="order.bean.PointDTO" parameterType="java.util.Map">
+		<![CDATA[
+			SELECT * FROM(
+				SELECT rownum rn, tt.* FROM (SELECT * FROM point_log WHERE user_id = #{user_id}) tt 
+			) 
+			WHERE rn >= #{start} AND rn <= #{end} 
+		]]>
+	</select>
+	
+	<select id="getPoint_log_count" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM point_log WHERE user_id = #{user_id}
+	</select>
+	<select id="getPoint" resultType="int" parameterType="String">
+		SELECT point FROM member WHERE id = #{user_id}
 	</select>
 	
 	

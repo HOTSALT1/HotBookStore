@@ -12,6 +12,7 @@ import book.bean.BookDTO;
 import order.bean.BookOrderDTO;
 import order.bean.CartDTO;
 import order.bean.OrderDTO;
+import order.bean.PointDTO;
 import order.bean.ViewCartDTO;
 
 @Repository
@@ -88,6 +89,21 @@ public class OrderDAOMybatis implements OrderDAO {
 	@Override
 	public List<BookOrderDTO> getBookOrders(String order_id) {
 		return session.selectList("orderSQL.getBookOrders", order_id);
+	}
+
+	@Override
+	public List<PointDTO> loadPoint(Map<String, String> map) {
+		return session.selectList("orderSQL.getPoint_log", map);
+	}
+
+	@Override
+	public int getPointTotalA(String user_id) {
+		return session.selectOne("orderSQL.getPoint_log_count", user_id);
+	}
+
+	@Override
+	public int getPoint(String user_id) {
+		return session.selectOne("orderSQL.getPoint", user_id);
 	}
 
 }

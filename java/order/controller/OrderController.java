@@ -115,6 +115,15 @@ public class OrderController {
 		return model;
 	}
 	
+	// 적립금 내역
+	@RequestMapping(value = "/member_point", method = RequestMethod.GET)
+	public ModelAndView member_point(ModelAndView model, @RequestParam(required = false, defaultValue = "1") int pg) {
+		orderService.loadCart(model);
+		orderService.loadPoint(model, pg);
+		model.setViewName("/member_point");
+		return model;
+	}
+	
 	// -------------- 관리자 페이지용 -------------- 
 	@RequestMapping(value = "/admin_order-list", method = RequestMethod.GET)
 	public ModelAndView admin_order_list(ModelAndView model) {
