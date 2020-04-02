@@ -172,7 +172,7 @@
 							<form id="review_WriteForm" name="review_WriteForm">
 							<input type="hidden" id="review_book_id" value="${book.seq }">
 							<input type="hidden" id="review_member_id" value="${memId }">
-							<div class="pro__tab_label tab-pane fade" id="nav-review"
+							<div class="pro__tab_label tab-pane fade show" id="nav-review"
 								role="tabpanel">
 								<div class="review__attribute">
 									<h1>리뷰 작성하기</h1>

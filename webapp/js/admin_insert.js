@@ -42,9 +42,8 @@ $('#btn-admin_insert').click(function(){
 	}else{
 		//상품 정보 전송
 		document.adminInsertForm.submit();
-		//$('form[name=adminInsertForm]').submit();
+
 		alert('상품등록 완료');
-		//location.href='/hotSalt/admin/admin_insert';
 	}
 	
 });

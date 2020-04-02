@@ -131,7 +131,7 @@
 
 											<!-- 삭제 -->
 											<td class="product-remove">
-											<input type="button" class="remove_${book.seq }" id="deleteBtn" value="삭제" onclick="bookDeleteForm()"></td>
+											<input type="button" class="remove_${book.seq }" id="deleteBtn" value="삭제" onclick="location.href='admin_bookDelete?book_id=${book.seq}'"></td>
 										</tr>
 										</c:forEach>
 								</tbody>
@@ -146,7 +146,7 @@
 					</div>
 				</div>
 			</div>
-				<ul class="wn__pagination">${paging }</ul>
+				<ul class="wn__pagination">${adminBookListPaging }</ul>
 		</div>
 
 		<!-- Footer Area -->
@@ -168,8 +168,13 @@
 	<script src="../js/admin_list.js"></script>
 	<script src="../js/member.js"></script>
 	
-	<script>
+	<script type="text/javascript">
+	$('.wn__pagination li:not(.active)').click(function() {
+		adminBookListPaging($(this).find('a:eq(0)').text());
+	})
+	
 	function adminBookListPaging(pg){
+		$('input[name=pg]').val(pg);
 		location.href="admin_booklist?pg="+pg;
 	}
 	</script>
@@ -182,6 +187,8 @@
 
 	}
 	</script>
+	<
+
 	
 
 </body>

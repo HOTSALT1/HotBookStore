@@ -38,7 +38,7 @@
 	<jsp:include page="admin_navbar.jsp" />
 	<div style="border-top:1px solid #e6e6e6; width: 100%; margin-top:90px;"></div>
 	
-	<form name="adminInsertForm" id="adminInsertForm" method="post" enctype="multipart/form-data" action="../admin/admin_insert">
+	<form name="adminInsertForm" id="adminInsertForm" method="post" enctype="multipart/form-data" action="admin_insert">
 		<div class="div1">
 			<span class="headTop">상품 정보 입력</span>
 			<h6 class="title__be--2"><span class="color--theme">상품 기본정보</span></h6>

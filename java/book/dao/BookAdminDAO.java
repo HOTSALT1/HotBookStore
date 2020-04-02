@@ -9,7 +9,7 @@ public interface BookAdminDAO {
 
 	public void insertBook(BookDTO bookDTO);
 
-	public List<BookDTO> getAdminBookList(Map<String, Integer> map);
+	public List<BookDTO> getAdminBookList(Map<String, Object> map);
 
 	public int getBookListTotalA();
 
