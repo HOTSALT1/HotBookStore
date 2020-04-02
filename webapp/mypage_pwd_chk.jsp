@@ -19,8 +19,8 @@
 				<img src="img/logo-02.png" id="logo">
 			</a>
 	   		<input type="button" id="logout" value="로그아웃"> 
-			<input type="button" id="member-modify-btn" value="회원수정" onclick="location.href='mypage_pwd_chk.jsp'">
-   			<input type="button" id="member-out-btn" value="회원탈퇴" onclick="location.href='member_deleteForm.jsp'">
+			<input type="button" id="member-modify-btn" value="회원수정" onclick="location.href='mypage_pwd_chk'">
+   			<input type="button" id="member-out-btn" value="회원탈퇴" onclick="location.href='member_deleteForm'">
    			</div>
 			<div id="modify_con">
 				<div id="modify_member_id">
