@@ -68,7 +68,7 @@
 										<ul class="item item01">
                                 			<li><a href="/hotSalt/about.jsp">뜨거운 책방 소개</a></li>
                                 			<li><a href="/hotSalt/contact.jsp">고객센터</a></li>
-                                			<li><a href="/hotSalt/faq.html">자주 묻는 질문</a></li>
+                                			<li><a href="/hotSalt/faq.jsp">자주 묻는 질문</a></li>
 										</ul>
 									</div>
 
