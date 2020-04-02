@@ -98,3 +98,25 @@ $('#titleOrAuthor').keydown(function(key) {
 $('#order_select').change(function() {
 	goTo();
 })
+
+// wishlist에 추가
+$('a.wishlist').click(function() {
+	let book_id = $(this).parent().parent().prev().val();
+	console.log(book_id);
+	if(book_id == ''){
+		console.log('book_id 값을 불러오지 못했습니다. 찜한 상품 목록에 추가하지 못했습니다.')
+		return false;
+	}
+	
+	$.ajax({
+		type: 'post',
+		url: '/hotSalt/wishlist',
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		data: {	'book_id': book_id},
+		dataType:'text',
+		success: function(data) {
+			var Ca = /\+/g;
+			alert(decodeURIComponent(data.replace(Ca, " ")));
+		}
+	})
+})

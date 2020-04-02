@@ -95,6 +95,7 @@
 													<div class="setting__menu">
 														<span><a href="/hotSalt/orderHistory">주문내역</a></span>
 														<span><a href="/hotSalt/cart">장바구니</a></span>
+														<span><a href="/hotSalt/wishlist">찜한 상품 목록</a></span>
 														<span><a href="/hotSalt/member_point">적립금</a></span>
 														<span><a href="/hotSalt/mypage_pwd_chk">회원정보</a></span>
 														<c:if test="${sessionScope.memId =='admin' }">

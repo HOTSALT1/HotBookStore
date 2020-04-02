@@ -155,15 +155,15 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
-													<input class="seq" type="hidden" value="${book.seq}" />
 													<input type="hidden" class="info" value="${book.info }"/>
 													<input type="hidden" class="review" value="리뷰 개수: ${book.count }"/>
+													<input class="seq" type="hidden" value="${book.seq}" />
 													<ul class="add_to_links">
-														<li><a id="buy2_${book.seq}" class="cart" href="#none"><i
+														<li><a id="buy2_${book.seq}" class="cart" href="javascript:void(0)"><i
 																	class="bi bi-shopping-bag4"></i></a></li>
-														<li><a class="wishlist addToCart" href="#none"><i
+														<li><a class="addToCart" href="javascript:void(0)"><i
 																	class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a class="compare" href="#none"><i
+														<li><a class="wishlist" href="javascript:void(0)"><i
 																	class="bi bi-heart-beat"></i></a></li>
 														<li><a data-toggle="modal" title="Quick View"
 																class="quickview modal-view detail-link"

@@ -100,4 +100,24 @@
 			<foreach collection="list" item="cart" open="," separator="," close=")"> #{cart.book_id} </foreach>
 	</select>
 	
+	
+	<!-- wishlist 데이터를 가져오는 쿼리 -->
+	<select id="getWishlist" resultType="shop.bean.WishlistDTO" parameterType="String">
+		SELECT * FROM view_wishlist WHERE user_id = #{user_id}
+	</select>
+	
+	<select id="getWishlistCount" resultType="int" parameterType="java.util.Map" >
+		SELECT COUNT(*) FROM wishlist WHERE user_id = #{user_id} AND book_id = #{book_id}
+	</select>
+	
+	<!-- wishlist에 추가하는 쿼리 -->
+	<insert id="addWishlist" parameterType="java.util.Map">
+		INSERT INTO wishlist(user_id, book_id) VALUES(#{user_id}, #{book_id})
+	</insert>
+	
+	<!-- wishlist에서 삭제하는 쿼리 -->
+	<delete id="removeFromWishlist" parameterType="java.util.Map">
+		DELETE wishlist WHERE user_id = #{user_id} AND book_id = #{book_id}
+	</delete>
+	
 </mapper>
