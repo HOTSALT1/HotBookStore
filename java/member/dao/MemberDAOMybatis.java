@@ -68,7 +68,7 @@ public class MemberDAOMybatis implements MemberDAO {
 		sqlSession.update("memberSQL.memberDelete", map);
 		
 	}
-	//관리자 
+
 	@Override
 	public List<MemberDTO> member_list() {
 		return sqlSession.selectList("memberSQL.memberList");

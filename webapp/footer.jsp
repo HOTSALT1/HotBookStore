@@ -28,7 +28,7 @@ footer a:hover {text-decoration: none;}
     vertical-align: middle;
     margin: 0 0 0 130px;}
 .footer-sns a{display: inline-block;}
-.footer-con{width: 915px;margin: 0 auto;}
+.footer-con{width: 915px;}
 .footer-con-img{display: inline-block;}
 .footer-con-img img{width: 140px;}
 .footer-con-name{

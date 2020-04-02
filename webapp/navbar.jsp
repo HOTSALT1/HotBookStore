@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
    <header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
 				<div class="row">
@@ -241,7 +240,6 @@
 				<!-- Mobile Menu -->
 			</div>
 		</header>
-		<script src="js/member.js"></script>
 		<script type="text/javascript">
 			$('.cate1 li').click(function () {
 				location.href="/hotSalt/search?cate1=" + $(this).text();
