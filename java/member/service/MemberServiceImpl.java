@@ -33,12 +33,23 @@ public class MemberServiceImpl implements MemberService {
 		String inputPass = map.get("pwd");
 		String pwd = pwdEncoder.encode(inputPass);
 		map.put("pwd",pwd);
-		memberDAO.signup(map);
 		
-		mav.addObject("name", map.get("name"));
-		mav.addObject("id", map.get("id"));
-		mav.setViewName("jsonView");
-		return mav;
+		if(e_verify_chk(map.get("e_verify"), map.get("email")).equals("true")) {
+			System.out.println("이메일 인증 성공");
+			memberDAO.signup(map);
+			memberDAO.welcomePoint(map.get("id"));
+			mav.addObject("name", map.get("name"));
+			mav.addObject("id", map.get("id"));
+			mav.setViewName("jsonView");
+			return mav;
+			
+		}else {
+			mav.addObject("result", "false");
+			mav.setViewName("jsonView");
+			System.out.println("이메일 인증 실패");
+			return mav;
+		}
+		
 	}
 
 	@Override
@@ -54,6 +65,7 @@ public class MemberServiceImpl implements MemberService {
 			sendMail.setTo(email);
 			sendMail.send();
 			session.setAttribute("key", key);
+			session.setAttribute("email", email);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,9 +205,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String e_verify_chk(String e_verify) {
+	public String e_verify_chk(String e_verify, String email) {
+		if(session.getAttribute("key").equals(e_verify)&&session.getAttribute("email").equals(email)) {
 		
-		if(session.getAttribute("key").equals(e_verify)) {
 			return "true";	
 		}
 		return "fail";

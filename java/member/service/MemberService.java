@@ -28,7 +28,7 @@ public interface MemberService {
 
 	public void e_verify(String email, JavaMailSender mailSender);
 
-	public String e_verify_chk(String e_verify);
+	public String e_verify_chk(String e_verify, String email);
 
 	public ModelAndView member_findPwd(Map<String, String> map, ModelAndView mav);
 

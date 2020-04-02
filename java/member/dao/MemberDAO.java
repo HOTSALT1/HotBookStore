@@ -26,11 +26,11 @@ public interface MemberDAO {
 
 	public List<MemberDTO> member_list();
 
-	public void e_verify(String email);
-
 	public MemberDTO member_findPwd(Map<String, String> map);
 
 	public void member_modifyPwd(Map<String, String> map);
+
+	public void welcomePoint(String id);
 
 
 
