@@ -72,6 +72,8 @@ public class ShopServiceImpl implements ShopService {
 		mav.addObject("max", map.get("max"));
 		mav.addObject("pg", map.get("pg"));
 		
+		mav.addObject("grid_list", map.get("grid_list"));
+		
 		System.out.println(map);
 		shopPaging.setTotalA(shopDAO.getBoardTotalA(map));
 		shopPaging.setCurrentPage(Integer.parseInt((String)map.get("pg")));
@@ -85,7 +87,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	@Override
-	// 인덱스 페이지에 뿌려줄 신간 6개 가져오기 
+	// 인덱스 페이지에 뿌려줄 책들 가져오기 
 	public ModelAndView getDPBooks(ModelAndView mav, String cate1, String cate2, int count, OrderBy orderBy, String list_name) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		nvl(map, "orderBy", orderBy.getValue());	// 입력 받은 순서로(orderBy)
@@ -93,8 +95,8 @@ public class ShopServiceImpl implements ShopService {
 		map.put("endNum", count + "");				// 입력받은 수까지
 		nvl(map, "min", "1000");					// 최소 가격
 		nvl(map, "max", "100000");					// 최대 가격
-		nvl(map, "cate1", cate1);					// 입력받은 카테고리 중에서 고르기
-		nvl(map, "cate2", cate2);					// 입력받은 카테고리 중에서 고르기
+		map.put("cate1", cate1);					// 입력받은 카테고리 중에서 고르기
+		map.put("cate2", cate2);					// 입력받은 카테고리 중에서 고르기
 		
 		List<BookDTO_list> list = shopDAO.getBooks(map);
 		for(BookDTO_list dto: list) {

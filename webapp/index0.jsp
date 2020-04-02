@@ -123,9 +123,11 @@
 						</div>
 						<div class="product__content content--center">
 							<h4><a href="single-product?book_id=${book.seq }">${book.title }</a></h4>
+							<input type="hidden" class="info" value="${book.info }" />
+							<input type="hidden" class="review" value="리뷰 개수: ${book.count }"/>
 							<ul class="prize d-flex">
-								<li>${book.d_price }</li>
-								<li class="old_prize">${book.price }</li>
+								<li><fmt:formatNumber pattern="#,###,###원">${book.d_price }</fmt:formatNumber></li>
+								<li class="old_prize"><fmt:formatNumber pattern="#,###,###원">${book.price }</fmt:formatNumber></li>
 							</ul>
 							<div class="action">
 								<div class="actions_inner">
@@ -143,12 +145,16 @@
 								</div>
 							</div>
 							<div class="product__hover--content">
+								<input type="hidden" id="score_${book.seq }" value="${book.score }" />
 								<ul class="rating d-flex">
-									<li class="on"><i class="fa fa-star-o"></i></li>
-									<li class="on"><i class="fa fa-star-o"></i></li>
-									<li class="on"><i class="fa fa-star-o"></i></li>
-									<li><i class="fa fa-star-o"></i></li>
-									<li><i class="fa fa-star-o"></i></li>
+								<c:forEach var="s" step="1" begin="1" end="5">
+									<c:if test="${book.score >= 2*s}">
+										<li class="on"><i class="fa fa-star"></i></li>
+									</c:if>
+									<c:if test="${book.score < 2*s}">
+										<li class=""><i class="fa fa-star-o"></i></li>
+									</c:if>
+								</c:forEach>
 								</ul>
 							</div>
 						</div>

@@ -28,5 +28,7 @@ public class BookDTO_list {
 	private String info;
 	private String img1;
 	private String img2;
-	private int score;
+	private int stock;
+	private int count;
+	private double score;
 }

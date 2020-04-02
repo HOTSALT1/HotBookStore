@@ -1,7 +1,12 @@
 // 장바구니 추가
-$('a.addToCart').click(function() {
+$('a.addToCart, #modal-buy').click(function() {
 	let book_id = $(this).parent().parent().prev().val();
 	let qty = 1;
+	
+	if(book_id == ''){
+		console.log('book_id 값을 불러오지 못했습니다. 장바구니에 추가하지 못했습니다.')
+		return false;
+	}
 
 	$.ajax({
 		type: 'post',
@@ -26,7 +31,8 @@ $('#btn-search').click(function() {
 	if($('#titleOrAuthor').val().trim() ==''){
 		alert('검색어를 입력해주세요.')
 	}else{
-		location.href="/hotSalt/search?cate1=" + cate1 + '&titleOrAuthor=' + $('#titleOrAuthor').val().trim();
+		location.href="/hotSalt/search?cate1=" + cate1 + '&titleOrAuthor=' + $('#titleOrAuthor').val().trim()
+			+ "&grid-list=" + $('#grid-list').val()
 	}
 })
 
@@ -49,8 +55,10 @@ $('i.bi.bi-search').parent().click(function() {
 	$('#modal-title').text($p.find('.product__content a').text());
 	$('#modal-d_price').text($p.find('.product__content .prize li:eq(0)').text());
 	$('#modal-price').text($p.find('.product__content .prize li:eq(1)').text());
-	$('#modal-info').text()
-	$('#modal-buy').attr('class', 'modal-buy_' + $p.find('input[type=hidden].seq').val())
+	$('#modal-info').text($p.find('input.info').val().substr(0, 300));
+	$('div.review').text($p.find('input.review').val());
+	$('#modal-buy').attr('class', 'modal-buy_' + $p.find('input.seq').val());
+	$('#book_id').val($p.find('input.seq').val());
 })
 
 $('ul.wn__pagination li:not(.active) a').click(function() {
@@ -72,7 +80,8 @@ function goTo(pg) {
 		pg: 	pg2,
 		min:	$('#slider-range').slider('values', 0),
 		max:	$('#slider-range').slider('values', 1),
-		orderBy:orderBy
+		orderBy:orderBy,
+		grid_list:$('#grid_list').val()
 	}
 	if($('#titleOrAuthor').val().trim()!=''){
 		data.titleOrAuthor = $('#titleOrAuthor').val().trim();
