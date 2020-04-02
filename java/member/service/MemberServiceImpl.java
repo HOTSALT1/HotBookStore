@@ -29,12 +29,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public ModelAndView signup(Map<String, String> map, ModelAndView mav,BCryptPasswordEncoder pwdEncoder) {
-		
 		String inputPass = map.get("pwd");
 		String pwd = pwdEncoder.encode(inputPass);
 		map.put("pwd",pwd);
-		
-		if(e_verify_chk(map.get("e_verify"), map.get("email")).equals("true")) {
+		if(e_verify_chk(map.get("key"), map.get("email")).equals("true")) {
 			System.out.println("이메일 인증 성공");
 			memberDAO.signup(map);
 			memberDAO.welcomePoint(map.get("id"));
@@ -207,7 +205,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String e_verify_chk(String e_verify, String email) {
 		if(session.getAttribute("key").equals(e_verify)&&session.getAttribute("email").equals(email)) {
-		
 			return "true";	
 		}
 		return "fail";
@@ -221,6 +218,7 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(memberDTO);
 		if(memberDTO==null) {
 			mav.addObject("result","false");
+			mav.setViewName("jsonView");
 		}else {
 			mav.addObject("id", map.get("id"));
 			mav.addObject("email", map.get("email"));
