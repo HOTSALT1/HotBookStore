@@ -55,6 +55,26 @@ public class MemberController {
 		mav.setViewName("/member_modifyPwd");
 		return mav;
 	}
+	@RequestMapping(value="mypage_pwd_chk", method=RequestMethod.GET)
+	public ModelAndView mypage_pwd_chk(ModelAndView mav) {
+		mav.setViewName("mypage_pwd_chk");
+		return mav;
+	}
+	@RequestMapping(value="member_deleteForm", method=RequestMethod.GET)
+	public ModelAndView member_deleteForm(ModelAndView mav) {
+		mav.setViewName("member_deleteForm");
+		return mav;
+	}
+	@RequestMapping(value="member_findId", method=RequestMethod.GET)
+	public ModelAndView member_findId(ModelAndView mav) {
+		mav.setViewName("member_findId");
+		return mav;
+	}
+	@RequestMapping(value="member_findPwd", method=RequestMethod.GET)
+	public ModelAndView member_findPwd(ModelAndView mav) {
+		mav.setViewName("member_findPwd");
+		return mav;
+	}
 	
 	//회원가입
 	@RequestMapping(value="/signup", method=RequestMethod.POST)

@@ -120,7 +120,7 @@ $('#findOkBtn').click(function() {
 			success : function(data){
 				if(data.result=="false"){
 					alert('입력하신 아이디와 이메일로는 비밀번호를 찾지 못했습니다. /매핑수정');
-					location.href = '/hotSalt/member_findPwd.jsp'
+					location.href = '/hotSalt/member_findPwd'
 				}else{
 					location.href = '/hotSalt/member_modifyPwd?id='+data.id+'&email='+data.email;			
 				}

@@ -30,14 +30,33 @@ public class IndexController {
 
 	// 커뮤니티 홈페이지 페이지 매핑
 	@RequestMapping(value = "/community-index")
-	public String communityindex() {
-		return "/community-index";
+	public ModelAndView communityindex(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/community-index");
+		return mav;
 	}
 
 	// 컨텍트 페이지 매핑
-	@RequestMapping(value = "/contact")
-	public String contact() {
-		return "/contact";
+	@RequestMapping(value = "/about")
+	public ModelAndView about(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/about");
+		return mav;
 	}
+	
+	@RequestMapping(value = "/contact")
+	public ModelAndView contact(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/contact");
+		return mav;
+	}
+
+	@RequestMapping(value = "/faq")
+	public ModelAndView faq(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/faq");
+		return mav;
+	}
+
 
 }
