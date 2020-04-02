@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Home | Books Library eCommerce Store</title>
+	<title>주문내역 | Hot BookStore</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,7 +31,7 @@
 	<!-- Modernizer js -->
 	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-<title>Insert title here</title>
+
     <style>
     	#orderPeriodBox{
     	border: 2px solid #c3c3c3;
@@ -95,17 +95,21 @@
 	<div style="border-top:2px solid #f56a6a; width: 900px; margin: 0 auto;margin-bottom:5px;margin-top: 20px;"></div>
 	<div id="orderPeriodBox">
 		<div id="orderPeriodBox_high">
-		<input type="button" class="button" value="최근 1주일"><input type="button" class="button" value="1개월"><input type="button" class="button" value="3개월"><input type="button" class="button" value="6개월">
-		&nbsp;&nbsp;<input type="date" class="date"> ~ <input type="date" class="date">
+		<input type="button" id="btn-date1" class="button" value="최근 1주일">
+		<input type="button" id="1" class="button btn-date" value="1개월">
+		<input type="button" id="3" class="button btn-date" value="3개월">
+		<input type="button" id="6" class="button btn-date" value="6개월">
+		&nbsp;&nbsp;<input type="date" id="startDate" class="date"> ~ <input type="date" id="endDate" class="date">
 		</div>
 		<!-- 주문검색 -->
 		<div id="orderPeriodBox_low">
-		<select> 
+		<select id="searchOption"> 
 			<option value="주문전체" selected>주문전체</option>
 			<option value="주문자">주문자</option>
 			<option value="주문번호">주문번호</option>  
 		</select>
-		<input type="text" class="search_bar"><input type="button" value="조회" class="button">
+		<input type="text" id="searchValue" class="search_bar">
+		<input type="button" id="btn-search" value="조회" class="button">
 		</div>
 	</div>
 	<div style="border-top:2px solid #f56a6a; width: 900px; margin: 0 auto;margin-bottom:5px;margin-top: 20px;"></div>
@@ -124,9 +128,9 @@
         <c:forEach var="order" items="${order_list }">
         <tr class="orderHistory_table_tr2">
             <td><a href="/hotSalt/orderHistoryDetail/${order.order_id }">${order.order_id }</a></td>
-            <td><fmt:formatDate pattern="YYYY년 MM월 DD일 HH:mm:ss" value="${order.logtime }"/></td>
+            <td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${order.logtime }"/></td>
             <td>${order.name }</td>
-            <td>${order.price }</td>
+            <td><fmt:formatNumber pattern="#,###,###원">${order.price }</fmt:formatNumber></td>
             <td>${order.status }</td>
             <td>${order.tax_ref }</td>
             <td>${order.buyer }</td>
@@ -134,6 +138,8 @@
         </tr>
         </c:forEach>
     </table>
+    
+    
     <div style="margin: 0 auto;border-top: 1px solid #c3c3c3;
     width: 900px;
     height: 30px;
@@ -142,11 +148,12 @@
         
 	<!-- JS Files -->
 	
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
-	<script src="js/member.js"></script>
+	<script src="/hotSalt/js/popper.min.js"></script>
+	<script src="/hotSalt/js/bootstrap.min.js"></script>
+	<script src="/hotSalt/js/plugins.js"></script>
+	<script src="/hotSalt/js/active.js"></script>
+	<script src="/hotSalt/js/member.js"></script>
+	<script src="/hotSalt/js/orderHistory.js"></script>
 
 </body>
 

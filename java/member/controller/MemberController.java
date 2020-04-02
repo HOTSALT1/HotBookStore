@@ -55,6 +55,26 @@ public class MemberController {
 		mav.setViewName("/member_modifyPwd");
 		return mav;
 	}
+	@RequestMapping(value="mypage_pwd_chk", method=RequestMethod.GET)
+	public ModelAndView mypage_pwd_chk(ModelAndView mav) {
+		mav.setViewName("mypage_pwd_chk");
+		return mav;
+	}
+	@RequestMapping(value="member_deleteForm", method=RequestMethod.GET)
+	public ModelAndView member_deleteForm(ModelAndView mav) {
+		mav.setViewName("member_deleteForm");
+		return mav;
+	}
+	@RequestMapping(value="member_findId", method=RequestMethod.GET)
+	public ModelAndView member_findId(ModelAndView mav) {
+		mav.setViewName("member_findId");
+		return mav;
+	}
+	@RequestMapping(value="member_findPwd", method=RequestMethod.GET)
+	public ModelAndView member_findPwd(ModelAndView mav) {
+		mav.setViewName("member_findPwd");
+		return mav;
+	}
 	
 	//회원가입
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
@@ -86,8 +106,8 @@ public class MemberController {
 	//회원가입 이메일 인증번호 확인버튼
 	@RequestMapping(value = "e_verify_chk", method = RequestMethod.POST)
 	@ResponseBody
-	public String e_verify_chk(@RequestParam String e_verify) {
-		return memberService.e_verify_chk(e_verify);
+	public String e_verify_chk(@RequestParam String e_verify, @RequestParam String email) {
+		return memberService.e_verify_chk(e_verify,email);
 		
 	}
 	//회원가입완료

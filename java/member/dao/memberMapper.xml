@@ -15,10 +15,9 @@
 		insert into member(name,birth,gender,id,pwd,email,tel,logtime) 
 					values(#{name }, #{birth }, #{gender }, #{id }, #{pwd }, #{email }, #{tel }, SYSDATE)
 	</insert>
-	
-	<update id="e_verify">
-		update member set e_verify='y' where email=#{email}
-	</update>
+	<insert id="welcomePoint" parameterType="String">
+		insert into point_log(user_id,point,note) values(#{id},1000,'회원가입 포인트') 	
+	</insert>
 	
 	<select id="login" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
 		SELECT * FROM MEMBER WHERE id=#{id} and status!='deleted'
@@ -46,7 +45,6 @@
 		update member set pwd=#{pwd } WHERE id=#{id}
 	</update>
 </mapper>
-
 
 
 
