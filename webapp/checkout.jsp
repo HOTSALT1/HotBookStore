@@ -233,7 +233,7 @@
 							</ul>
 							<ul class="shipping__method">
 								<li>상품 합계 <span><fmt:formatNumber pattern="#,###원">${total_price }</fmt:formatNumber></span></li>
-								<li>배송비<span><fmt:formatNumber pattern="#,###원">${delivery}</fmt:formatNumber></span></li>
+								<li>배송비<span><fmt:formatNumber pattern="#,###원">${delivery}</fmt:formatNumber></span><input type="hidden" id="delivery_fee" value="${delivery}" /></li>
 							</ul>
 							<ul class="total__amount">
 								<li>최종 결제금액 <span id="order_price"><fmt:formatNumber pattern="#,###원">${total_price + delivery }</fmt:formatNumber></span></li>

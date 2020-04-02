@@ -11,6 +11,7 @@ public class OrderDTO {
 	private String buyer;
 	private String receiver;
 	private int price;
+	private int delivery_fee;
 	private int point;
 	private int usedPoint;
 	private String addr_new;

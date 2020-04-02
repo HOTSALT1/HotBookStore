@@ -134,6 +134,7 @@ $('#btn-confirm').click(function() {
 	data.receiver = $('#r_name').val();
 	data.buyer = $('#name').val();
 	data.tel = $('#tel').val();
+	data.delivery_fee = $('#delivery_fee').val();
 	
 	$.ajax({
 		type:"post",
