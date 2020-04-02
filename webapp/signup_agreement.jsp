@@ -118,22 +118,22 @@
 				</div>
 				<div class="div3 border-Tnone idx4">
 					<label>아이디(*)<span>|</span></label> 
-					<input type="text" name="id" id="id" class="chk"> 
+					<input type="text" name="id" id="id" class="chk" placeholder="아이디 입력"> 
 					<span id="check-id"></span>
 				</div>
 				<div class="div3 border-Tnone idx5">
 					<label>비밀번호(*)<span>|</span></label> 
-					<input type="password" name="pwd" id="pwd" class="chk">
+					<input type="password" name="pwd" id="pwd" class="chk" placeholder="비밀번호 입력">
 					<span id="check-pwd"></span>
 				</div>
 				<div class="div3 border-Tnone idx6">
 					<label>비밀번호 확인(*)<span>|</span></label> 
-					<input type="password" name="repwd" id="repwd" class="chk"> 
+					<input type="password" name="repwd" id="repwd" class="chk" placeholder="비밀번호 입력"> 
 					<span id="check-repwd"></span>
 				</div>
 				<div class="div3 border-Tnone idx7">
 					<label>이메일(*)<span>|</span></label> 
-					<input type="text"  id="mail1" class="chk" maxlength="20">
+					<input type="text"  id="mail1" class="chk" maxlength="20" placeholder="이메일 입력">
 					<span style="font-size: 14px; margin: 0 -8px 0 3px;">@</span>
 					
 					<input type="text" id="mail2" list="selectEmail" class="chk" placeholder="선택하세요" style="margin-left: 10px !important; width: 120px;">
@@ -143,14 +143,14 @@
 						<option value="nate.com">nate.com</option> 
 						<option value="gmail.com">gmail.com</option>
 					</datalist>|
-					<input type="text" id="e_verify" placeholder="인증번호 입력">
+					<input type="text" id="e_verify" name="key" placeholder="인증번호 입력">
 					<input type="button" id="e_verifyBtn" value="인증번호 받기">
 					<span id="check-mail"></span>
 				</div>
 				<div class="div3 border-Tnone idx8"
 					style="border-radius: 0 0 7px 7px;">
 					<label>핸드폰번호<span>|</span></label>
-					<input type="text" size="40" name="tel" id="tel" class="chk">
+					<input type="text" size="40" name="tel" id="tel" class="chk" placeholder="ㄴ(-)없이 번호만 입력해주세요">
 					<span id="check-tel"></span>
 				</div>
 				<div class="signup-btn" style="text-align: center;">

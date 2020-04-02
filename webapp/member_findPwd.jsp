@@ -118,8 +118,9 @@ $('#findOkBtn').click(function() {
 			data : 'id='+$('#findId').val()+'&email='+$('#findEmail').val(),
 			dataType : 'json',
 			success : function(data){
-				if(data.result=='false'){
-					$('#findEmailChk').text('입력하신 아이디와 이메일로는 비밀번호를 찾지 못했습니다.');
+				if(data.result=="false"){
+					alert('입력하신 아이디와 이메일로는 비밀번호를 찾지 못했습니다. /매핑수정');
+					location.href = '/hotSalt/member_findPwd.jsp'
 				}else{
 					location.href = '/hotSalt/member_modifyPwd?id='+data.id+'&email='+data.email;			
 				}
@@ -147,7 +148,7 @@ $('#e_verify').keyup(function(){
 	$.ajax({
 		type :'post',
 		url : '/hotSalt/e_verify_chk',
-		data : 'e_verify='+$('#e_verify').val(),
+		data : 'e_verify='+$('#e_verify').val()+'&email='+$('#findEmail').val(),
 		dataType : 'text',
 		success : function(data){
 			if(data=='true'){

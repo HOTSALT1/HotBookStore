@@ -86,8 +86,8 @@ public class MemberController {
 	//회원가입 이메일 인증번호 확인버튼
 	@RequestMapping(value = "e_verify_chk", method = RequestMethod.POST)
 	@ResponseBody
-	public String e_verify_chk(@RequestParam String e_verify) {
-		return memberService.e_verify_chk(e_verify);
+	public String e_verify_chk(@RequestParam String e_verify, @RequestParam String email) {
+		return memberService.e_verify_chk(e_verify,email);
 		
 	}
 	//회원가입완료
