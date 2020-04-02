@@ -468,6 +468,7 @@ public class OrderServiceImpl implements OrderService {
 		
 		nvl(map, "start", sdf.format(cal2.getTime()));
 		nvl(map, "end", sdf.format(cal.getTime()));
+		nvl(map, "pg", "1");
 		System.out.println(map);
 		if(session.getAttribute("memId")!=null) {
 			map.put("user_id", (String)session.getAttribute("memId"));
@@ -477,7 +478,16 @@ public class OrderServiceImpl implements OrderService {
 				return;
 			}
 		}
+		shopPaging.setCurrentPage(Integer.parseInt((String)map.get("pg")));
+		shopPaging.setPageBlock(5);
+		shopPaging.setTotalA(orderDAO.loadOrderTotalA(map));
+		shopPaging.setPageSize(5);
+		shopPaging.makePagingHTML();
+		
+		mav.addObject("start", map.get("start"));
+		mav.addObject("end", map.get("end"));
 		mav.addObject("order_list",orderDAO.loadOrder(map));
+		mav.addObject("order_paging", shopPaging.getPagingHTML());
 	}
 	
 	@Override

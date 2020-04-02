@@ -16,6 +16,11 @@ $('.btn-date').click(function() {
 	$('#startDate').val(date.yyyymmdd());
 })
 
+$('#btn-search').click(function() {
+	location.href="/hotSalt/orderHistory?start=" + $('#startDate').val() + "&end=" + $('#endDate').val()
+		
+})
+
 // 현재 날짜값을 yyyy-mm-dd 형식으로 변환해주는 함수
 Date.prototype.yyyymmdd = function() {
     var yyyy = this.getFullYear().toString();
