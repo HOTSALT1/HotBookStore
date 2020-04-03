@@ -42,7 +42,6 @@
 
 	<!-- Main wrapper -->
 	<div class="wrapper" id="wrapper">
-		<input type="hidden" name="book_id" id="book_id" value="${seq }">
 		<input type="hidden" name="pg" id="pg" value="${pg }">
 		<!-- Header -->
 		<jsp:include page="navbar.jsp"></jsp:include>
@@ -99,9 +98,9 @@
 							<div class="col-lg-12">
 								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
 									<div class="shop__list nav justify-content-center" role="tablist">
-										<a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid"
-											role="tab"><i class="fa fa-th"></i></a>
-										<a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i
+										<a id="a-grid" class="nav-item nav-link active" data-toggle="tab" href="#nav-grid"
+											role="tab"><i class="fa fa-th"></i></a><input type="hidden" id="grid_list" value="${grid_list }" />
+										<a id="a-list" class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i
 												class="fa fa-list"></i></a>
 									</div>
 									<p>검색 결과: 총 ${totalA }개 중 <c:if test="${articles > 1}">1–${articles}</c:if><c:if test="${articles <= 1}">${articles }</c:if>개</p>
@@ -137,9 +136,16 @@
 											</c:if>
 											<%-- <a class="second__img animation1" href="single-product?book_id=${book.seq}"><img
 													src="${book.img2 }" alt="product image"></a> --%>
-											<div class="hot__box">
-												<span class="hot-label">BEST SALLER</span>
-											</div>
+											<c:if test="${book.cate2 eq 'best' }">
+												<div class="hot__box">
+													<span class="hot-label">BEST SALLER</span>
+												</div>
+											</c:if>
+											<c:if test="${book.cate2 eq 'new' }">
+												<div class="hot__box">
+													<span class="hot-label">NEW BOOK</span>
+												</div>
+											</c:if>
 										</div>
 										<div class="product__content content--center">
 											<h4><a href="single-product.html">${book.title }</a></h4>
@@ -149,13 +155,15 @@
 											</ul>
 											<div class="action">
 												<div class="actions_inner">
+													<input type="hidden" class="info" value="${book.info }"/>
+													<input type="hidden" class="review" value="리뷰 개수: ${book.count }"/>
 													<input class="seq" type="hidden" value="${book.seq}" />
 													<ul class="add_to_links">
-														<li><a id="buy2_${book.seq}" class="cart" href="#none"><i
+														<li><a id="buy2_${book.seq}" class="cart" href="javascript:void(0)"><i
 																	class="bi bi-shopping-bag4"></i></a></li>
-														<li><a class="wishlist addToCart" href="#none"><i
+														<li><a class="addToCart" href="javascript:void(0)"><i
 																	class="bi bi-shopping-cart-full"></i></a></li>
-														<li><a class="compare" href="#none"><i
+														<li><a class="wishlist" href="javascript:void(0)"><i
 																	class="bi bi-heart-beat"></i></a></li>
 														<li><a data-toggle="modal" title="Quick View"
 																class="quickview modal-view detail-link"
@@ -206,19 +214,21 @@
 											<h2><a href="single-product?book_id=${book.seq}">${book.title}</a></h2>
 											<ul class="rating d-flex">
 												<c:forEach var="s" step="1" begin="1" end="5">
-													<c:if test="${(book.score / s) >= 1}">
+													<c:if test="${book.score >= 2*s}">
 														<li class="on"><i class="fa fa-star"></i></li>
 													</c:if>
-													<c:if test="${(book.score / s) < 1}">
+													<c:if test="${book.score < 2*s}">
 														<li class=""><i class="fa fa-star-o"></i></li>
 													</c:if>
 												</c:forEach>
 											</ul>
+											<ul><li>리뷰 평균: <fmt:formatNumber pattern="#.##">${book.score }</fmt:formatNumber>점</li></ul>
 											<ul class="prize__box">
 												<li><fmt:formatNumber pattern="#,###원">${book.d_price }</fmt:formatNumber></li>
 												<li class="old__prize"><fmt:formatNumber pattern="#,###원">${book.price }</fmt:formatNumber></li>
 											</ul>
-											<input type="hidden" id="info_${book.seq }" value="${book.info }"/>
+											<input type="hidden" class="info" value="${book.info }"/>
+											<input type="hidden" class="review" value="리뷰 개수: ${book.count }"/>
 											<p class="info"></p>
 											<ul class="cart__action d-flex">
 												<li class="cart"><a id="buy1_${book.seq }" class="${book.seq }" href="javascript:void(0)">주문하기</a></li>
@@ -262,8 +272,9 @@
 									</div>
 								</div>
 								<!-- end product images -->
+								<input type="hidden" id="book_id" value="" />
 								<div class="product-info">
-									<h1 id="modal-title">Simple Fabric Bags</h1>
+									<h1 id="modal-title">제목</h1>
 									<div class="rating__and__review">
 										<ul class="rating">
 											<li><span class="ti-star"></span></li>
@@ -278,13 +289,12 @@
 									</div>
 									<div class="price-box-3">
 										<div class="s-price-box">
-											<span id="modal-d_price" class="new-price">$17.20</span>
-											<span id="modal-price" class="old-price">$45.00</span>
+											<span id="modal-d_price" class="new-price">할인가</span>
+											<span id="modal-price" class="old-price">정가</span>
 										</div>
 									</div>
 									<div id="modal-info" class="quick-desc">
-										Designed for simplicity and made from high quality materials. Its sleek geometry
-										and material combinations creates a modern look.
+										책 소개
 									</div>
 									<!-- <div class="select__color">
 										<h2>Select color</h2>
@@ -321,7 +331,7 @@
 										</div>
 									</div> -->
 									<div class="addtocart-btn">
-										<a id="modal-buy" class="modal-buy_" href="javascript:void(0)">주문하기</a>
+										<a id="modal-buy" class="modal-buy_" href="javascript:void(0)">장바구니에 추가</a>
 									</div>
 								</div>
 							</div>
@@ -352,6 +362,14 @@
 			$('#slider-range').slider("values", [${min},${max}]);
 			$('#amount').val('' + setComma($('#slider-range').slider('values', 0)) +
 			        "원 ~ " + setComma($('#slider-range').slider('values', 1)) + '원');
+			
+			// nav-grid / nav-list 세팅
+			if($('#grid_list').val() == 'a-list'){
+				$('a#a-list').trigger('click');
+			}
+			$('a#a-list, a#a-grid').click(function() {
+				$('#grid_list').val($(this).attr('id'));
+			})
 		});
 		
 		function removeTag(str){

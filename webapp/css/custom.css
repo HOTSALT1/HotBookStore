@@ -59,3 +59,7 @@ div#payment input{
   border: 2px solid #ce7852;
   background-color: #ce7852;
 }
+
+.is-sticky .header__sidebar__right a{
+	color:white;
+}

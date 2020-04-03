@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Home | Books Library eCommerce Store</title>
+	<title>Home | Hot BookStore</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -123,19 +123,21 @@
 						</div>
 						<div class="product__content content--center">
 							<h4><a href="single-product?book_id=${book.seq }">${book.title }</a></h4>
+							<input type="hidden" class="info" value="${book.info }" />
+							<input type="hidden" class="review" value="리뷰 개수: ${book.count }"/>
 							<ul class="prize d-flex">
-								<li>${book.d_price }</li>
-								<li class="old_prize">${book.price }</li>
+								<li><fmt:formatNumber pattern="#,###,###원">${book.d_price }</fmt:formatNumber></li>
+								<li class="old_prize"><fmt:formatNumber pattern="#,###,###원">${book.price }</fmt:formatNumber></li>
 							</ul>
 							<div class="action">
 								<div class="actions_inner">
-									<input type="hidden" id="" value="${book.seq }" />
+									<input type="hidden" class="seq" value="${book.seq }" />
 									<ul class="add_to_links">
 										<li><a id="buy3_${book.seq }" class="cart " href="javascript:void(0)"><i class="bi bi-shopping-bag4"></i></a>
 										</li>
 										<li><a class="addToCart" href="javascript:void(0)"><i
 													class="bi bi-shopping-cart-full"></i></a></li>
-										<li><a class="wishlist" href="#"><i class="bi bi-heart-beat"></i></a></li>
+										<li><a class="wishlist" href="javascript:void(0)"><i class="bi bi-heart-beat"></i></a></li>
 										<li><a data-toggle="modal" title="Quick View"
 												class="quickview modal-view detail-link" href="#productmodal"><i
 													class="bi bi-search"></i></a></li>
@@ -143,12 +145,16 @@
 								</div>
 							</div>
 							<div class="product__hover--content">
+								<input type="hidden" id="score_${book.seq }" value="${book.score }" />
 								<ul class="rating d-flex">
-									<li class="on"><i class="fa fa-star-o"></i></li>
-									<li class="on"><i class="fa fa-star-o"></i></li>
-									<li class="on"><i class="fa fa-star-o"></i></li>
-									<li><i class="fa fa-star-o"></i></li>
-									<li><i class="fa fa-star-o"></i></li>
+								<c:forEach var="s" step="1" begin="1" end="5">
+									<c:if test="${book.score >= 2*s}">
+										<li class="on"><i class="fa fa-star"></i></li>
+									</c:if>
+									<c:if test="${book.score < 2*s}">
+										<li class=""><i class="fa fa-star-o"></i></li>
+									</c:if>
+								</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -2723,20 +2729,19 @@
 									<li><a class="cart addToCart" href="javascript:void(0)"><i class="bi bi-shopping-bag4"></i></a></li>
 									<li><a class="wishlist" href="wishlist.html"><i
 												class="bi bi-shopping-cart-full"></i></a></li>
-									<li><a class="compare" href="#"><i class="bi bi-heart-beat"></i></a></li>
-									<li><a data-toggle="modal" title="Quick View"
-											class="quickview modal-view detail-link" href="#productmodal"><i
-												class="bi bi-search"></i></a></li>
 								</ul>
 							</div>
 						</div>
 						<div class="product__hover--content">
 							<ul class="rating d-flex">
-								<li class="on"><i class="fa fa-star-o"></i></li>
-								<li class="on"><i class="fa fa-star-o"></i></li>
-								<li class="on"><i class="fa fa-star-o"></i></li>
-								<li><i class="fa fa-star-o"></i></li>
-								<li><i class="fa fa-star-o"></i></li>
+								<c:forEach var="s" step="1" begin="1" end="5">
+									<c:if test="${book.score >= 2*s}">
+										<li class="on"><i class="fa fa-star"></i></li>
+									</c:if>
+									<c:if test="${book.score < 2*s}">
+										<li class=""><i class="fa fa-star-o"></i></li>
+									</c:if>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>
@@ -2822,6 +2827,7 @@
 									</div>
 								</div>
 								<!-- end product images -->
+								<input type="hidden" id="book_id" value="" />
 								<div class="product-info">
 									<h1 id="modal-title">Simple Fabric Bags</h1>
 									<div class="rating__and__review">
@@ -2881,7 +2887,7 @@
 										</div>
 									</div> -->
 									<div class="addtocart-btn">
-										<a id="modal-buy" class="modal-buy_" href="javascript:void(0)">주문하기</a>
+										<a id="modal-buy" class="modal-buy_" href="javascript:void(0)">장바구니에 추가</a>
 									</div>
 								</div>
 							</div>

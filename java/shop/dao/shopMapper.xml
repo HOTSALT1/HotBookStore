@@ -9,7 +9,7 @@
 			(SELECT rownum rn, tt.* from 
 			
 				(SELECT seq, title, subTitle, cate1, cate2, author, pub, price, d_price, p_date, book_size, info, nvl(img1, 'images/product/4.jpg'), img2  
-					, nvl(score, 0) FROM book LEFT JOIN view_score ON book.seq = view_score.book_id WHERE 1=1 
+					,stock, nvl(score, 0) score, nvl(count, 0) count FROM book LEFT JOIN view_score ON book.seq = view_score.book_id WHERE 1=1 
 					<if test='titleOrAuthor != null'>
 						AND (title LIKE '%' || #{titleOrAuthor} || '%' OR author LIKE '%' || #{titleOrAuthor} || '%')  
 					</if>
@@ -28,6 +28,9 @@
 					</if>
 					<if test='cate1 != null and cate1 != "all"'>
 						AND cate1 = #{cate1} 
+					</if>
+					<if test='cate2 != null and cate2 != "all"'>
+						AND cate2 = #{cate2} 
 					</if>
 					<if test='!max.equals("0")'>
 						<![CDATA[
@@ -75,6 +78,9 @@
 			<if test='cate1 != null and cate1 != "all"'>
 				AND cate1 = #{cate1} 
 			</if>
+			<if test='cate2 != null'>
+				AND cate2 = #{cate2} 
+			</if>
 			<if test='!max.equals("0")'>
 				<![CDATA[
 					AND (d_price >= #{min} AND d_price <= #{max}) 
@@ -93,5 +99,25 @@
 		SELECT * FROM book WHERE seq IN(0
 			<foreach collection="list" item="cart" open="," separator="," close=")"> #{cart.book_id} </foreach>
 	</select>
+	
+	
+	<!-- wishlist 데이터를 가져오는 쿼리 -->
+	<select id="getWishlist" resultType="shop.bean.WishlistDTO" parameterType="String">
+		SELECT * FROM view_wishlist WHERE user_id = #{user_id}
+	</select>
+	
+	<select id="getWishlistCount" resultType="int" parameterType="java.util.Map" >
+		SELECT COUNT(*) FROM wishlist WHERE user_id = #{user_id} AND book_id = #{book_id}
+	</select>
+	
+	<!-- wishlist에 추가하는 쿼리 -->
+	<insert id="addWishlist" parameterType="java.util.Map">
+		INSERT INTO wishlist(user_id, book_id) VALUES(#{user_id}, #{book_id})
+	</insert>
+	
+	<!-- wishlist에서 삭제하는 쿼리 -->
+	<delete id="removeFromWishlist" parameterType="java.util.Map">
+		DELETE wishlist WHERE user_id = #{user_id} AND book_id = #{book_id}
+	</delete>
 	
 </mapper>
