@@ -110,7 +110,7 @@
         
         <c:forEach var="point" items="${point_list }">
         <tr class="orderHistory_table_tr2">
-            <td><fmt:formatDate pattern="YYYY년 MM월 DD일 HH:mm:ss" value="${point.logtime }"/></td>
+            <td><fmt:formatDate pattern="yyyy년 MM월 dd일 HH:mm:ss" value="${point.logtime }"/></td>
             <td>${point.note }</td>
             <td>${point.order_id }</td>
             <td>${point.point }</td>
