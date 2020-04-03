@@ -61,6 +61,7 @@ public class ShopServiceImpl implements ShopService {
 		nvl(map, "min", "1000");
 		nvl(map, "max", "100000");
 		nvl(map, "cate1", "all");
+		nvl(map, "cate2", "all");
 		
 		List<BookDTO_list> list = shopDAO.getBooks(map);
 		for(BookDTO_list dto: list) {
@@ -73,6 +74,7 @@ public class ShopServiceImpl implements ShopService {
 		mav.addObject("totalA", shopDAO.getBoardTotalA(map)); // 총 검색된 갯수
 		mav.addObject("articles", list.size() > articlesPerPage ? articlesPerPage : list.size());
 		mav.addObject("cate1", map.get("cate1"));
+		mav.addObject("cate2", map.get("cate2"));
 		mav.addObject("keyword", map.get("titleOrAuthor"));
 		mav.addObject("orderBy", map.get("orderBy"));
 		mav.addObject("min", map.get("min"));
