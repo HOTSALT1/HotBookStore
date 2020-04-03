@@ -75,7 +75,6 @@
 						<div class="col-lg-12">
 							<div class="slider__content">
 								<div class="contentbox">
-									
 									<a class="shopbtn" href="#">shop now</a>
 								</div>
 							</div>
@@ -617,12 +616,12 @@
 								some ledmid form</p>
 						</div>
 					</div>
+					<div class="product product__style--3">
 				</div>
 			</div>
 			<div class="slider center">
 				<c:forEach var="book" items="${best_book_list }">
 					<!-- Single product start -->
-					<div class="product product__style--3">
 						<div class="product__thumb">
 							<a class="first__img" href="single-product?book_id=${book.seq }"><img
 								src="${book.img1 }" alt="${book.title }"></a>
@@ -638,6 +637,7 @@
 												class="bi bi-shopping-cart-full"></i></a></li>
 								</ul>
 							</div>
+						</div>
 						</div>
 						<div class="product__hover--content">
 							<ul class="rating d-flex">

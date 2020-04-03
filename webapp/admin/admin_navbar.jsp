@@ -24,6 +24,7 @@
 											<li><a href="">이용 / 탈퇴 안내</a></li>
 											<li><a href="">금액 / 단위 기준 설정</a></li>
 											<li><a href="">코드 관리</a></li>
+											<li><a href="admin_member_list">회원 조회</a></li>
 										</ul>
 										<ul class="item item03">
 											<li class="title">관리 정책</li>
