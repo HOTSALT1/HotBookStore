@@ -33,8 +33,12 @@
 		delete cart where user_id = #{id};
 		end;
 	</update>
-	<select id="memberList" resultType="member.bean.MemberDTO">
-		select id, name, email, tel, birth, logtime from member where status != 'deleted' 
+	<select id="memberList" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
+		<![CDATA[
+		select * from
+			(select rownum rn, tt.* from(select id, name, email, tel, birth, logtime from member where status != 'deleted') tt)
+		where rn >= #{start} and rn <= #{end}
+		]]>
 	</select>
 	
 	<select id="memberfindPwd" parameterType="java.util.Map" resultType="member.bean.MemberDTO">
@@ -44,6 +48,10 @@
 	<update id="membermodifyPwd" parameterType="member.bean.MemberDTO">
 		update member set pwd=#{pwd } WHERE id=#{id}
 	</update>
+	
+	<select id="member_list_count" resultType="int">
+		select count(*) from member where status != 'deleted' 
+	</select>
 </mapper>
 
 

@@ -89,6 +89,7 @@
 							<div class="col-lg-12">
 								<div class="col-xs-8 search-div">
 									<input type="hidden" id="cate1" value="${cate1 }"/>
+									<input type="hidden" id="cate2" value="${cate2 }"/>
 									<input type="text" id="titleOrAuthor" class="search-bar" placeholder="제목 또는 저자로 검색어 입력" value="${keyword }">
 									<input type="button" id="btn-search" class="search" value="검색">
 								</div>
@@ -174,11 +175,11 @@
 											</div>
 											<div class="product__hover--content">
 												<ul class="rating d-flex">
-													<c:forEach var="s" step="1" begin="1" end="5">
-													<c:if test="${(book.score / s) >= 1}">
+												<c:forEach var="s" step="1" begin="1" end="5">
+													<c:if test="${book.score >= 2*s}">
 														<li class="on"><i class="fa fa-star"></i></li>
 													</c:if>
-													<c:if test="${(book.score / s) < 1}">
+													<c:if test="${book.score < 2*s}">
 														<li class=""><i class="fa fa-star-o"></i></li>
 													</c:if>
 												</c:forEach>

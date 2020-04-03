@@ -75,8 +75,13 @@ function goTo(pg) {
 	if(cate1.trim() == '전체'){
 		cate1 = 'all';
 	}
+	let cate2 = $('#cate2').val();
+	if(cate2.trim() == ''){
+		cate2 = 'all';
+	}
 	var data = {
 		cate1:	cate1,
+		cate2:	cate2,
 		pg: 	pg2,
 		min:	$('#slider-range').slider('values', 0),
 		max:	$('#slider-range').slider('values', 1),

@@ -24,7 +24,7 @@ public interface MemberService {
 	
 	public String member_delete(Map<String, String> map, BCryptPasswordEncoder pwdEncoder);
 
-	public ModelAndView member_list(ModelAndView mav);
+	public ModelAndView member_list(ModelAndView mav, String pg);
 
 	public void e_verify(String email, JavaMailSender mailSender);
 

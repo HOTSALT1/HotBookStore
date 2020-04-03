@@ -34,18 +34,19 @@ public class ShopController {
 		return model;
 	}
 	
-	@RequestMapping(value = "shop-grid", method = RequestMethod.GET)
+	@RequestMapping(value = {"shop-grid", "search"}, method = RequestMethod.GET)
 	public ModelAndView shop_grid(@RequestParam(required = false) Map<String, Object> map, ModelAndView model) {
-		orderService.loadCart(model);
-		return shopService.getBooks(model, map);
-	}
-	
-	@RequestMapping(value = "search", method = RequestMethod.GET)
-	public ModelAndView search(@RequestParam Map<String, Object> map, ModelAndView model) {
 		orderService.loadCart(model);
 		model.setViewName("/shop-grid");
 		return shopService.getBooks(model, map);
 	}
+	
+//	@RequestMapping(value = "search", method = RequestMethod.GET)
+//	public ModelAndView search(@RequestParam Map<String, Object> map, ModelAndView model) {
+//		orderService.loadCart(model);
+//		model.setViewName("/shop-grid");
+//		return shopService.getBooks(model, map);
+//	}
 	
 	@RequestMapping(value = "wishlist", method = RequestMethod.GET)
 	public ModelAndView wishlist(ModelAndView model) {
