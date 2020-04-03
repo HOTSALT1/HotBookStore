@@ -35,6 +35,11 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewDAO.getReviewList(map);
 	}
+	
+	@Override
+	public List<ReviewDTO> getBookReviewList(String book_id) {
+		return reviewDAO.getBookReviewList(book_id);
+	}
 
 	@Override
 	public ReviewPaging reviewPaging(String pg) {

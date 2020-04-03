@@ -59,3 +59,46 @@ div#payment input{
   border: 2px solid #ce7852;
   background-color: #ce7852;
 }
+
+/* single-product-review */
+.truncate-text {
+	max-width: 690px; /** Adjust width to your needs */
+	max-height: 100px; /** Adjust width to your needs */
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.review-title-id {
+	border-top: 1px solid #b7b7b7;
+	margin-top: 20px;
+	padding-top: 20px;
+	width: 100%;
+}
+
+.review-fieldset {
+	border-top: 1px solid #b7b7b7;
+	margin-top: 20px;
+	padding-top: 20px;
+	width: 100%;
+}
+
+.review-title-id ul li strong {
+	color: #a8741a;
+	display: inline-block;
+	position: relative;
+	transition: all 0.3s ease 0s;
+}
+
+/* index-review  */
+.review_content_div {
+	max-width: 100%; /** Adjust width to your needs */
+	max-height: 60%; /** Adjust width to your needs */
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
