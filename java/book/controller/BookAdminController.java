@@ -60,6 +60,11 @@ public class BookAdminController {
 		return mav;
 	}
 	
+	//책정보 수정
+	@RequestMapping(value="admin_bookModify", method=RequestMethod.POST)
+	public @ResponseBody void admin_bookModify(@RequestParam Map<String,String> map) {
+		bookAdminService.bookModify(map);
+	}
 
 	
 	
