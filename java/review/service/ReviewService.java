@@ -16,4 +16,6 @@ public interface ReviewService {
 
 	ReviewDTO getReviewView(int review_seq);
 
+	List<ReviewDTO> getBookReviewList(String book_id);
+
 }

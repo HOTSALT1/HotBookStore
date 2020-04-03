@@ -9,6 +9,7 @@
     <title>login</title>
 </head>
 <body style="margin: 0 auto;">
+	<input type="hidden" id="oldPage" value="${oldPage }" />
    <form>
     <div class="login">
         <div style="width:100%;">

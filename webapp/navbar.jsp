@@ -77,7 +77,7 @@
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<c:if test="${sessionScope.memId== null }">
-								<li style="min-width: 50px;"class="h_top"><a href="/hotSalt/loginForm">로그인</a></li>
+								<li style="min-width: 50px;"class="h_top"><a id="a-login" href="javascript:void(0)">로그인</a></li>
 								<li class="h_top"><a href="/hotSalt/signup_agreement">회원가입</a></li>
 							</c:if>
 							<c:if test="${sessionScope.memId !=null }">
@@ -234,5 +234,17 @@
 		<script type="text/javascript">
 			$('.cate1 li').click(function () {
 				location.href="/hotSalt/search?cate1=" + $(this).text();
+			});
+			
+			$('#a-login').click(function() {
+				$.ajax({
+					type: 'post',
+					url: '/hotSalt/setOldPage',
+					data: {'oldPage':document.location.href},
+					success: function() {
+						location.href="/hotSalt/loginForm";
+					}
+				})
 			})
+			
 		</script>
