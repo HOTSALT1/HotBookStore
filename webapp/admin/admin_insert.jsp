@@ -3,6 +3,6 @@
 <script type="text/javascript">
 window.onload=function(){
 	alert("상품 등록 완료");
-	location.href='/admin/admin_booklist';
+	location.href='/hotSalt/admin/admin_booklist?pg=1';
 }
 </script>

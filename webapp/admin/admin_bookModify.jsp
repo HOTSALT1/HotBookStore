@@ -3,6 +3,6 @@
 <script type="text/javascript">
 window.onload=function(){
 	alert("상품 수정 완료");
-	location.href='admin_single-product?book_id=${seq}';
+	location.href='admin_booklist';
 }
 </script>

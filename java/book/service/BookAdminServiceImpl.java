@@ -50,8 +50,8 @@ public class BookAdminServiceImpl implements BookAdminService {
 	}
 
 	@Override
-	public void bookModify(Map<String, String> map) {
-		bookAdminDAO.bookModify(map);		
+	public void bookModify(BookDTO bookDTO) {
+		bookAdminDAO.bookModify(bookDTO);		
 	}
 
 	@Override

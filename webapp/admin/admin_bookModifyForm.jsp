@@ -39,7 +39,7 @@
 	<div style="border-top:1px solid #e6e6e6; width: 100%; margin-top:90px;"></div>
 	
 	<form name="adminModfiyForm" id="adminModfiyForm" method="post" enctype="multipart/form-data" action="admin_bookModify">
-	<input type="hidden" name="book_id" value="${seq }">
+	<input type="hidden" name="seq" value="${book.seq }">
 
 		<div class="div1">
 			<span class="headTop">상품 정보</span>
@@ -183,7 +183,7 @@
 				</div>
 				
 				<div class="signup-btn" style="text-align: center;">
-					<input type="button" class="cancel-button"  id="btn-admin_insert" onclick="checkadminModfiyForm()" value="상품수정">&nbsp;
+					<input type="button" class="cancel-button" onclick="checkadminModfiyForm()" value="상품수정">&nbsp;
 					<input type="button" class="cancel-button" value="상품목록">&nbsp; 							 					
 					<input type="reset" class="reset-button" value="다시 작성">
 				</div>
@@ -206,7 +206,6 @@
 
 </body>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../js/admin_insert.js"></script>
 <script type="text/javascript">
 function checkadminModfiyForm() {
 	document.adminModfiyForm.submit();
