@@ -15,4 +15,6 @@ public interface ReviewDAO {
 
 	ReviewDTO getReviewView(int review_seq);
 
+	List<ReviewDTO> getBookReviewList(String book_id);
+
 }

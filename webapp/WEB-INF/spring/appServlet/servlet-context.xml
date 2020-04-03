@@ -26,7 +26,9 @@
 	<resources mapping="/fonts/**" location="/fonts/" />
 	<resources mapping="/main/**" location="/main/" />
 	<resources mapping="/community-img/**" location="/community-img/" />
-
+	<resources mapping="/demo/**" location="/demo/" />
+	<resources mapping="/board/**" location="/board/js" />
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -64,5 +66,7 @@
 		base-package="admin.controller" />
 	<context:component-scan
 		base-package="review.controller" />
-
+	<context:component-scan
+		base-package="board.controller" />
+		
 </beans:beans>

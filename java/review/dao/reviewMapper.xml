@@ -10,6 +10,10 @@
 		where rn >= #{startNum} and rn <=#{endNum}]]>
 	</select>
 	
+	<select id="getBookReviewList" parameterType="String" resultType="review.bean.ReviewDTO">
+		select * from review where book_id = #{book_id} order by review_regdate desc
+	</select>
+	
 	<select id="getReviewTotalA" resultType="int">
 		select count(*) from review
 	</select>
