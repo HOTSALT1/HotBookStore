@@ -97,6 +97,7 @@ input{
     border-radius: 7px;
     margin-left: 2px !important;
 }
+::placeholder{color:gray;}
         
         
         

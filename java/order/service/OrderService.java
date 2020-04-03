@@ -35,4 +35,7 @@ public interface OrderService {
 	public void loadOrder(ModelAndView model, Map<String, Object> map);
 	public void loadOrder(ModelAndView mav, String order_id);
 
+	public void loadPoint(ModelAndView model, int pg);
+	public void getPoint(ModelAndView model);
+
 }

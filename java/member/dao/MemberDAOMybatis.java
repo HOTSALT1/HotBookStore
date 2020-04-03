@@ -22,6 +22,12 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void signup(Map<String,String>map) {
 		sqlSession.insert("memberSQL.signup", map);
 	}
+	
+	@Override
+	public void welcomePoint(String id) {
+		sqlSession.update("memberSQL.welcomePoint", id);
+		
+	}
 
 	@Override
 	public MemberDTO login(Map<String,String>map) {
@@ -75,11 +81,6 @@ public class MemberDAOMybatis implements MemberDAO {
 	}
 
 	@Override
-	public void e_verify(String email) {
-		sqlSession.update("memberSQL.e_verify", email);
-	}
-
-	@Override
 	public MemberDTO member_findPwd(Map<String, String> map) {
 		return sqlSession.selectOne("memberSQL.memberfindPwd",map);
 		
@@ -90,6 +91,8 @@ public class MemberDAOMybatis implements MemberDAO {
 		sqlSession.update("memberSQL.membermodifyPwd", map);
 		
 	}
+
+	
 
 
 

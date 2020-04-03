@@ -29,6 +29,8 @@
 	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Modernizer js -->
+		<script src="js/vendor/jquery-3.2.1.min.js"></script>
+	
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
 
@@ -134,16 +136,14 @@
 										<span>이메일 주소:</span>
 										<p>hothotbookstore@gmail.com</p>
 									</div>
-								</div>
-								
+								</div>								
 								<div class="single__address">
 									<i class="icon-envelope icons"></i>
 									<div class="content">
 										<span>카카오 채널추가 :</span>
 										<p id="kakao-add-channel-button"></p>
 									</div>
-								</div>
-								
+								</div>								
 								<div class="single__address">
 									<i class="icon-envelope icons"></i>
 									<div class="content">
@@ -175,7 +175,6 @@
 	</div>
 	<!-- //Main wrapper -->
 
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>

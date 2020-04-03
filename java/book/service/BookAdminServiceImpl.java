@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import book.bean.AdminBookListPaging;
 import book.bean.BookDTO;
@@ -14,7 +15,9 @@ import book.dao.BookAdminDAO;
 @Service
 public class BookAdminServiceImpl implements BookAdminService {
 	@Autowired
-	private BookAdminDAO bookAdminDAO;
+	private BookAdminDAO bookAdminDAO;	
+	@Autowired
+	private AdminBookListPaging adminBookListPaging;
 
 	@Override
 	public void insertBook(BookDTO bookDTO) {	
@@ -26,9 +29,9 @@ public class BookAdminServiceImpl implements BookAdminService {
 		int endNum = Integer.parseInt(pg)*12;
 		int startNum = endNum-11;
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum+"");
+		map.put("endNum", endNum+"");
 		
 		return bookAdminDAO.getAdminBookList(map);
 	}
@@ -36,7 +39,14 @@ public class BookAdminServiceImpl implements BookAdminService {
 	@Override
 	public AdminBookListPaging adminBookListPaging(String pg) {
 		int totalA = bookAdminDAO.getBookListTotalA();
-		return null;
+		
+		adminBookListPaging.setCurrentPage(Integer.parseInt(pg));
+		adminBookListPaging.setPageBlock(10);
+		adminBookListPaging.setPageSize(5);
+		adminBookListPaging.setTotalA(totalA);
+		adminBookListPaging.makePagingHTML();
+		
+		return adminBookListPaging;
 	}
 
 	@Override

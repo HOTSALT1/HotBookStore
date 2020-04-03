@@ -186,6 +186,30 @@
 									</div>
 								</div>
 								<!-- End 상세이미지 Tab Content -->
+							</div>
+							<!-- End 목차 Tab Content -->
+						
+							<!-- Start 리뷰작성 Tab Content -->
+							<form id="review_WriteForm" name="review_WriteForm">
+							<input type="hidden" id="review_book_id" value="${book.seq }">
+							<input type="hidden" id="review_member_id" value="${memId }">
+							<div class="pro__tab_label tab-pane fade show" id="nav-review"
+								role="tabpanel">
+								<div class="review__attribute">
+									<h1>리뷰 작성하기</h1>
+									<h2>멤버 아이디 띄우기</h2>
+									<div class="review__ratings__type d-flex">
+										<div class="review-ratings">
+											<div class="rating-summary d-flex">
+												<span>Quality</span><input type="hidden" id="score" value="${score }">
+												<ul class="rating d-flex">
+													<li><i class="zmdi zmdi-star"></i></li>
+													<li><i class="zmdi zmdi-star"></i></li>
+													<li><i class="zmdi zmdi-star"></i></li>
+													<li class="off"><i class="zmdi zmdi-star"></i></li>
+													<li class="off"><i class="zmdi zmdi-star"></i></li>
+												</ul>
+											</div>
 
 								<!-- Start 목차 Tab Content -->
 								<div class="pro__tab_label tab-pane fade show"

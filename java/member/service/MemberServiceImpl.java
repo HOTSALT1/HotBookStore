@@ -29,16 +29,25 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public ModelAndView signup(Map<String, String> map, ModelAndView mav,BCryptPasswordEncoder pwdEncoder) {
-		
 		String inputPass = map.get("pwd");
 		String pwd = pwdEncoder.encode(inputPass);
 		map.put("pwd",pwd);
-		memberDAO.signup(map);
+		if(e_verify_chk(map.get("key"), map.get("email")).equals("true")) {
+			System.out.println("이메일 인증 성공");
+			memberDAO.signup(map);
+			memberDAO.welcomePoint(map.get("id"));
+			mav.addObject("name", map.get("name"));
+			mav.addObject("id", map.get("id"));
+			mav.setViewName("jsonView");
+			return mav;
+			
+		}else {
+			mav.addObject("result", "false");
+			mav.setViewName("jsonView");
+			System.out.println("이메일 인증 실패");
+			return mav;
+		}
 		
-		mav.addObject("name", map.get("name"));
-		mav.addObject("id", map.get("id"));
-		mav.setViewName("jsonView");
-		return mav;
 	}
 
 	@Override
@@ -54,6 +63,7 @@ public class MemberServiceImpl implements MemberService {
 			sendMail.setTo(email);
 			sendMail.send();
 			session.setAttribute("key", key);
+			session.setAttribute("email", email);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,9 +203,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String e_verify_chk(String e_verify) {
-		
-		if(session.getAttribute("key").equals(e_verify)) {
+	public String e_verify_chk(String e_verify, String email) {
+		if(session.getAttribute("key").equals(e_verify)&&session.getAttribute("email").equals(email)) {
 			return "true";	
 		}
 		return "fail";
@@ -209,6 +218,7 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(memberDTO);
 		if(memberDTO==null) {
 			mav.addObject("result","false");
+			mav.setViewName("jsonView");
 		}else {
 			mav.addObject("id", map.get("id"));
 			mav.addObject("email", map.get("email"));
