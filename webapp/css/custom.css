@@ -102,3 +102,9 @@ div#payment input{
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+
+/* WJ sidebar */
+.is-sticky .header__sidebar__right a{
+	color:white;
+}
+

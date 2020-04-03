@@ -204,7 +204,7 @@
         </tr>
     </table>
     <div class="margin0 width900px" style="text-align: center;">
-    	<input type="button" value="목록으로">
+    	<input type="button" onclick="window.history.back(-1)" value="목록으로">
     </div>
     
     

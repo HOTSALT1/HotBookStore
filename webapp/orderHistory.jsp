@@ -49,7 +49,7 @@
 		width: 400px;
 		margin-left: 10px;
 		vertical-align: bottom;}
-		#orderPeriodBox_low .button{
+		#orderPeriodBox .button:last-child{
 		width: 90px;
 		height: 30px;
 		background-color: #f75151;
@@ -99,17 +99,18 @@
 		<input type="button" id="1" class="button btn-date" value="1개월">
 		<input type="button" id="3" class="button btn-date" value="3개월">
 		<input type="button" id="6" class="button btn-date" value="6개월">
-		&nbsp;&nbsp;<input type="date" id="startDate" class="date"> ~ <input type="date" id="endDate" class="date">
+		&nbsp;&nbsp;<input type="date" id="startDate" class="date" value="${start }"> ~ <input type="date" id="endDate" class="date" value="${end }">
+		<input type="button" id="btn-search" value="조회" class="button">
 		</div>
 		<!-- 주문검색 -->
-		<div id="orderPeriodBox_low">
+		<!-- <div id="orderPeriodBox_low">
 		<select id="searchOption"> 
 			<option value="주문전체" selected>주문전체</option>
 			<option value="주문자">주문자</option>
 			<option value="주문번호">주문번호</option>  
-		</select>
-		<input type="text" id="searchValue" class="search_bar">
-		<input type="button" id="btn-search" value="조회" class="button">
+		</select> -->
+		<!-- <input type="text" id="searchValue" class="search_bar"> -->
+		<!-- <input type="button" id="btn-search" value="조회" class="button"> -->
 		</div>
 	</div>
 	<div style="border-top:2px solid #f56a6a; width: 900px; margin: 0 auto;margin-bottom:5px;margin-top: 20px;"></div>
@@ -138,7 +139,7 @@
         </tr>
         </c:forEach>
     </table>
-    
+    <ul class="wn__pagination">${order_paging }</ul>
     
     <div style="margin: 0 auto;border-top: 1px solid #c3c3c3;
     width: 900px;

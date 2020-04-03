@@ -37,6 +37,7 @@ public class MemberController {
 	//페이지로딩
 	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
 	public ModelAndView loginForm(ModelAndView mav) {
+		mav.addObject("oldPage", (String)session.getAttribute("oldPage"));
 		mav.setViewName("/loginForm");
 		return mav;
 	}
@@ -169,10 +170,11 @@ public class MemberController {
 	}
 	
 	
-	
-			
-	
-	
+	@RequestMapping(value="setOldPage", method=RequestMethod.POST)
+	public @ResponseBody String setOldPage(@RequestParam String oldPage) {
+		session.setAttribute("oldPage", "/hotSalt" + oldPage.split("hotSalt")[1]);
+		return "true";
+	}
 	
 }
 
