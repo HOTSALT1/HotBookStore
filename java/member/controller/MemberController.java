@@ -1,5 +1,6 @@
 package member.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
 import member.service.MemberService;
+import shop.bean.ShopPaging;
 
 @Controller
 @RequestMapping
@@ -152,11 +153,6 @@ public class MemberController {
 	public @ResponseBody String member_delete(@RequestParam Map<String,String> map) {
 		return memberService.member_delete(map,pwdEncoder);
 	}
-	//관리자 회원목록
-	@RequestMapping(value="/admin/admin_member_list", method=RequestMethod.GET)
-	public ModelAndView member_list(ModelAndView mav) {
-		return memberService.member_list(mav);
-	}
 	
 	//비밀번호찾기
 	@RequestMapping(value="member_findPwd", method=RequestMethod.POST)
@@ -167,6 +163,12 @@ public class MemberController {
 	@RequestMapping(value="member_modifyPwd", method=RequestMethod.POST)
 	public @ResponseBody String member_modifyPwd(@RequestParam Map<String,String> map) {
 		return memberService.member_modifyPwd(map,pwdEncoder);
+	}
+	
+	//관리자 회원목록
+	@RequestMapping(value="admin/admin_member_list", method=RequestMethod.GET)
+	public ModelAndView member_list(@RequestParam(required = false, defaultValue = "1") String pg, ModelAndView mav) {
+		return memberService.member_list(mav, pg);
 	}
 	
 	

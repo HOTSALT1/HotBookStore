@@ -31,8 +31,16 @@ public class IndexController {
 		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE ,"new_book_list");
 		shopService.getDPBooks(mav, "all", "best", 12, OrderBy.SCORE, "best_book_list");
 		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE, "new_book_list");
+
+		shopService.getDPBooks(mav, "all", "all", 10, OrderBy.SCORE, "list_DP_all");
+		shopService.getDPBooks(mav, "인문", "all", 10, OrderBy.SCORE, "list_DP_01");
+		shopService.getDPBooks(mav, "자기계발", "all", 10, OrderBy.SCORE, "list_DP_02");
+		shopService.getDPBooks(mav, "소설/시/희곡", "all", 10, OrderBy.SCORE, "list_DP_03");
+		shopService.getDPBooks(mav, "경제 경영", "all", 10, OrderBy.SCORE, "list_DP_04");
+		
 		List<ReviewDTO> list = reviewService.getReviewList("1");
 		mav.addObject("reviewDTO", list);
+
 		mav.setViewName("/index0");
 		return mav;
 	}

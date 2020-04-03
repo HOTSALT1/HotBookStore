@@ -24,13 +24,15 @@ public interface MemberDAO {
 
 	public void member_delete(Map<String, String> map);
 
-	public List<MemberDTO> member_list();
+	public List<MemberDTO> member_list(Map<String, Integer> map);
 
 	public MemberDTO member_findPwd(Map<String, String> map);
 
 	public void member_modifyPwd(Map<String, String> map);
 
 	public void welcomePoint(String id);
+
+	public int member_list_count();
 
 
 

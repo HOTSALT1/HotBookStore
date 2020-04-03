@@ -113,11 +113,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
-						</div>
-						<div class="cartbox__btn">
-							<ul	class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-								<li><a href="admin_bookDelete">선택 삭제</a></li>							
-							</ul>
+							<ul class="wn__pagination">${paging }</ul>
 						</div>
 					</div>
 				</div>
@@ -142,5 +138,21 @@
 	<script src="../js/member.js"></script>
 
 </body>
+<script type="text/javascript">
+$('ul.wn__pagination li:not(.active) a').click(function() {
+	goTo($(this).text());
+});
 
+function goTo(pg) {
+	let pg2 = 1;
+	if(pg){
+		pg2 = pg;
+	}
+
+	var data = {
+		pg: 	pg2,
+	}
+	location.href="/hotSalt/admin/admin_member_list?" + $.param(data);
+}
+</script>
 </html>
