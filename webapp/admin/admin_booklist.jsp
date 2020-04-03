@@ -77,12 +77,12 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
 						<div class="table-content wnro__table table-responsive">
-						<form id="admin_booklistForm" action="">					
+						<form id="admin_booklistForm" action="admin_bookDelete" method="post">					
 							<table>
 								<thead>
 									<tr class="title-top">
-										<th class="product-remove"><input type="checkbox" name=""
-											id="chkAll"/></th>
+										<th class="product-remove">
+										<input type="checkbox" name="" id="chkAll"/></th>
 										<th class="product-id">번호</th>
 										<th class="product-thumbnail">이미지</th>
 										<th class="product-name">상품명</th>									
@@ -98,7 +98,7 @@
 									<c:forEach var="book" items="${list }" varStatus="i" begin="0">
 										<tr>
 											<td class="product-remove" style="padding-left: 0px;">
-											<input type="checkbox" name="" id="chk_${i.index }" style="width: 13px;" /></td>
+											<input type="checkbox" name="check" id="chk_${i.index }" style="width: 13px;" value=${book.seq } /></td>
 											<td class="product-id"><a href="">${book.seq }</a></td>
 
 											<td class="product-thumbnail"><a href="#"> <img
@@ -131,7 +131,7 @@
 
 											<!-- 삭제 -->
 											<td class="product-remove">
-											<input type="button" class="remove_${book.seq }" id="deleteBtn" value="삭제" onclick="location.href='admin_bookDelete?book_id=${book.seq}'"></td>
+											<input type="button" class="remove_${book.seq }" id="deleteBtn" value="삭제" ></td>
 										</tr>
 										</c:forEach>
 								</tbody>
@@ -177,17 +177,22 @@
 		$('input[name=pg]').val(pg);
 		location.href="admin_booklist?pg="+pg;
 	}
+	
+	//선택삭제
+	$('#choiceDeleteBtn').click(function(){
+		let count = $('input[name=check]:checked').length;
+
+		if(count==0)
+			alert("삭제할 항목을 선택하세요");
+		else{
+			if(confirm("정말로 삭제하시겠습니까")){
+				$('#admin_booklistForm').submit();
+				
+			}
+		}
+	}); 
 	</script>
 	
-	<script>
-	function bookDeleteForm(){
-		document.admin_booklistForm.method = 'post';
-		document.admin_booklistForm.action = '/admin/admin_bookDelete';
-		document.admin_booklistForm.submit();
-
-	}
-	</script>
-	<
 
 	
 

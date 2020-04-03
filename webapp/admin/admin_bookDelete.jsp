@@ -5,6 +5,6 @@
 <script type="text/javascript">
 window.onload=function(){
 	alert("상품 삭제 완료");
-	location.href='../admin/admin_booklist';
+	location.href='admin_booklist?pg=1';
 }
 </script>    
