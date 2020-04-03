@@ -97,7 +97,7 @@
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">주문관리</li>
-											<li><a href="">주문통합리스트 </a></li>
+											<li><a href="/hotSalt/admin/admin_order-list.jsp">주문통합리스트 </a></li>
 											<li><a href="">입금대기 리스트 </a></li>
 											<li><a href="">결제완료 리스트</a></li>
 											<li><a href="">상품준비중 리스트</a></li>
@@ -152,7 +152,7 @@
 					</div>
 					<div class="col-md-6 col-sm-6 col-6 col-lg-2">
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
-							<li class="h_top"><a href="../index0.jsp">(고객전용)<br>홈페이지로 이동</a></li>
+							<li class="h_top"><a href="/hotSalt/index">(고객전용)<br>홈페이지로 이동</a></li>
 						</ul>
 					</div>
 				</div>
