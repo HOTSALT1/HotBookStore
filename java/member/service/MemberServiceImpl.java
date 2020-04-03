@@ -1,6 +1,7 @@
 package member.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
 import member.dao.MemberDAO;
+import shop.bean.ShopPaging;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -25,6 +27,8 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberDAO;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	ShopPaging paging;
 
 
 	@Override
@@ -195,10 +199,29 @@ public class MemberServiceImpl implements MemberService {
 	}
 	//관리자 회원목록
 	@Override
-	public ModelAndView member_list(ModelAndView mav) {
-		List<MemberDTO> list = memberDAO.member_list();
+	public ModelAndView member_list(ModelAndView mav, String pg) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		int pg2 = Integer.parseInt(pg);
+		int end = pg2 * 10;
+		int start = end - 9;
+		
+		map.put("start", start);
+		map.put("end",end);
+		
+		List<MemberDTO> list = memberDAO.member_list(map);
 		mav.addObject("list", list);
 		mav.setViewName("/admin/admin_member_list");
+		
+		paging.setCurrentPage(pg2);
+		System.out.println(pg);
+		paging.setPageBlock(5);
+		paging.setPageSize(10);
+		paging.setTotalA(memberDAO.member_list_count());
+		paging.makePagingHTML();
+		
+		mav.addObject("paging", paging.getPagingHTML());
+		mav.addObject("pg", pg);
+		
 		return mav;
 	}
 
