@@ -27,6 +27,10 @@
 	<context:component-scan base-package="review.service" />
 	<context:component-scan base-package="review.dao" />	
 
+	<context:component-scan base-package="board.bean" />
+	<context:component-scan base-package="board.service" />
+	<context:component-scan base-package="board.dao" />
+	
 	<context:component-scan base-package="hotSalt.conf" />
 	<context:component-scan base-package="kr.co.bootpay.javaApache" />	
 	

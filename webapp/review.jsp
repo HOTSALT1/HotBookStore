@@ -101,7 +101,7 @@
 										<li class="post_separator">/</li>
 										<li>${list.review_regdate}</li>
 									</ul>
-									<p>${list.review_content}</p>
+									<div><p>${list.review_content}</p></div>
 									<div class="blog__btn">
 										<a href="review-details.jsp">read more</a>
 									</div>

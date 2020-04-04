@@ -76,8 +76,8 @@ public class MemberDAOMybatis implements MemberDAO {
 	}
 	//관리자 
 	@Override
-	public List<MemberDTO> member_list() {
-		return sqlSession.selectList("memberSQL.memberList");
+	public List<MemberDTO> member_list(Map<String, Integer> map) {
+		return sqlSession.selectList("memberSQL.memberList", map);
 	}
 
 	@Override
@@ -90,6 +90,11 @@ public class MemberDAOMybatis implements MemberDAO {
 	public void member_modifyPwd(Map<String, String> map) {
 		sqlSession.update("memberSQL.membermodifyPwd", map);
 		
+	}
+
+	@Override
+	public int member_list_count() {
+		return sqlSession.selectOne("memberSQL.member_list_count");
 	}
 
 	

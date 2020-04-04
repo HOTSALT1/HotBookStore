@@ -13,7 +13,7 @@ public interface BookAdminDAO {
 
 	public int getBookListTotalA();
 
-	public void bookModify(Map<String, String> map);
+	public void bookModify(BookDTO bookDTO);
 
 	public void admin_bookDelete(Map<String, String[]> map);
 

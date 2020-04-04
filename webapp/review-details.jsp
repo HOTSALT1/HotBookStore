@@ -426,11 +426,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="bradcaump__inner text-center">
-							<h2 class="bradcaump-title">Blog Details</h2>
+							<h2 class="bradcaump-title">Review Details</h2>
 							<nav class="bradcaump-content">
 								<a class="breadcrumb_item" href="index.html">Home</a>
 								<span class="brd-separetor">/</span>
-								<span class="breadcrumb_item active">Blog-Details</span>
+								<span class="breadcrumb_item active">Review-Details</span>
 							</nav>
 						</div>
 					</div>
@@ -450,6 +450,15 @@
 								<div class="post_wrapper">
 									<div class="post_header">
 										<h2>${reviewDTO.review_title}</h2>
+										<div class="rating-summary d-flex">
+												<ul class="rating d-flex" id="review_star" style="margin: auto 4px 0px;">
+													<li><i class="zmdi zmdi-star"></i></li>
+													<li><i class="zmdi zmdi-star"></i></li>
+													<li><i class="zmdi zmdi-star"></i></li>
+													<li class="off"><i class="zmdi zmdi-star"></i></li>
+													<li class="off"><i class="zmdi zmdi-star"></i></li>
+												</ul>
+											</div>
 										<div class="blog-date-categori">
 											<ul>
 												<li>${reviewDTO.review_regdate}</li>
@@ -809,7 +818,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/active.js"></script>
-
+	<script src="js/score.js"></script>
 </body>
 
 </html>

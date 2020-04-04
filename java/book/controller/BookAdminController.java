@@ -60,20 +60,20 @@ public class BookAdminController {
 		return mav;
 	}
 	
+	//책정보 수정
+	@RequestMapping(value="admin_bookModify", method=RequestMethod.POST)
+	public String admin_bookModify(@ModelAttribute BookDTO bookDTO) {
+		bookAdminService.bookModify(bookDTO);
+		return "/admin/admin_bookModify";
+	}
 
-	
-	
-	
-	
-	
-	
-	
+
 	//책 삭제
-	@RequestMapping(value="admin_bookDelete", method=RequestMethod.GET)
-	public String admin_bookDelete(@RequestParam String[] check, Model model) {
-		System.out.println(check);
+	@RequestMapping(value="admin_bookDelete", method=RequestMethod.POST)
+	public ModelAndView admin_bookDelete(@RequestParam String[] check, ModelAndView mav) {
 		bookAdminService.admin_bookDelete(check);
-		return "/admin/admin_booklist";
+		mav.setViewName("/admin/admin_booklist");
+		return mav;
 	}
 	
 	//상품등록페이지 매핑
@@ -129,6 +129,8 @@ public class BookAdminController {
 			bookDTO.setImg2(fileName);
 		} else {
 			bookDTO.setImg2("");
+			
+			
 		} //
 
 		if (img[3] != null) {

@@ -14,7 +14,7 @@ public interface BookAdminService {
 
 	public AdminBookListPaging adminBookListPaging(String pg);
 
-	public void bookModify(Map<String, String> map);
+	public void bookModify(BookDTO bookDTO);
 
 	public void admin_bookDelete(String[] check);
 

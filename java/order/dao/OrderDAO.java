@@ -41,4 +41,6 @@ public interface OrderDAO {
 
 	public int getPoint(String user_id);
 
+	public int loadOrderTotalA(Map<String, Object> map);
+
 }

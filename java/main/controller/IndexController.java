@@ -1,5 +1,7 @@
 package main.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import order.service.OrderService;
+import review.bean.ReviewDTO;
+import review.service.ReviewService;
 import shop.bean.OrderBy;
 import shop.service.ShopService;
 
@@ -17,6 +21,9 @@ public class IndexController {
 
 	@Autowired
 	ShopService shopService;
+	
+	@Autowired
+	ReviewService reviewService;
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public ModelAndView index1(ModelAndView mav) {
@@ -24,15 +31,25 @@ public class IndexController {
 		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE ,"new_book_list");
 		shopService.getDPBooks(mav, "all", "best", 12, OrderBy.SCORE, "best_book_list");
 		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE, "new_book_list");
+
+		shopService.getDPBooks(mav, "all", "all", 10, OrderBy.SCORE, "list_DP_all");
+		shopService.getDPBooks(mav, "인문", "all", 10, OrderBy.SCORE, "list_DP_01");
+		shopService.getDPBooks(mav, "자기계발", "all", 10, OrderBy.SCORE, "list_DP_02");
+		shopService.getDPBooks(mav, "소설/시/희곡", "all", 10, OrderBy.SCORE, "list_DP_03");
+		shopService.getDPBooks(mav, "경제 경영", "all", 10, OrderBy.SCORE, "list_DP_04");
+		
+		List<ReviewDTO> list = reviewService.getReviewList("1");
+		mav.addObject("reviewDTO", list);
+
 		mav.setViewName("/index0");
 		return mav;
 	}
 
 	// 커뮤니티 홈페이지 페이지 매핑
-	@RequestMapping(value = "/community-index")
+	@RequestMapping(value = "/community_index")
 	public ModelAndView communityindex(ModelAndView mav) {
 		orderService.loadCart(mav);
-		mav.setViewName("/community-index");
+		mav.setViewName("/community_index");
 		return mav;
 	}
 

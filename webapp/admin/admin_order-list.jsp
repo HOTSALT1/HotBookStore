@@ -97,9 +97,9 @@
 									<c:forEach items="order_list" var="order">
 										<tr>
 											<td class="product-remove" style="padding-left: 0px;"><input
-												type="checkbox" name="" id="chk_${i.index }"
+												type="checkbox" name="" id="chk_"
 												style="width: 13px;" /></td>
-											<td>${order.logtime }</td>
+											<td></td>
 										</tr>
 									</c:forEach>
 								</tbody>

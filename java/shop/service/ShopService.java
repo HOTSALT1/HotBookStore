@@ -16,4 +16,10 @@ public interface ShopService {
 	
 	public ModelAndView getDPBooks(ModelAndView mav, String cate1, String cate2, int count, OrderBy orderBy, String list_name);
 
+	public ModelAndView getWishlist(ModelAndView model);
+
+	public String addWishlist(ModelAndView model, String book_id);
+
+	public String removeFromWishlist(String book_id);
+
 }

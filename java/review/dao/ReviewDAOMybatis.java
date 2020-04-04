@@ -38,4 +38,9 @@ public class ReviewDAOMybatis implements ReviewDAO {
 		return sqlSession.selectOne("reviewSQL.getReviewView", review_seq);
 	}
 
+	@Override
+	public List<ReviewDTO> getBookReviewList(String book_id) {
+		return sqlSession.selectList("reviewSQL.getBookReviewList", book_id);
+	}
+
 }
