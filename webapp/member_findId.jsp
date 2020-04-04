@@ -30,7 +30,6 @@
 
 	<!-- Modernizer js -->
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-<title>Insert title here</title>
     <style>
         #h4title{margin: 0 auto; width:830px;}
         #titleB{border-top: 2px solid black; width: 832px; margin: 0 auto; margin-top: 30px;}
@@ -63,6 +62,11 @@
          	padding:33px 20px 20px 30px;
          	font-size:16px;
          	}
+         	#dtitle{
+         	width: 830px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;}
           
     </style>
 </head>
@@ -70,7 +74,9 @@
 <jsp:include page="navbar.jsp"></jsp:include>
 	<div style="margin-bottom:230px;">
 	<div style="border-top:1px solid #e6e6e6; width: 100%; margin-top:90px; margin-bottom:100px;"></div>
-    <h4 id="h4title">아이디 찾기</h4>
+	<div id="dtitle">
+    <span id="h4title"><a href="member_findId">아이디 찾기</a></span>&nbsp;&nbsp;<span id="h4title"><a href="member_findPwd">비밀번호 찾기</a></span>
+    </div>
     <div id="titleB"></div>
     <div class="findW">
         <input type="text" id="findEmail" placeholder="이메일을 입력해주세요">
