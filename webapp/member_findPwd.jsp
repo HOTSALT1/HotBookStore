@@ -73,6 +73,11 @@
 		    border-radius: 7px;
 		    margin-left: 2px !important;
 		}
+		#dtitle{
+         	width: 830px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: bold;}
          
     </style>
 </head>
@@ -80,7 +85,9 @@
 <jsp:include page="navbar.jsp"></jsp:include>
 	<div style="margin-bottom:230px;">
 	<div style="border-top:1px solid #e6e6e6; width: 100%; margin-top:90px; margin-bottom:100px;"></div>
-    <h4 id="h4title">비밀번호 찾기</h4>
+    <div id="dtitle">
+    <span id="h4title"><a href="member_findId">아이디 찾기</a></span>&nbsp;&nbsp;<span id="h4title"><a href="member_findPwd">비밀번호 찾기</a></span>
+    </div>
     <div id="titleB"></div>
     <div class="findW">
         <input type="text" id="findId" placeholder="아이디를 입력해주세요">
