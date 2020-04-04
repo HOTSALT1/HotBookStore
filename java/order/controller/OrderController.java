@@ -125,8 +125,9 @@ public class OrderController {
 	}
 	
 	// -------------- 관리자 페이지용 -------------- 
-	@RequestMapping(value = "/admin_order-list", method = RequestMethod.GET)
-	public ModelAndView admin_order_list(ModelAndView model) {
-		return orderService.admin_order_list(model);
+	@RequestMapping(value = "admin/admin_order-list", method = RequestMethod.GET)
+	public ModelAndView admin_order_list(ModelAndView mav, @RequestParam Map<String, Object> map) {
+		mav.setViewName("admin_order-list");
+		return orderService.admin_order_list(mav, map);
 	}
 }

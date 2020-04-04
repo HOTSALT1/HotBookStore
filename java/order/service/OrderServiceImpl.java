@@ -450,9 +450,25 @@ public class OrderServiceImpl implements OrderService {
     }
 
 	@Override
-	public ModelAndView admin_order_list(ModelAndView mav) {
-		mav.setViewName("admin_order-list");
-		mav.addObject("order_list",orderDAO.admin_order_list());
+	public ModelAndView admin_order_list(ModelAndView mav, Map<String, Object> map) {
+		nvl(map, "pg", "1");
+		int pg = Integer.parseInt(map.get("pg")+"");
+		int articlesPerPage = 10;
+		int endNum = articlesPerPage * pg;
+		int startNum = endNum - articlesPerPage + 1;
+		
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		
+		mav.addObject("order_list",orderDAO.loadOrder(map));
+		shopPaging.setCurrentPage(pg);
+		shopPaging.setPageBlock(5);
+		shopPaging.setTotalA(orderDAO.loadOrderTotalA(map));
+		shopPaging.setPageSize(articlesPerPage);
+		shopPaging.makePagingHTML();
+		
+		mav.addObject("data", map);
+		mav.addObject("paging", shopPaging.getPagingHTML());
 		return mav;
 	}
 

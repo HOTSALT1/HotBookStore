@@ -79,38 +79,62 @@
 	
 	<!-- order_list 조회용 쿼리 -->
 	<select id="loadOrder" resultType="order.bean.OrderDTO" parameterType="java.util.Map">
-		SELECT * FROM order_list WHERE 
-			<if test="user_id != null">
-			 	user_id = #{user_id} 
-			</if>
-			<if test="user_id != null and order_id != null">
-			 	AND  
-			</if>
-			<if test="order_id != null">
-			 	order_id = #{order_id} 
-			</if>
-			<if test="start != null">
-			<![CDATA[
-				AND logtime >= #{start} AND logtime < #{end} 
-			]]>
-			</if>
-			Order by logtime desc
+		SELECT * FROM(
+			SELECT rownum rn, tt.* FROM(
+			SELECT * FROM order_list WHERE 1=1 
+				<if test="user_id != null and user_id !=''">
+				 	AND user_id = #{user_id} 
+				</if>
+				<if test="order_id != null and order_id !=''">
+				 	AND order_id = #{order_id} 
+				</if>
+				<if test="start != null">
+					<![CDATA[
+					AND logtime >= #{start} AND logtime < #{end} 
+					]]>
+				</if>
+				<if test="order_status != null and order_status !=''">
+				 	AND status = #{order_status} 
+				</if>
+				<if test="buyer != null and buyer !=''">
+				 	AND buyer = #{buyer} 
+				</if>
+				<if test="method != null and method !=''">
+				 	AND method = #{method} 
+				</if>
+				<if test="receiver != null and receiver !=''">
+				 	AND receiver = #{receiver} 
+				</if>
+				Order by logtime desc
+			) tt
+		<![CDATA[
+		) WHERE rn >= #{startNum} AND rn <= #{endNum}
+		]]>
 	</select>
 	<select id="loadOrderTotalA" resultType="int" parameterType="java.util.Map">
-		SELECT COUNT(*) FROM order_list WHERE 
-			<if test="user_id != null">
-			 	user_id = #{user_id} 
+		SELECT COUNT(*) FROM order_list WHERE 1=1 
+			<if test="user_id != null and user_id !=''">
+			 	AND user_id = #{user_id} 
 			</if>
-			<if test="user_id != null and order_id != null">
-			 	AND  
-			</if>
-			<if test="order_id != null">
+			<if test="order_id != null and order_id !=''">
 			 	order_id = #{order_id} 
 			</if>
 			<if test="start != null">
-			<![CDATA[
+				<![CDATA[
 				AND logtime >= #{start} AND logtime < #{end} 
-			]]>
+				]]>
+			</if>
+			<if test="order_status != null and order_status !=''">
+			 	AND status = #{order_status} 
+			</if>
+			<if test="buyer != null and buyer !=''">
+			 	AND buyer = #{buyer} 
+			</if>
+			<if test="method != null and method !=''">
+			 	AND method = #{method} 
+			</if>
+			<if test="receiver != null and receiver !=''">
+			 	AND receiver = #{receiver} 
 			</if>
 	</select>
 	
