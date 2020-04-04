@@ -180,7 +180,7 @@
 	
 	<update id="admin_order_proceed" parameterType="java.util.Map">
 		UPDATE order_list SET status = #{new_status} WHERE order_id IN (
-			{items}
+			#{items}
 		)
 	</update>
 	
