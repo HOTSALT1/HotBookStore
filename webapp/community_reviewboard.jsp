@@ -20,9 +20,9 @@
 		</div>
 		<div class="content">
 			<h6>			
-				<a href="portfolio-details.html">공지사항</a>
+				<a href="portfolio-details.html">${list.title}</a>
 			</h6>
-			<p>road theme</p>
+			<p>${list.title}</p>
 		</div>
 	</div>
 </div>

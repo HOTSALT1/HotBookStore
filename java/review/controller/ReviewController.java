@@ -75,4 +75,25 @@ public class ReviewController {
 		mav.setViewName("/review-details");
 		return mav;		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="community-reviewboard", method=RequestMethod.POST)
+	public ModelAndView communityreviewboard(@RequestParam(required=false, defaultValue="1") String pg) {
+		
+		System.out.println(pg);
+		
+		List<ReviewDTO> list = reviewService.getReviewList(pg);
+		
+		ReviewPaging reviewPaging = reviewService.reviewPaging(pg);
+		
+		System.out.println(reviewPaging);
+				
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("pg", pg);
+		mav.addObject("reviewDTO", list);
+		mav.addObject("reviewPaging", reviewPaging);
+		mav.setViewName("/community-reviewboard");
+		return mav;
+	}
+
 }

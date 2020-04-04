@@ -46,10 +46,10 @@ public class IndexController {
 	}
 
 	// 커뮤니티 홈페이지 페이지 매핑
-	@RequestMapping(value = "/community-index")
+	@RequestMapping(value = "/community_index")
 	public ModelAndView communityindex(ModelAndView mav) {
 		orderService.loadCart(mav);
-		mav.setViewName("/community-index");
+		mav.setViewName("/community_index");
 		return mav;
 	}
 

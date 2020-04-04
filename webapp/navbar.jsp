@@ -46,7 +46,7 @@
 								<!-- 신간 -->
 								<li class="drop"><a href="/hotSalt/shop-grid?cate2=new">신간</a></li>
                                 <!-- 독서토론 -->
-                               	<li class="drop"><a href="/hotSalt/community-index">책방 커뮤니티</a>
+                               	<li class="drop"><a href="/hotSalt/community_index">책방 커뮤니티</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
 											<li><a href="">공지사항</a></li>
@@ -55,6 +55,7 @@
 											<li><a href="">책 뉴스</a></li>
 											<li><a href="">행사안내</a></li>
 											<li><a href="">서비스 홍보</a></li>
+											<li><a href="/hotSalt/board/boardWriteForm">자유로운 글작성</a></li>
 										</ul>
 									</div>
 								</li>
