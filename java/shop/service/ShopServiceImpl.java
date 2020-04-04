@@ -91,7 +91,7 @@ public class ShopServiceImpl implements ShopService {
 		shopPaging.makePagingHTML();
 		
 		mav.addObject("paging", shopPaging.getPagingHTML());
-		
+		System.out.println(shopPaging.getPagingHTML());
 		return mav;
 	}
 	
