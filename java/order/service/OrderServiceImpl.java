@@ -495,6 +495,15 @@ public class OrderServiceImpl implements OrderService {
 				return;
 			}
 		}
+		
+		int pg = Integer.parseInt(map.get("pg")+"");
+		int articlesPerPage = 10;
+		int endNum = articlesPerPage * pg;
+		int startNum = endNum - articlesPerPage + 1;
+		
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		
 		shopPaging.setCurrentPage(Integer.parseInt((String)map.get("pg")));
 		shopPaging.setPageBlock(5);
 		shopPaging.setTotalA(orderDAO.loadOrderTotalA(map));
