@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
    <header id="wn__header" class="header__area header__absolute sticky__header">
 			<div class="container-fluid">
 				<div class="row">
@@ -40,18 +41,14 @@
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="#">Shop</a>
-									
-								</li>
 								<!-- 베스트 셀러 -->
-								<li class="drop"><a href="/hotSalt/shop-grid">베스트 셀러</a></li>
+								<li class="drop"><a href="/hotSalt/shop-grid?cate2=best">베스트 셀러</a></li>
 								<!-- 신간 -->
-								<li class="drop"><a href="/hotSalt/shop-grid">신간</a></li>
+								<li class="drop"><a href="/hotSalt/shop-grid?cate2=new">신간</a></li>
                                 <!-- 독서토론 -->
-                                	<li class="drop"><a href="community-index">책방 커뮤니티</a>
+                               	<li class="drop"><a href="/hotSalt/community-index">책방 커뮤니티</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="community-index">home</a></li>
 											<li><a href="">공지사항</a></li>
 											<li><a href="/hotSalt/review">리뷰게시판</a></li>
 											<li><a href="">북칼럼</a></li>
@@ -66,9 +63,9 @@
                                 <li class="drop with--one--item"><a href="#">책방소개</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-                                			<li><a href="/hotSalt/about.jsp">뜨거운 책방 소개</a></li>
-                                			<li><a href="/hotSalt/contact.jsp">고객센터</a></li>
-                                			<li><a href="/hotSalt/faq.html">자주 묻는 질문</a></li>
+                                			<li><a href="/hotSalt/about">뜨거운 책방 소개</a></li>
+                                			<li><a href="/hotSalt/contact">고객센터</a></li>
+                                			<li><a href="/hotSalt/faq">자주 묻는 질문</a></li>
 										</ul>
 									</div>
 
@@ -97,9 +94,9 @@
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="/hotSalt/orderHistory">주문내역</a></span>
-														<span><a href="#">장바구니</a></span>
-														<span><a href="#">적립금</a></span>
-														<span><a href="mypage_pwd_chk.jsp">회원정보</a></span>
+														<span><a href="/hotSalt/cart">장바구니</a></span>
+														<span><a href="/hotSalt/member_point">적립금</a></span>
+														<span><a href="/hotSalt/mypage_pwd_chk">회원정보</a></span>
 														<c:if test="${sessionScope.memId =='admin' }">
 														<span><a href="/hotSalt/admin/admin_index">관리자 페이지로 이동</a></span>
 														</c:if>
@@ -175,7 +172,7 @@
 								<!-- End Shopping Cart -->
 								
 							</li>
-							<li class="h_top"><a href="contact.jsp">고객센터</a></li>
+							<li class="h_top"><a href="/hotSalt/contact">고객센터</a></li>
 						</ul>
 					</div>
 				</div>
@@ -185,48 +182,40 @@
 						<nav class="mobilemenu__nav">
 							<ul class="meninmenu">
 								<li><a href="/hotSalt/index">Home</a>
+								</li>
+								<li><a href="/hotSalt/shop-grid">카테고리</a>
 									<ul>
-										<li><a href="/hotSalt/index.html">Home Style Default</a></li>
-										<li><a href="/hotSalt/index-2.html">Home Style Two</a></li>
-										<li><a href="/hotSalt/index-3.html">Home Style Three</a></li>
-										<li><a href="/hotSalt/index-box.html">Home Box Style</a></li>
+										<li><a href="javascript:void(0)">국어 외국어 사전</a></li>
+                                        <li><a href="javascript:void(0)">만화/라이트노벨</a></li>
+                                        <li><a href="javascript:void(0)">건강 취미</a></li>
+                                        <li><a href="javascript:void(0)">예술</a></li>			
+                                        <li><a href="javascript:void(0)">수험서 자격증</a></li>
+                                        <li><a href="javascript:void(0)">자기계발</a></li>
+                                        <li><a href="javascript:void(0)">자연과학</a></li>
+                                        <li><a href="javascript:void(0)">에세이</a></li>
+                                        <li><a href="javascript:void(0)">종교</a></li>
+                                        <li><a href="javascript:void(0)">인문</a></li>
+                                        <li><a href="javascript:void(0)">경제 경영</a></li>
+                                        <li><a href="javascript:void(0)">가정 살림</a></li>
+                                        <li><a href="javascript:void(0)">대학교재</a></li>
+                                        <li><a href="javascript:void(0)">어린이</a></li>
+                                        <li><a href="javascript:void(0)">소설/시/희곡</a></li>
+                                        <li><a href="javascript:void(0)">사회 정치</a></li>
+                                        <li><a href="javascript:void(0)">청소년</a></li>
 									</ul>
 								</li>
-								<li><a href="#">Pages</a>
-									<ul>
-										<li><a href="/hotSalt/about.html">About Page</a></li>
-										<li><a href="/hotSalt/portfolio.html">Portfolio</a>
-											<ul>
-												<li><a href="/hotSalt/portfolio.html">Portfolio</a></li>
-												<li><a href="/hotSalt/portfolio-three-column.html">Portfolio 3 Column</a></li>
-												<li><a href="/hotSalt/portfolio-details.html">Portfolio Details</a></li>
-											</ul>
-										</li>
-										<li><a href="/hotSalt/my-account.html">My Account</a></li>
-										<li><a href="/hotSalt/cart.html">Cart Page</a></li>
-										<li><a href="/hotSalt/checkout.html">Checkout Page</a></li>
-										<li><a href="/hotSalt/wishlist.html">Wishlist Page</a></li>
-										<li><a href="/hotSalt/error404.html">404 Page</a></li>
-										<li><a href="/hotSalt/faq.html">Faq Page</a></li>
-										<li><a href="/hotSalt/team.html">Team Page</a></li>
-									</ul>
+								<li><a href="/hotSalt/shop-grid?cate2=best">베스트 셀러</a>
 								</li>
-								<li><a href="/hotSalt/shop-grid.html">Shop</a>
-									<ul>
-										<li><a href="/hotSalt/shop-grid.html">Shop Grid</a></li>
-										<li><a href="/hotSalt/shop-list.html">Shop List</a></li>
-										<li><a href="/hotSalt/shop-left-sidebar.html">Shop Left Sidebar</a></li>
-										<li><a href="/hotSalt/shop-right-sidebar.html">Shop Right Sidebar</a></li>
-										<li><a href="/hotSalt/shop-no-sidebar.html">Shop No sidebar</a></li>
-										<li><a href="/hotSalt/single-product.html">Single Product</a></li>
-									</ul>
+								<li><a href="/hotSalt/shop-grid?cate2=new">신간</a>
 								</li>
-								<li><a href="/hotSalt/blog.html">Blog</a>
-									<ul>
-										<li><a href="/hotSalt/blog.html">Blog Page</a></li>
-										<li><a href="/hotSalt/blog-left-sidebar.html">Blog Left Sidebar</a></li>
-										<li><a href="/hotSalt/blog-no-sidebar.html">Blog No Sidebar</a></li>
-										<li><a href="/hotSalt/blog-details.html">Blog Details</a></li>
+								<li><a href="/hotSalt/community-index">책방 커뮤니티</a>
+									<ul class="">
+										<li><a href="">공지사항</a></li>
+										<li><a href="/hotSalt/review">리뷰게시판</a></li>
+										<li><a href="">북칼럼</a></li>
+										<li><a href="">책 뉴스</a></li>
+										<li><a href="">행사안내</a></li>
+										<li><a href="">서비스 홍보</a></li>
 									</ul>
 								</li>
 								<li><a href="/hotSalt/contact.html">Contact</a></li>
@@ -240,6 +229,7 @@
 				<!-- Mobile Menu -->
 			</div>
 		</header>
+		<script src="/hotSalt/js/member.js"></script>
 		<script type="text/javascript">
 			$('.cate1 li').click(function () {
 				location.href="/hotSalt/search?cate1=" + $(this).text();

@@ -14,27 +14,49 @@ import shop.service.ShopService;
 public class IndexController {
 	@Autowired
 	OrderService orderService;
-	
+
 	@Autowired
 	ShopService shopService;
-	
 
-	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
 	public ModelAndView index1(ModelAndView mav) {
 		orderService.loadCart(mav);
 		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE ,"new_book_list");
 		shopService.getDPBooks(mav, "all", "best", 12, OrderBy.SCORE, "best_book_list");
-		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE ,"new_book_list");
+		shopService.getDPBooks(mav, "all", "new", 6, OrderBy.P_DATE, "new_book_list");
 		mav.setViewName("/index0");
 		return mav;
 	}
-	
-	//커뮤니티 홈페이지 페이지 매핑
+
+	// 커뮤니티 홈페이지 페이지 매핑
 	@RequestMapping(value = "/community-index")
-	public String communityindex() {
-		return "/community-index";
+	public ModelAndView communityindex(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/community-index");
+		return mav;
 	}
 
+	// 컨텍트 페이지 매핑
+	@RequestMapping(value = "/about")
+	public ModelAndView about(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/about");
+		return mav;
+	}
 	
-	
+	@RequestMapping(value = "/contact")
+	public ModelAndView contact(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/contact");
+		return mav;
+	}
+
+	@RequestMapping(value = "/faq")
+	public ModelAndView faq(ModelAndView mav) {
+		orderService.loadCart(mav);
+		mav.setViewName("/faq");
+		return mav;
+	}
+
+
 }

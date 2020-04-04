@@ -226,11 +226,14 @@ $('#write-button').click(function(){
 			data : $('#writeForm').serialize(),
 			dataType : 'json',
 			success : function(data){
-								
-				$('.idx1,.idx2,.idx3,.idx4,.idx5,.idx6,.idx7').css("border","1px solid #c5c5c5");
-				$('#card-signup_writeForm').hide();
-				$('#card-signup_writeForm').css('display','block');
-				location.href = '/hotSalt/signup_complete?id='+data.id+'&name='+data.name;
+				if(data.result!="false"){					
+					$('.idx1,.idx2,.idx3,.idx4,.idx5,.idx6,.idx7').css("border","1px solid #c5c5c5");
+					$('#card-signup_writeForm').hide();
+					$('#card-signup_writeForm').css('display','block');
+					location.href = '/hotSalt/signup_complete?id='+data.id+'&name='+data.name;
+				}else{
+					alert("회원가입실패")
+				}
 			}
 		})
 		
@@ -256,10 +259,11 @@ $('#e_verifyBtn').click(function verify(){
 })
 
 $('#e_verify').keyup(function(){
+	
 	$.ajax({
 		type :'post',
 		url : '/hotSalt/e_verify_chk',
-		data : 'e_verify='+$('#e_verify').val(),
+		data : 'e_verify='+$('#e_verify').val()+'&email='+$('#mail1').val()+"@"+$('#mail2').val(),
 		dataType : 'text',
 		success : function(data){
 			if(data=='true'){

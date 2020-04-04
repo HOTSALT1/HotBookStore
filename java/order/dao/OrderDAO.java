@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import book.bean.BookDTO;
-import order.bean.CartDTO;
+import order.bean.BookOrderDTO;
 import order.bean.OrderDTO;
+import order.bean.PointDTO;
 import order.bean.ViewCartDTO;
 
 public interface OrderDAO {
@@ -31,5 +32,13 @@ public interface OrderDAO {
 	public List<OrderDTO> admin_order_list();
 
 	public List<OrderDTO> loadOrder(Map<String, Object> map);
+
+	public List<BookOrderDTO> getBookOrders(String order_id);
+
+	public List<PointDTO> loadPoint(Map<String, String> map);
+
+	public int getPointTotalA(String user_id);
+
+	public int getPoint(String user_id);
 
 }

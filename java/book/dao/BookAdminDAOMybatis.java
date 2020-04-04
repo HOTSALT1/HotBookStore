@@ -22,7 +22,7 @@ public class BookAdminDAOMybatis implements BookAdminDAO {
 	}
 
 	@Override
-	public List<BookDTO> getAdminBookList(Map<String, Integer> map) {
+	public List<BookDTO> getAdminBookList(Map<String, Object> map) {
 		return sqlSession.selectList("bookSQL.getAdminBookList", map);
 	}
 

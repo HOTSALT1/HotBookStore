@@ -134,6 +134,8 @@ $('#btn-confirm').click(function() {
 	data.receiver = $('#r_name').val();
 	data.buyer = $('#name').val();
 	data.tel = $('#tel').val();
+	data.delivery_fee = $('#delivery_fee').val();
+	data.usedPoint = $('#input-pointUse').val();
 	
 	$.ajax({
 		type:"post",
@@ -152,7 +154,7 @@ function paymentTest(pg, method) {
 	var order_name = $('.bookName:first input[id^=title_]').val();
 	
 	var order_items = new Array();
-	$('.bookName').each(function() {
+	$('.itmes .bookName').each(function() {
 		var book = new Object();
 		book.item_name = $(this).find('input[id^=title_]').val();
 		book.qty = $(this).find('input[id^=qty_]').val();
@@ -212,6 +214,41 @@ function paymentTest(pg, method) {
 		console.log(data);
 	});
 }
+
+
+// 포인트 적용 버튼 클릭시
+let added = false;
+$('#btn-pointApply').click(function() {	
+	let pointUse = getNumbers($('#input-pointUse').val());
+	if(pointUse < 1000 && pointUse != 0){
+		alert('적립금은 1000원 이상만 사용이 가능합니다.');
+		return false;
+	}else if($('#memPoint').val() < pointUse * 1){
+		alert('보유중인 적립금 이하 금액만 사용 가능합니다.');
+		pointUse = $('#memPoint').val();
+		$('#input-pointUse').val(pointUse);
+	}
+	if(pointUse * 1 > $('#o_total_price').val()){
+		pointUse = $('#o_total_price').val();
+		$('#input-pointUse').val(pointUse);
+	}
+	
+	if(added){ $('.shipping__method li#added').remove();}
+	if(pointUse == 0){
+		added = false;
+		return false;
+	}
+	added = true;
+	$('.shipping__method').append($('<li id="added">적립금 사용<span>- ' + setComma(pointUse) + '원</span>'))
+	$('span#order_price').text( setComma( $('#o_total_price').val() - pointUse ) +'원' );
+	
+	let final_price = $('#o_total_price').val() - pointUse;
+	if(final_price < 100){
+		alert('최종 결제금액은 100원 이상이어야 결제가 가능합니다.');
+	}
+})
+
+
 
 //---------- getNumbers ---------- 
 //문자열에서 숫자로 된 값만 추출

@@ -26,6 +26,7 @@ import kr.co.bootpay.javaApache.model.request.Cancel;
 import order.bean.OrderDTO;
 import order.bean.ViewCartDTO;
 import order.dao.OrderDAO;
+import shop.bean.ShopPaging;
 import shop.dao.ShopDAO;
 
 @Service(value = "orderService")
@@ -35,6 +36,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private ShopDAO shopDAO;
+	
+	@Autowired
+	private ShopPaging shopPaging;
 	
 	@Autowired
 	private BootpayApi bootpayApi;
@@ -111,6 +115,8 @@ public class OrderServiceImpl implements OrderService {
 		
 		model.addObject("list", book_list);
 		model.addObject("cart_list", cart_list);
+		
+		getPoint(model);
 		
 		return model;
 	}
@@ -263,6 +269,7 @@ public class OrderServiceImpl implements OrderService {
 			order_price += checkout_list.get(i).getQty() * book_list.get(i).getD_price();
 		}
 		if(order_price < 30000) order_price += 3000;
+		//Map<String, Object> order_listMap = (Map<String, Object>) session.getAttribute("order_info");
 		
 		session.setAttribute("order_id", "hotSalt_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
 		session.setAttribute("order_price", order_price);
@@ -344,20 +351,20 @@ public class OrderServiceImpl implements OrderService {
 			nvl(order_listMap, "addr_detail", "");
 			nvl(order_listMap, "delivery_msg", "");
 			nvl(order_listMap, "point", 0);
-			nvl(order_listMap, "usedpoint", 0);
+			nvl(order_listMap, "usedPoint", 0);
 			nvl(order_listMap, "r_tel1", "");
 			nvl(order_listMap, "r_tel2", "");
 			nvl(order_listMap, "tel", "");
 			nvl(order_listMap, "tax_ref", "");
-			
-			
+			nvl(order_listMap, "delivery_fee", 0);
 			
 			System.out.println(result_data);
 			
 			// 정상 결제시
 			if(	status == 200 && 
 				order_id.equals(session.getAttribute("order_id")) &&
-				order_price == (Integer) session.getAttribute("order_price") ) {
+				order_price == (Integer) session.getAttribute("order_price") - Integer.parseInt((String)order_listMap.get("usedPoint")) ) {
+				
 				System.out.println("주문번호: " + order_id);
 				System.out.println("결제 검증 결과: 정상");
 				
@@ -473,11 +480,58 @@ public class OrderServiceImpl implements OrderService {
 		mav.addObject("order_list",orderDAO.loadOrder(map));
 	}
 	
+	@Override
+	public void loadOrder(ModelAndView mav, String order_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(session.getAttribute("memId")!=null) {
+			map.put("user_id", (String)session.getAttribute("memId"));
+		}
+		map.put("order_id", order_id);
+		List<OrderDTO> list = orderDAO.loadOrder(map);
+		if(list.size()>0) {
+			mav.addObject("selected_order",list.get(0));
+			mav.addObject("list_bookOrder",orderDAO.getBookOrders(order_id));
+		}
+	}
+	
 	public Map<String, Object> nvl(Map<String, Object> map, String key, Object defaultValue){
 		if(map.get(key)==null) {
 			map.put(key, defaultValue);
 		}
 		return map;
+	}
+
+	@Override
+	public void loadPoint(ModelAndView model, int pg) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user_id", (String)session.getAttribute("memId"));
+		
+		int end = pg * 15;
+		int start = end - 14;
+		map.put("start", start + "");
+		map.put("end", end + "");
+		
+		shopPaging.setTotalA(orderDAO.getPointTotalA(map.get("user_id")));
+		shopPaging.setCurrentPage(pg);
+		shopPaging.setPageBlock(10);
+		shopPaging.setPageSize(15);
+		shopPaging.makePagingHTML();
+		
+		model.addObject("point_list", orderDAO.loadPoint(map));
+		model.addObject("point_paging", shopPaging.getPagingHTML());
+		
+	}
+	
+	@Override
+	public void getPoint(ModelAndView model) {
+		int point;
+		if(session.getAttribute("memId")!=null) {
+			point = orderDAO.getPoint((String)session.getAttribute("memId"));
+		}else {
+			point = 0;
+		}
+		model.addObject("point", point);
+		System.out.println("point: " + point);
 	}
 
 }

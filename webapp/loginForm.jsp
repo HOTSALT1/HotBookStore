@@ -26,9 +26,9 @@
         <div style="margin-top: 3px;">
         	<span class="login-span" style="display:inline-block; margin-left: 3px;"><a href="signup_agreement">회원가입</a></span>
         	<span class="login-span" style="display:inline-block; float: right; margin-right: 3px;">
-        		<a href="member_findId.jsp" id="idfind">아이디</a>
+        		<a href="member_findId" id="idfind">아이디</a>
         			<span style="color :gray;">/</span>
-				<a href="member_findPwd.jsp">비밀번호 찾기</a>
+				<a href="member_findPwd">비밀번호 찾기</a>
 			</span>
         </div>
         <div class="login-text">
@@ -42,7 +42,6 @@
     </form>
 </body>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/loginForm.js"></script>
 <!-- <script type="text/javascript">
 $('#loginFormBtn').click(function(){

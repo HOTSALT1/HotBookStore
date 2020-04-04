@@ -77,7 +77,7 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 ol-lg-12">
 						<div class="table-content wnro__table table-responsive">
-						<form id="admin_booklistForm" action="admin_bookDelete">					
+						<form id="admin_booklistForm" action="">					
 							<table>
 								<thead>
 									<tr class="title-top">
@@ -131,7 +131,7 @@
 
 											<!-- 삭제 -->
 											<td class="product-remove">
-											<input type="button" class="remove_${book.seq }"  value="삭제" onclick="bookDeleteForm()"></td>
+											<input type="button" class="remove_${book.seq }" id="deleteBtn" value="삭제" onclick="location.href='admin_bookDelete?book_id=${book.seq}'"></td>
 										</tr>
 										</c:forEach>
 								</tbody>
@@ -146,7 +146,7 @@
 					</div>
 				</div>
 			</div>
-				<ul class="wn__pagination">${paging }</ul>
+				<ul class="wn__pagination">${adminBookListPaging }</ul>
 		</div>
 
 		<!-- Footer Area -->
@@ -168,11 +168,27 @@
 	<script src="../js/admin_list.js"></script>
 	<script src="../js/member.js"></script>
 	
-	<script>
+	<script type="text/javascript">
+	$('.wn__pagination li:not(.active)').click(function() {
+		adminBookListPaging($(this).find('a:eq(0)').text());
+	})
+	
 	function adminBookListPaging(pg){
+		$('input[name=pg]').val(pg);
 		location.href="admin_booklist?pg="+pg;
 	}
 	</script>
+	
+	<script>
+	function bookDeleteForm(){
+		document.admin_booklistForm.method = 'post';
+		document.admin_booklistForm.action = '/admin/admin_bookDelete';
+		document.admin_booklistForm.submit();
+
+	}
+	</script>
+	<
+
 	
 
 </body>

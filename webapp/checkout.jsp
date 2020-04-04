@@ -214,7 +214,7 @@
 								<li>상품명</li>
 								<li>금액</li>
 							</ul>
-							<ul class="order_product">
+							<ul class="order_product itmes">
 								<c:forEach var="cart" items="${sessionScope.cart_checkout }" varStatus="i">
 								<c:set var="price">${cart.qty * cart.d_price}</c:set>
 								<c:set var="total_price">${total_price + price}</c:set>
@@ -233,12 +233,31 @@
 							</ul>
 							<ul class="shipping__method">
 								<li>상품 합계 <span><fmt:formatNumber pattern="#,###원">${total_price }</fmt:formatNumber></span></li>
-								<li>배송비<span><fmt:formatNumber pattern="#,###원">${delivery}</fmt:formatNumber></span></li>
+								<li>배송비<span><fmt:formatNumber pattern="#,###원">${delivery}</fmt:formatNumber></span><input type="hidden" id="delivery_fee" value="${delivery}" /></li>
 							</ul>
 							<ul class="total__amount">
-								<li>최종 결제금액 <span id="order_price"><fmt:formatNumber pattern="#,###원">${total_price + delivery }</fmt:formatNumber></span></li>
+								<li>최종 결제금액 
+									<span id="order_price"><fmt:formatNumber pattern="#,###원">${total_price + delivery }</fmt:formatNumber></span>
+									<input type="hidden" id="o_total_price" value="${total_price + delivery }" />
+								</li>
 							</ul>
 							<input type="hidden" id="order_id" value="${sessionScope.order_id }" />
+						</div>
+						<div style="padding-top: 30px;"></div>
+						<div class="wn__order__box">
+							<h3 class="onder__title">적립금 사용</h3>
+							<ul class="order__total">
+								<li>보유중인 적립금</li>
+								<li>사용할 적립금</li>
+							</ul>
+							<ul class="order_product">
+								<li class="bookName"><fmt:formatNumber pattern="#,###,###P">${point }</fmt:formatNumber><input type="hidden" id="memPoint" value="${point }" />
+									<span><input id="input-pointUse" type="text" class="form-control" value="0" style="width:180px;text-align:right;"></span>
+								</li>
+								<li><span><input type="button" id="btn-pointApply" value="적용" class="btn btn-primary" style="width:180px" /></span></li>
+								<li><span></span></li>
+								<li><span></span></li>
+							</ul>
 						</div>
 						<div id="accordion" class="checkout_accordion mt--30" role="tablist">
 							<div id="payment" class="payment">
@@ -314,61 +333,8 @@
 		</section>
 		<!-- End Checkout Area -->
 		<!-- Footer Area -->
-		<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-			<div class="footer-static-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="footer__widget footer__menu">
-								<div class="ft__logo">
-									<a href="index.html">
-										<img src="images/logo/3.png" alt="logo">
-									</a>
-									<p>There are many variations of passages of Lorem Ipsum available, but the majority
-										have suffered duskam alteration variations of passages</p>
-								</div>
-								<div class="footer__content">
-									<ul class="social__net social__net--2 d-flex justify-content-center">
-										<li><a href="#"><i class="bi bi-facebook"></i></a></li>
-										<li><a href="#"><i class="bi bi-google"></i></a></li>
-										<li><a href="#"><i class="bi bi-twitter"></i></a></li>
-										<li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
-									</ul>
-									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.html">Trending</a></li>
-										<li><a href="index.html">Best Seller</a></li>
-										<li><a href="index.html">All Product</a></li>
-										<li><a href="index.html">Wishlist</a></li>
-										<li><a href="index.html">Blog</a></li>
-										<li><a href="index.html">Contact</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copyright__wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="copyright">
-								<div class="copy__right__inner text-left">
-									<p>Copyright <i class="fa fa-copyright"></i> <a href="#">Boighor.</a> All Rights
-										Reserved</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<div style="border-top: 1px solid #e6e6e6; width: 100%; margin-top: 90px;"></div>
+		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //Footer Area -->
 
 	</div>

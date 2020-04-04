@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.png">
 	<link rel="apple-touch-icon" href="images/icon.png">
 
 	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
@@ -188,15 +188,12 @@
 									<h5>
 										<a class="collapsed" data-toggle="collapse" href="#collapseFive" role="button"
 											aria-expanded="false" aria-controls="collapseFive">
-											Pellentesque habitant morbi tristique senectus et netus?</a>
+											[로그인]아이디랑 비밀번호를 찾을 수 없으면 어떡하나요?</a>
 									</h5>
 								</div>
 								<div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive"
 									data-parent="#accordion">
-									<div class="card-body">Donec mattis finibus elit ut tristique. Nullam tempus nunc
-										eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam
-										consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla
-										ultricies, elit lorem eleifend lorem</div>
+									<div class="card-body">고객센터를 통해 이메일을 보내주시거나, 카카오톡 채팅상담을 이용해주시면 됩니다</div>
 								</div>
 							</div>
 							<div class="card">
@@ -204,48 +201,60 @@
 									<h5>
 										<a class="collapsed" data-toggle="collapse" href="#collapseSix" role="button"
 											aria-expanded="false" aria-controls="collapseSix">
-											Aenean elit orci, efficitur quis nisl at?</a>
+											[회원] 회원탈퇴는 어떻게 하나요?</a>
 									</h5>
 								</div>
 								<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix"
 									data-parent="#accordion">
-									<div class="card-body">Donec mattis finibus elit ut tristique. Nullam tempus nunc
-										eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam
-										consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla
-										ultricies, elit lorem eleifend lorem</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="acc-header" role="tab" id="headingSeven">
-									<h5>
-										<a class="collapsed" data-toggle="collapse" href="#collapseSeven" role="button"
-											aria-expanded="false" aria-controls="collapseSeven">
-											Morbi gravida, nisi id fringilla ultricies, elit lorem?</a>
-									</h5>
-								</div>
-								<div id="collapseSeven" class="collapse" role="tabpanel" aria-labelledby="headingSeven"
-									data-parent="#accordion">
-									<div class="card-body">Donec mattis finibus elit ut tristique. Nullam tempus nunc
-										eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam
-										consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla
-										ultricies, elit lorem eleifend lorem</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="acc-header" role="tab" id="headingEight">
-									<h5>
-										<a class="collapsed" data-toggle="collapse" href="#collapseEight" role="button"
-											aria-expanded="false" aria-controls="collapseEight">
-											Djanj sit amet, consectetur adipisicing elit, sed do eiusmod tem pororem ?.
-										</a>
-									</h5>
-								</div>
-								<div id="collapseEight" class="collapse" role="tabpanel" aria-labelledby="headingEight"
-									data-parent="#accordion">
-									<div class="card-body">Donec mattis finibus elit ut tristique. Nullam tempus nunc
-										eget arcu vulputate, eu porttitor tellus commodo. Aliquam erat volutpat. Aliquam
-										consectetur lorem eu viverra lobortis. Morbi gravida, nisi id fringilla
-										ultricies, elit lorem eleifend lorem</div>
+									<div class="card-body"> 회원탈퇴
+
+[마이페이지] 접속 후  정보내역 -> 회원탈퇴에서 정보 확인, 탈퇴사유와 비밀번호를 입력 후 회원 탈퇴가 가능합니다.
+
+ 
+
+< 회원정보 및 계좌 내역 삭제 >
+
+회원탈퇴 즉시 회원정보는 모두 삭제되며, 재가입시에도 복원되지 않습니다.
+
+- 삭제되는 정보 : 개인정보
+
+ 
+
+※ 탈퇴 후 블로그 및 블로그와 연결된 이용기록(ex.상품리뷰)은 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다.
+
+단, 게시판형 서비스에 등록한 게시물은 삭제되지 않고 유지됩니다.
+
+- 회원탈퇴 시 중고샵 판매계정 및 판매자회원 자격이 자동으로 상실됩니다.(주문/정산 중에는 탈퇴불가)
+
+- 회원탈퇴 시 중고매장에서 회원으로 서비스 이용이 불가합니다.
+
+ 
+
+< 1개월간 회원 재 가입 제한 >
+
+회원탈퇴 후, 1개월간은 회원 재가입이 불가능합니다.
+
+ 
+
+< 탈퇴 후 정보보관 >
+
+전자상거래 등에서의 소비자 보호에 관한 법률 제6조에 의거 성명, 주소 등 거래의 주체를 식별할 수 있는 정보에 한하여 서비스 이용에 관한 동의를 철회한 경우에도 이를 보존할 수 있으며, 동법 시행령 제6조에 의거 다음과 같이 거래기록을 보관합니다.
+
+① 표시, 광고에 관한 기록 : 6개월
+
+② 계약 또는 청약철회 등에 관한 기록 : 5년
+
+③ 대금결제 및 재화 등의 공급에 관한 기록 : 5년
+
+④ 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년
+
+ 
+
+< 탈퇴 후 이용제한 >
+
+회원탈퇴 후, 온라인 및 중고매장에서 이벤트 참여, 이용 내역 조회, 상담 및 제반 서비스(반품, 환불, 교환)등이 제한될 수 있으니 이점 양지해주시기 바랍니다.
+
+</div>
 								</div>
 							</div>
 						</div>
