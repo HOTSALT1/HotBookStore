@@ -97,7 +97,7 @@
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">주문관리</li>
-											<li><a href="/hotSalt/admin/admin_order-list.jsp">주문통합리스트 </a></li>
+											<li><a href="/hotSalt/admin/admin_order-list">주문통합리스트 </a></li>
 											<li><a href="">입금대기 리스트 </a></li>
 											<li><a href="">결제완료 리스트</a></li>
 											<li><a href="">상품준비중 리스트</a></li>

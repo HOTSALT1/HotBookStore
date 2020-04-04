@@ -122,9 +122,9 @@
 								<tbody id="">
 									<c:forEach items="${order_list }" var="order">
 										<tr>
-											<td class="product-remove" style="padding-left: 0px; height:${height};"><input
-												type="checkbox" name="" id="chk_"
-												style="width: 13px;" /></td>
+											<td class="product-remove" style="padding-left: 0px; height:${height};">
+												<input type="checkbox" class="chk" id="chk_" style="width: 13px;" />
+											</td>
 											<td>${order.order_id }</td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${order.logtime }"/></td>
 											<td>${order.user_id }</td>
@@ -153,7 +153,7 @@
 										<option value="배송중">배송중</option>
 										<option value="배송완료">배송완료</option>
 									</select>
-									<a href="">주문 처리</a>
+									<a href="javascript:void(0)" id="proceed">주문 처리</a>
 								</li>
 							</ul>
 						</div>
@@ -184,6 +184,34 @@
 	<script type="text/javascript">
 		$(function() {
 			$('#status').val($('#hidden').val());
+		})
+		
+		$('#proceed').click(function() {
+			if($('#new_status').val() == ''){
+				return false;
+			}
+			
+			var data = new Object();
+			data.new_status = $('#new_status').val();
+			
+			var arr = new Array();
+			$('.chk').each(function() {
+				if($(this).is(":checked")){
+					arr.push($(this).parent().next().text())
+				}
+			})
+			
+			data.items = arr.join(',');
+			//alert(data.items)
+			$.ajax({
+				url: '/hotSalt/admin/order-proceed',
+				type: 'post',
+				data: data,
+				success: function() {
+					location.href='/hotSalt/admin/admin_order-list'
+				}
+			})
+			
 		})
 	
 	</script>

@@ -34,4 +34,6 @@ public interface OrderService {
 	public void loadPoint(ModelAndView model, int pg);
 	public void getPoint(ModelAndView model);
 
+	public void admin_order_proceed(ModelAndView mav, Map<String, Object> map);
+
 }

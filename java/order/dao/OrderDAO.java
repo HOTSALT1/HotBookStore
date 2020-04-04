@@ -43,4 +43,6 @@ public interface OrderDAO {
 
 	public int loadOrderTotalA(Map<String, Object> map);
 
+	public void admin_order_proceed(Map<String, Object> map);
+
 }

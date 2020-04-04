@@ -130,4 +130,11 @@ public class OrderController {
 		mav.setViewName("admin_order-list");
 		return orderService.admin_order_list(mav, map);
 	}
+	
+	@RequestMapping(value = "admin/order-proceed", method = RequestMethod.POST)
+	@ResponseBody
+	public String admin_order_proceed(ModelAndView mav, @RequestParam Map<String, Object> map) {
+		orderService.admin_order_proceed(mav, map);
+		return "true";
+	}
 }
