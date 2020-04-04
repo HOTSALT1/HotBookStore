@@ -111,4 +111,9 @@ public class OrderDAOMybatis implements OrderDAO {
 		return session.selectOne("orderSQL.loadOrderTotalA", map);
 	}
 
+	@Override
+	public void admin_order_proceed(Map<String, Object> map) {
+		session.update("orderSQL.admin_order_proceed", map);
+	}
+
 }

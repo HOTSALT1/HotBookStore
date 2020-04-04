@@ -2,6 +2,7 @@ package order.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -558,6 +559,14 @@ public class OrderServiceImpl implements OrderService {
 		}
 		model.addObject("point", point);
 		System.out.println("point: " + point);
+	}
+
+	@Override
+	public void admin_order_proceed(ModelAndView mav, Map<String, Object> map) {
+		if(map.get("new_status").equals("") || (""+map.get("items")).length() == 0) {
+			return;
+		}
+		orderDAO.admin_order_proceed(map);
 	}
 
 }
